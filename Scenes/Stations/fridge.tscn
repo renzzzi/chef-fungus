@@ -12,6 +12,7 @@ radius = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1086190500]
 modulate = Color(1, 1, 0, 1)
+z_index = 10
 position = Vector2(0, -8)
 texture = ExtResource("1_4jc6q")
 
