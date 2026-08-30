@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Chef Fungus"
 config/description="A fungus turned chef discovers new food recipes by combining them and tries to appease rats."
+run/main_scene="uid://csukoboud5xhx"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
 [autoload]
