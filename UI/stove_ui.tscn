@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://go4vtljihog0"]
+
+[ext_resource type="Texture2D" uid="uid://bcowatgfg23jv" path="res://Sprites/player_head.png" id="1_s8k0e"]
+[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown_food.png" id="2_7q0r2"]
+[ext_resource type="Script" uid="uid://dulcrb3vy0lqu" path="res://Scripts/food_on_player_head.gd" id="3_iahmb"]
+[ext_resource type="FontFile" uid="uid://dm5tjqfryx7nh" path="res://ARCADECLASSIC.TTF" id="4_5iyn2"]
+[ext_resource type="PackedScene" uid="uid://bslwm15eyaid3" path="res://UI/slot.tscn" id="5_e2ttf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bgmh"]
+bg_color = Color(0.6, 0.36862746, 0.6, 1)
+shadow_size = 7
+shadow_offset = Vector2(6.215, 2.83)
+
+[node name="StoveUI" type="Control" unique_id=264456918]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -80.0
+offset_top = -48.0
+offset_right = 80.0
+offset_bottom = 48.0
+
+[node name="Panel" type="Panel" parent="." unique_id=15994982]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8bgmh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=250914601]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=1040043307]
+layout_mode = 2
+
+[node name="MarginLeft" type="Control" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1486341417]
+custom_maximum_size = Vector2(10, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerFood" type="Control" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1194241256]
+layout_mode = 2
+
+[node name="PlayerHead" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer/PlayerFood" unique_id=372951468]
+modulate = Color(1, 1, 1, 0.7058824)
+layout_mode = 0
+offset_left = -4.0
+offset_top = 14.0
+offset_right = 26.0
+offset_bottom = 26.0
+texture = ExtResource("1_s8k0e")
+stretch_mode = 5
+
+[node name="Food" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer/PlayerFood" unique_id=1084476672]
+z_index = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 19.0
+offset_bottom = 18.0
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+texture = ExtResource("2_7q0r2")
+expand_mode = 1
+script = ExtResource("3_iahmb")
+
+[node name="SpaceMiddle" type="Control" parent="Panel/VBoxContainer/HBoxContainer" unique_id=1212045567]
+custom_maximum_size = Vector2(50, -1)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer" unique_id=628076774]
+custom_maximum_size = Vector2(-1, 20)
+layout_mode = 2
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 4)
+theme_override_fonts/font = ExtResource("4_5iyn2")
+theme_override_font_sizes/font_size = 19
+text = "Stove
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/VBoxContainer" unique_id=616955214]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer/CenterContainer" unique_id=1814082193]
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 2
+size_flags_vertical = 3
+columns = 5
+
+[node name="Slot" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=2145597799 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[node name="Slot2" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=427826696 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[node name="Slot3" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=180074661 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[node name="Slot4" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=811870009 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[node name="Slot5" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=1404646752 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[node name="Slot6" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=363484445 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[node name="Slot7" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=49193636 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[node name="Slot8" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=357182995 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[node name="Slot9" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=849518480 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[node name="Slot10" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=539787536 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[node name="Slot11" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=865430855 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[node name="Slot12" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=1437652355 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[node name="Slot13" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=793295667 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[node name="Slot14" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=1300180875 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[node name="Slot15" parent="Panel/VBoxContainer/CenterContainer/GridContainer" unique_id=1093759701 instance=ExtResource("5_e2ttf")]
+layout_mode = 2
+
+[connection signal="mouse_entered" from="Panel/VBoxContainer/HBoxContainer/PlayerFood/Food" to="Panel/VBoxContainer/HBoxContainer/PlayerFood/Food" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/VBoxContainer/HBoxContainer/PlayerFood/Food" to="Panel/VBoxContainer/HBoxContainer/PlayerFood/Food" method="_on_mouse_exited"]

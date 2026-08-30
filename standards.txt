@@ -1,0 +1,16 @@
+PLAYER:
+- movement
+- picking up food
+- interact equipment
+	
+FOOD:
+- follow the player when picked up
+- stats
+- change attributes when being placed/used in equipments
+
+EQUIPMENT:
+- inventory management
+- 
+
+UI:
+	
