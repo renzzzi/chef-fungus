@@ -1,3 +1,20 @@
 [gd_scene format=3 uid="uid://cxblpcyjyk660"]
 
+[ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="1_nuxey"]
+[ext_resource type="Texture2D" uid="uid://dbvu6vopm7utp" path="res://Sprites/stove.png" id="2_map72"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_map72"]
+size = Vector2(10, 2)
+
 [node name="Stove" type="StaticBody2D" unique_id=330092845]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1190749888]
+texture = ExtResource("2_map72")
+
+[node name="InteractComponent" parent="." unique_id=1900256740 instance=ExtResource("1_nuxey")]
+position = Vector2(0, 0.99999994)
+scale = Vector2(0.05, 0.05)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1355848136]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_map72")

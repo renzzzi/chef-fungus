@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://dg0fws7623m5x" path="res://Sprites/ground_wall.png" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://dimge58i6rota" path="res://Scenes/Stations/fridge.tscn" id="2_go701"]
-[ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="3_5a7ea"]
+[ext_resource type="PackedScene" uid="uid://cqt2awawhdmmw" path="res://Scenes/Stations/counter_top.tscn" id="3_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://cxblpcyjyk660" path="res://Scenes/Stations/stove.tscn" id="4_o06y3"]
+[ext_resource type="PackedScene" uid="uid://oodero6pq2tj" path="res://Scenes/Stations/blender.tscn" id="5_k7acu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go701"]
 texture = ExtResource("1_a02cp")
@@ -25,10 +27,8 @@ tile_set = SubResource("TileSet_yp4wr")
 [node name="Fridge" parent="." unique_id=761705989 instance=ExtResource("2_go701")]
 position = Vector2(-72, -25)
 
-[node name="CounterTop" type="StaticBody2D" parent="." unique_id=394017489]
+[node name="CounterTop" parent="." unique_id=1997985333 instance=ExtResource("3_5ukr8")]
 
-[node name="Stove" type="StaticBody2D" parent="." unique_id=1751149729]
+[node name="Stove" parent="." unique_id=330092845 instance=ExtResource("4_o06y3")]
 
-[node name="Blender" type="StaticBody2D" parent="." unique_id=1341031478]
-
-[node name="InteractComponent" parent="." unique_id=1900256740 instance=ExtResource("3_5a7ea")]
+[node name="Blender" parent="." unique_id=666820841 instance=ExtResource("5_k7acu")]
