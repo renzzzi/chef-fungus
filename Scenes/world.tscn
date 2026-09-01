@@ -15,6 +15,18 @@ texture = ExtResource("1_a02cp")
 [sub_resource type="TileSet" id="TileSet_yp4wr"]
 sources/0 = SubResource("TileSetAtlasSource_go701")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tve5p"]
+size = Vector2(192, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ukr8"]
+size = Vector2(16, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o06y3"]
+size = Vector2(192, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k7acu"]
+size = Vector2(16, 160)
+
 [node name="World" type="Node2D" unique_id=1436871316]
 y_sort_enabled = true
 
@@ -38,3 +50,29 @@ position = Vector2(24, -25)
 position = Vector2(40, -25)
 
 [node name="Player" parent="." unique_id=1008564758 instance=ExtResource("6_5ukr8")]
+
+[node name="Borders" type="Node2D" parent="." unique_id=1742851753]
+
+[node name="Up" type="StaticBody2D" parent="Borders" unique_id=1832062854]
+position = Vector2(0, -51)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Up" unique_id=2030153227]
+shape = SubResource("RectangleShape2D_tve5p")
+
+[node name="Right" type="StaticBody2D" parent="Borders" unique_id=1357180507]
+position = Vector2(104, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Right" unique_id=594449366]
+shape = SubResource("RectangleShape2D_5ukr8")
+
+[node name="Down" type="StaticBody2D" parent="Borders" unique_id=59763561]
+position = Vector2(0, 88)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Down" unique_id=435024128]
+shape = SubResource("RectangleShape2D_o06y3")
+
+[node name="Left" type="StaticBody2D" parent="Borders" unique_id=71516736]
+position = Vector2(-104, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left" unique_id=190797607]
+shape = SubResource("RectangleShape2D_k7acu")
