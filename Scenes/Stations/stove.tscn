@@ -7,6 +7,8 @@
 size = Vector2(10, 2)
 
 [node name="Stove" type="StaticBody2D" unique_id=330092845]
+modulate = Color(1, 0, 0, 1)
+z_index = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1190749888]
 texture = ExtResource("2_map72")

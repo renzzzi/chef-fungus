@@ -4,9 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://vaur51ad47bj" path="res://Sprites/fridge.png" id="2_0xlii"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tve5p"]
-size = Vector2(16, 8)
+size = Vector2(16, 15)
 
 [node name="Fridge" type="StaticBody2D" unique_id=761705989]
+z_index = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1470067660]
 modulate = Color(1, 1, 0, 1)
@@ -17,5 +18,5 @@ position = Vector2(0, 8)
 scale = Vector2(0.05, 0.05)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=727507296]
-position = Vector2(0, -8)
+position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_tve5p")

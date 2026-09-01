@@ -1,1 +1,4 @@
-Player putting food in fridge:
+Components
+
+Ordering:
+	Stations -> 10

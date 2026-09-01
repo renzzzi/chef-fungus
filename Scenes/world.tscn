@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cqt2awawhdmmw" path="res://Scenes/Stations/counter_top.tscn" id="3_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://cxblpcyjyk660" path="res://Scenes/Stations/stove.tscn" id="4_o06y3"]
 [ext_resource type="PackedScene" uid="uid://oodero6pq2tj" path="res://Scenes/Stations/blender.tscn" id="5_k7acu"]
+[ext_resource type="PackedScene" uid="uid://d1t3xysjscs4g" path="res://Scenes/player.tscn" id="6_5ukr8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go701"]
 texture = ExtResource("1_a02cp")
@@ -25,10 +26,15 @@ tile_map_data = PackedByteArray("AAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAA
 tile_set = SubResource("TileSet_yp4wr")
 
 [node name="Fridge" parent="." unique_id=761705989 instance=ExtResource("2_go701")]
-position = Vector2(-72, -25)
+position = Vector2(-72, -33)
 
 [node name="CounterTop" parent="." unique_id=1997985333 instance=ExtResource("3_5ukr8")]
+position = Vector2(8, -23)
 
 [node name="Stove" parent="." unique_id=330092845 instance=ExtResource("4_o06y3")]
+position = Vector2(24, -25)
 
 [node name="Blender" parent="." unique_id=666820841 instance=ExtResource("5_k7acu")]
+position = Vector2(40, -25)
+
+[node name="Player" parent="." unique_id=1008564758 instance=ExtResource("6_5ukr8")]

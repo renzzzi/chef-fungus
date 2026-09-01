@@ -7,8 +7,10 @@
 size = Vector2(16, 3)
 
 [node name="CounterTop" type="StaticBody2D" unique_id=1997985333]
+z_index = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1602039471]
+modulate = Color(0, 1, 0, 1)
 texture = ExtResource("2_ckswr")
 
 [node name="InteractComponent" parent="." unique_id=1900256740 instance=ExtResource("1_8f5pg")]
