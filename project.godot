@@ -17,8 +17,7 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 
 [autoload]
 
-GameSignals="*uid://daxonq7isblf0"
-GameEnums="*uid://dk1andem0cjcu"
+GameEnums="*uid://26x66yvltegm"
 
 [display]
 

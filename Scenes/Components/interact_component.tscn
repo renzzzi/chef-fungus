@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://fpr7hhmsdiym"]
 
+[ext_resource type="Script" uid="uid://dqyvxfyv8yhwc" path="res://Scripts/interact_component.gd" id="1_4y55e"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_tve5p"]
 
 [node name="InteractComponent" type="Area2D" unique_id=1900256740]
+script = ExtResource("1_4y55e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1746406532]
 shape = SubResource("CircleShape2D_tve5p")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

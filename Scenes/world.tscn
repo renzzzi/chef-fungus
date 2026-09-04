@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cxblpcyjyk660" path="res://Scenes/Stations/stove.tscn" id="4_o06y3"]
 [ext_resource type="PackedScene" uid="uid://oodero6pq2tj" path="res://Scenes/Stations/blender.tscn" id="5_k7acu"]
 [ext_resource type="PackedScene" uid="uid://d1t3xysjscs4g" path="res://Scenes/player.tscn" id="6_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://dj57wj6pdpk3b" path="res://Scenes/Consumables/apple.tscn" id="7_k7acu"]
+[ext_resource type="PackedScene" uid="uid://m0dnpgmpddx1" path="res://Scenes/Consumables/orange.tscn" id="8_5v1tr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go701"]
 texture = ExtResource("1_a02cp")
@@ -54,9 +56,10 @@ position = Vector2(40, -25)
 [node name="Borders" type="Node2D" parent="." unique_id=1742851753]
 
 [node name="Up" type="StaticBody2D" parent="Borders" unique_id=1832062854]
-position = Vector2(0, -51)
+position = Vector2(2, -51)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Up" unique_id=2030153227]
+position = Vector2(-2, 3)
 shape = SubResource("RectangleShape2D_tve5p")
 
 [node name="Right" type="StaticBody2D" parent="Borders" unique_id=1357180507]
@@ -76,3 +79,12 @@ position = Vector2(-104, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left" unique_id=190797607]
 shape = SubResource("RectangleShape2D_k7acu")
+
+[node name="Apple" parent="." unique_id=259264233 instance=ExtResource("7_k7acu")]
+position = Vector2(31.999998, 0)
+
+[node name="Orange" parent="." unique_id=1473892604 instance=ExtResource("8_5v1tr")]
+position = Vector2(31.999998, 40.000004)
+
+[node name="Apple2" parent="." unique_id=1666209601 instance=ExtResource("7_k7acu")]
+position = Vector2(-48, 8)

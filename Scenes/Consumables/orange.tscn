@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://m0dnpgmpddx1"]
+
+[ext_resource type="PackedScene" uid="uid://c58124k63fvlk" path="res://Scenes/food.tscn" id="1_6dlax"]
+[ext_resource type="Texture2D" uid="uid://bdmmfjhewre27" path="res://Sprites/orange.png" id="1_lpkbf"]
+
+[node name="Orange" unique_id=259264233 instance=ExtResource("1_6dlax")]
+food_type = 2
+
+[node name="Sprite2D" parent="." index="0" unique_id=1840870082]
+texture = ExtResource("1_lpkbf")

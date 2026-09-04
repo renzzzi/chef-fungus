@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c58124k63fvlk"]
+
+[ext_resource type="Script" uid="uid://e2qrui8k67ic" path="res://Scripts/food.gd" id="1_18ru7"]
+[ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="2_18ru7"]
+[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown_food.png" id="2_a4aql"]
+
+[node name="Food" type="Node2D" unique_id=259264233]
+z_index = 5
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_18ru7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1840870082]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_a4aql")
+
+[node name="InteractComponent" parent="." unique_id=1900256740 instance=ExtResource("2_18ru7")]
+position = Vector2(0, 2.5)
+scale = Vector2(0.55, 0.55)

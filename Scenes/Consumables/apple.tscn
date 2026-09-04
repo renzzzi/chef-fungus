@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dj57wj6pdpk3b"]
+
+[ext_resource type="Texture2D" uid="uid://bjpdm2ex5c4j8" path="res://Sprites/apple.png" id="1_5d0m8"]
+[ext_resource type="PackedScene" uid="uid://c58124k63fvlk" path="res://Scenes/food.tscn" id="1_dgjyr"]
+
+[node name="Apple" unique_id=259264233 instance=ExtResource("1_dgjyr")]
+food_type = 1
+
+[node name="Sprite2D" parent="." index="0" unique_id=1840870082]
+texture = ExtResource("1_5d0m8")
