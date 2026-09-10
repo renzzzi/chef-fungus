@@ -16,6 +16,9 @@ func _ready() -> void:
 func set_current_food_held(new_food):
 	current_food_held = new_food
 
+func get_current_food_held():
+	return current_food_held
+
 func register_interact_component(interact_component):
 	if !nearby_interact_components.has(interact_component):
 		nearby_interact_components.append(interact_component)
@@ -31,9 +34,7 @@ func fridge_interacted(ui_active):
 	# If ui_active is true then disable player physics and vice-versa
 	set_physics_process(!ui_active)
 
-#func _process(delta: float) -> void:
-
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var direction := Input.get_vector("Left", "Right", "Up", "Down")
 	velocity = direction * SPEED
 	move_and_slide()

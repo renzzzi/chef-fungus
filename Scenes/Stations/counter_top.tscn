@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cqt2awawhdmmw"]
 
 [ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="1_8f5pg"]
+[ext_resource type="Script" uid="uid://4xb7uutn5886" path="res://Scripts/counter_top.gd" id="1_ala0d"]
 [ext_resource type="Texture2D" uid="uid://c54iqkg5mimh" path="res://Sprites/countertop.png" id="2_ckswr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xlii"]
@@ -8,6 +9,7 @@ size = Vector2(16, 3)
 
 [node name="CounterTop" type="StaticBody2D" unique_id=1997985333]
 z_index = 10
+script = ExtResource("1_ala0d")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1602039471]
 modulate = Color(0, 1, 0, 1)
