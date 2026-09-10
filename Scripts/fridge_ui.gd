@@ -15,10 +15,19 @@ func fridge_interacted(ui_active):
 	self.visible = ui_active
 	# Change food_ui's texture to the food type the player is currently holding
 	var texture_to_be_loaded
-	if player.get_current_food_held() == null: texture_to_be_loaded = GameEnums.FoodType.NONE
-	else: texture_to_be_loaded = player.get_current_food_held().get_food_type()
+	if player.get_current_food_held() == null:
+		texture_to_be_loaded = GameEnums.FoodType.NONE
+	else: 
+		texture_to_be_loaded = player.get_current_food_held().get_food_type()
+		
 	food_ui.texture = GameEnums.load_texture[texture_to_be_loaded]
 	
+func _process(delta: float) -> void:
+	if player.get_current_food_held() != null:
+		food_ui.modulate = GameEnums.load_color[player.get_current_food_held().get_food_freshness()]
+	else:
+		food_ui.modulate = Color.WHITE
+
 func fridge_slot_interacted(fridge_slot):
 	if player.get_current_food_held() != null and player.get_current_food_held() is not Food:
 		return
@@ -27,22 +36,24 @@ func fridge_slot_interacted(fridge_slot):
 	if player.get_current_food_held() == null and fridge_slot.get_stored_food() != null:
 		player.set_current_food_held(fridge_slot.get_stored_food())
 		fridge_slot.set_stored_food(null)
-		player.get_current_food_held().unstore(fridge)
+		player.get_current_food_held().unstore_from_fridge(fridge)
 	# Player IS holding food; slot is NOT storing food
 	elif player.get_current_food_held() != null and fridge_slot.get_stored_food() == null:
 		fridge_slot.set_stored_food(player.get_current_food_held())
 		player.set_current_food_held(null)
-		fridge_slot.get_stored_food().store()
+		fridge_slot.get_stored_food().store_in_fridge()
 	# Player IS holding food; slot IS storing food
 	elif player.get_current_food_held() != null and fridge_slot.get_stored_food() != null:
 		var temp = player.get_current_food_held()
 		player.set_current_food_held(fridge_slot.get_stored_food())
 		fridge_slot.set_stored_food(temp)
-		player.get_current_food_held().unstore(fridge)
-		fridge_slot.get_stored_food().store()
+		player.get_current_food_held().unstore_from_fridge(fridge)
+		fridge_slot.get_stored_food().store_in_fridge()
 	
 	# Reload Fridge's Food UI
 	var texture_to_be_loaded
-	if player.get_current_food_held() == null: texture_to_be_loaded = GameEnums.FoodType.NONE
-	else: texture_to_be_loaded = player.get_current_food_held().get_food_type()
+	if player.get_current_food_held() == null: 
+		texture_to_be_loaded = GameEnums.FoodType.NONE
+	else: 
+		texture_to_be_loaded = player.get_current_food_held().get_food_type()
 	food_ui.texture = GameEnums.load_texture[texture_to_be_loaded]
