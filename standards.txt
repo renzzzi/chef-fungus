@@ -2,3 +2,6 @@ Components
 
 Ordering:
 	Stations -> 10
+	Player -> 10
+	Food -> 5
+	UI -> 100

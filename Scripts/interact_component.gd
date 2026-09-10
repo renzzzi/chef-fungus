@@ -2,6 +2,7 @@ class_name InteractComponent
 extends Area2D
 
 signal interacted(player: CharacterBody2D)
+@export var is_station: bool
 
 func _on_body_entered(player: Node2D) -> void:
 	if player is CharacterBody2D:

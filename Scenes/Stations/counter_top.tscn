@@ -15,6 +15,7 @@ texture = ExtResource("2_ckswr")
 
 [node name="InteractComponent" parent="." unique_id=1900256740 instance=ExtResource("1_8f5pg")]
 scale = Vector2(0.05, 0.05)
+is_station = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=820831261]
 position = Vector2(0, -6.5)

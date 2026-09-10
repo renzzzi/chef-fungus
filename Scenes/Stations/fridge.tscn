@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dimge58i6rota"]
 
 [ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="1_u6um1"]
+[ext_resource type="Script" uid="uid://pwdgvdat1l86" path="res://Scripts/fridge.gd" id="1_uhp70"]
 [ext_resource type="Texture2D" uid="uid://vaur51ad47bj" path="res://Sprites/fridge.png" id="2_0xlii"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tve5p"]
@@ -8,6 +9,7 @@ size = Vector2(16, 15)
 
 [node name="Fridge" type="StaticBody2D" unique_id=761705989]
 z_index = 10
+script = ExtResource("1_uhp70")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1470067660]
 modulate = Color(1, 1, 0, 1)
@@ -16,6 +18,7 @@ texture = ExtResource("2_0xlii")
 [node name="InteractComponent" parent="." unique_id=1900256740 instance=ExtResource("1_u6um1")]
 position = Vector2(0, 8)
 scale = Vector2(0.05, 0.05)
+is_station = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=727507296]
 position = Vector2(0, -4.5)

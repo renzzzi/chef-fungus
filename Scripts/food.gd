@@ -6,7 +6,6 @@ extends Node2D
 
 static var player: CharacterBody2D
 var is_held = false
-var is_dropping = false
 
 func _ready() -> void:
 	interact_component.interacted.connect(interacted)
@@ -31,3 +30,17 @@ func drop():
 	tween.tween_property(self, "global_position", 
 		Vector2(player.global_position.x, player.global_position.y + 2.5), 0.16
 	)
+
+func store():
+	interact_component.monitoring = false
+	interact_component.monitorable = false
+	is_held = false
+	visible = false
+	global_position = Vector2.ZERO
+	
+func unstore(station_from: Node2D):
+	interact_component.monitoring = true
+	interact_component.monitorable = true
+	global_position = station_from.global_position
+	visible = true
+	is_held = true

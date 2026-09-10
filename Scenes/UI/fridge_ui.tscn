@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://dm1sehdthd4n"]
+
+[ext_resource type="Texture2D" uid="uid://bcowatgfg23jv" path="res://Sprites/player_head.png" id="1_3lbov"]
+[ext_resource type="Script" uid="uid://bpg5sptc6bs1g" path="res://Scripts/fridge_ui.gd" id="1_nsld8"]
+[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown_food.png" id="2_nsld8"]
+[ext_resource type="PackedScene" uid="uid://ce4q50smaclni" path="res://Scenes/UI/fridge_slot.tscn" id="4_jeca8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lbov"]
+bg_color = Color(0.5137255, 0.23137255, 0, 1)
+
+[node name="FridgeUI" type="Control" unique_id=136372375]
+visible = false
+z_index = 100
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_nsld8")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=377818673]
+custom_minimum_size = Vector2(144, 112)
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 112.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3lbov")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1566766045]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1467331863]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1042973957]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1846229427]
+layout_mode = 2
+
+[node name="PlayerHead" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=1165290931]
+modulate = Color(1, 1, 1, 0.78431374)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 32.0
+offset_bottom = 24.0
+texture = ExtResource("1_3lbov")
+
+[node name="FoodUI" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=749015523]
+layout_mode = 0
+offset_left = 11.0
+offset_top = -3.0
+offset_right = 29.0
+offset_bottom = 14.0
+texture = ExtResource("2_nsld8")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1490675457]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1494100041]
+layout_mode = 2
+size_flags_horizontal = 6
+offset_transform_enabled = true
+text = "Fridge"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1998305985]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 5
+
+[node name="FridgeSlot" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=945742431 instance=ExtResource("4_jeca8")]
+layout_mode = 2
+
+[node name="FridgeSlot2" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1869401146 instance=ExtResource("4_jeca8")]
+layout_mode = 2
+
+[node name="FridgeSlot3" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1686959271 instance=ExtResource("4_jeca8")]
+layout_mode = 2
+
+[node name="FridgeSlot4" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1706536010 instance=ExtResource("4_jeca8")]
+layout_mode = 2
+
+[node name="FridgeSlot5" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=218980082 instance=ExtResource("4_jeca8")]
+layout_mode = 2
+
+[node name="FridgeSlot6" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=356072281 instance=ExtResource("4_jeca8")]
+layout_mode = 2
+
+[node name="FridgeSlot7" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=215067517 instance=ExtResource("4_jeca8")]
+layout_mode = 2
+
+[node name="FridgeSlot8" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=338147951 instance=ExtResource("4_jeca8")]
+layout_mode = 2
+
+[node name="FridgeSlot9" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=79917613 instance=ExtResource("4_jeca8")]
+layout_mode = 2
+
+[node name="FridgeSlot10" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1238010940 instance=ExtResource("4_jeca8")]
+layout_mode = 2
+
+[node name="FridgeSlot11" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=42795581 instance=ExtResource("4_jeca8")]
+layout_mode = 2
+
+[node name="FridgeSlot12" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=706685284 instance=ExtResource("4_jeca8")]
+layout_mode = 2
+
+[node name="FridgeSlot13" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1907656842 instance=ExtResource("4_jeca8")]
+layout_mode = 2
+
+[node name="FridgeSlot14" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=725972918 instance=ExtResource("4_jeca8")]
+layout_mode = 2
+
+[node name="FridgeSlot15" parent="PanelContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=307835823 instance=ExtResource("4_jeca8")]
+layout_mode = 2
