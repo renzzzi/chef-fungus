@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqpqffcc6qdeu"
-path="res://.godot/imported/bread.png-529ddd2b6bba194a5959ea8eb260a4b9.ctex"
+uid="uid://cjtxwrx3yj6n8"
+path="res://.godot/imported/sheet_pan.png-313687b79734ea870f20768b08fd1eb3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/bread.png"
-dest_files=["res://.godot/imported/bread.png-529ddd2b6bba194a5959ea8eb260a4b9.ctex"]
+source_file="res://Sprites/Tools/sheet_pan.png"
+dest_files=["res://.godot/imported/sheet_pan.png-313687b79734ea870f20768b08fd1eb3.ctex"]
 
 [params]
 

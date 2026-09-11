@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c54iqkg5mimh"
-path="res://.godot/imported/countertop.png-ca3fadcf71e1ca199b311c8a88aca485.ctex"
+uid="uid://vaur51ad47bj"
+path="res://.godot/imported/fridge.png-9807cd3403d8fc33f41367d1e71ca7d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/countertop.png"
-dest_files=["res://.godot/imported/countertop.png-ca3fadcf71e1ca199b311c8a88aca485.ctex"]
+source_file="res://Sprites/Stations/fridge.png"
+dest_files=["res://.godot/imported/fridge.png-9807cd3403d8fc33f41367d1e71ca7d4.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://divavj6qm3anx"
-path="res://.godot/imported/chopping_board.png-bc1e4bc3af068fbf3d283e7c8e5ee977.ctex"
+uid="uid://b0b2iq45qxhl1"
+path="res://.godot/imported/cooking_pot.png-66621283c2cef7879c92538b46600c93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/chopping_board.png"
-dest_files=["res://.godot/imported/chopping_board.png-bc1e4bc3af068fbf3d283e7c8e5ee977.ctex"]
+source_file="res://Sprites/Tools/cooking_pot.png"
+dest_files=["res://.godot/imported/cooking_pot.png-66621283c2cef7879c92538b46600c93.ctex"]
 
 [params]
 

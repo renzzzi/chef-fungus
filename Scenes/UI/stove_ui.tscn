@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bcowatgfg23jv" path="res://Sprites/player_head.png" id="1_cdiv2"]
 [ext_resource type="Script" uid="uid://70d6ayu48wmn" path="res://Scripts/station_ui.gd" id="1_yi8kn"]
-[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown_food.png" id="2_rs18x"]
+[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/Food/unknown_food.png" id="2_rs18x"]
 [ext_resource type="Texture2D" uid="uid://dxhhj6hs4fqjo" path="res://Sprites/plus.png" id="3_cdiv2"]
 [ext_resource type="PackedScene" uid="uid://m2ehnqtra3xu" path="res://Scenes/UI/stove_slot.tscn" id="3_rs18x"]
 

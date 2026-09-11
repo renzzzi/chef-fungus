@@ -8,7 +8,7 @@ extends Control
 
 func _ready() -> void:
 	station.station_interacted.connect(station_interacted)
-	
+
 	# Connect signals of every instance of the Station Slot
 	if station_type == GameEnums.StationType.FRIDGE:
 		for child in $PanelContainer/MarginContainer/VBoxContainer/GridContainer.get_children():
@@ -54,8 +54,8 @@ func station_slot_interacted(station_slot):
 		var temp = player.get_current_food_held()
 		player.set_current_food_held(station_slot.get_stored_food())
 		station_slot.set_stored_food(temp)
-		player.get_current_food_held().unstore_from_fridge(station)
-		station_slot.get_stored_food().store_in_fridge(station_type)
+		player.get_current_food_held().unstore_from_station(station)
+		station_slot.get_stored_food().store_in_station(station_type)
 	
 	# Reload Station's Food UI
 	var texture_to_be_loaded

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdmmfjhewre27"
-path="res://.godot/imported/orange.png-4be13aa918b673731b2996f24e346a9f.ctex"
+uid="uid://cmovpxow5hfo3"
+path="res://.godot/imported/tamper.png-4118dd7483a7d0935142d26096bb66f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/orange.png"
-dest_files=["res://.godot/imported/orange.png-4be13aa918b673731b2996f24e346a9f.ctex"]
+source_file="res://Sprites/Tools/tamper.png"
+dest_files=["res://.godot/imported/tamper.png-4118dd7483a7d0935142d26096bb66f0.ctex"]
 
 [params]
 

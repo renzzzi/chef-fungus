@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://oodero6pq2tj"]
 
 [ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="1_ar7ff"]
-[ext_resource type="Texture2D" uid="uid://bujumhkqb78b" path="res://Sprites/blender.png" id="2_hwfre"]
+[ext_resource type="Texture2D" uid="uid://bujumhkqb78b" path="res://Sprites/Stations/blender.png" id="2_hwfre"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_map72"]
 size = Vector2(10, 3)

@@ -12,7 +12,7 @@ var stored_in := GameEnums.StationType.NONE
 var food_freshness := GameEnums.FoodFreshness.FRESH
 var expiry_counter: float = 0.0
 @export var STALE: int
-@export var EXPIRED: int
+@export var SPOILED: int
 
 func _on_timer_timeout() -> void:
 	# Slows down expiry based on where food is stored in
@@ -30,11 +30,11 @@ func _on_timer_timeout() -> void:
 		expiry_counter += 1
 	
 	# Changed food_freshness and tint
-	if expiry_counter >= STALE and expiry_counter < EXPIRED:
+	if expiry_counter >= STALE and expiry_counter < SPOILED:
 		food_freshness = GameEnums.FoodFreshness.STALE
 		modulate = GameEnums.load_color[food_freshness]
-	elif expiry_counter >= EXPIRED:
-		food_freshness = GameEnums.FoodFreshness.EXPIRED
+	elif expiry_counter >= SPOILED:
+		food_freshness = GameEnums.FoodFreshness.SPOILED
 		modulate = GameEnums.load_color[food_freshness]
 	
 func get_food_type():

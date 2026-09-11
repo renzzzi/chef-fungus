@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjpdm2ex5c4j8"
-path="res://.godot/imported/apple.png-f244e7ecb5b99913355a5f62514bf77f.ctex"
+uid="uid://dbvu6vopm7utp"
+path="res://.godot/imported/stove.png-218c158eb0ea5eaa2c73e7ea5e185eb8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/apple.png"
-dest_files=["res://.godot/imported/apple.png-f244e7ecb5b99913355a5f62514bf77f.ctex"]
+source_file="res://Sprites/Stations/stove.png"
+dest_files=["res://.godot/imported/stove.png-218c158eb0ea5eaa2c73e7ea5e185eb8.ctex"]
 
 [params]
 

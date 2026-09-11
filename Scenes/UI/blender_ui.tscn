@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ddl7m0np82hi5"]
+
+[node name="BlenderUI" type="Control" unique_id=690813215]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

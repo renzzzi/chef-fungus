@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://m2ehnqtra3xu"]
 
-[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown_food.png" id="1_ocwgu"]
+[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/Food/unknown_food.png" id="1_ocwgu"]
 [ext_resource type="Script" uid="uid://b1d8iv2pw8gsn" path="res://Scripts/station_slot.gd" id="1_t6tch"]
 
 [node name="StoveSlot" type="Panel" unique_id=1335221422]

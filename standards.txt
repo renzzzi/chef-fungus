@@ -1,9 +1,115 @@
-Components
-
-Ordering:
+ORDERING:
 	Stations -> 10
 	Player -> 10
 	Food -> 5
 	UI -> 100
 
-Counter-top has no UI
+
+GAME ENTITIES:
+	Player:
+		- Clothes
+		- Boots
+		- Hat
+	
+	Stations:
+		- Fridge
+		- Counter-top
+			- Blender
+			- Chopping Board
+			- Oven
+			- Stove
+			- Mortar
+			- Food can be placed on the counter to slow down spoilage
+	
+	Tools:
+		- Tamper (Blender)
+		- Knife (Chopping Board)
+		- Sheet Pan (Oven)
+		- Cooking Pot (Stove)
+		- Pestle (Mortar)
+	
+	Food: Check recipes.txt
+
+
+ALL ABOUT FOOD:
+	Food Tiers:
+		This is based on how they were prepared and what they were combined with.
+	
+		Raw Ingredient -> Basic Dish/Ingredient -> Intermediate Dish -> Final Dish
+	
+		They do not necessarily have to go through each tier.
+		(e.g. Two Raw Ingredients can become a Final Dish immediately)
+	
+	Food States:
+		Food change states based on which station it was processed through. Below
+		are suffixes for these food states.
+	
+		- Chopped (Chopping Board)
+		- Blended (Blender)
+		- Baked (Oven)
+		- Boiled (Stove)
+	
+		Note: For Raw Ingredients and Final Dishes, they do not have these 
+		suffixes.
+	
+	Food Freshness:
+		Food has a timer where if a certain threshold has passed, food will degrade
+		its freshness worse and worse as time goes by. Below are the three states of
+		freshness a food can be in.
+	
+		Fresh -> Stale -> Spoiled
+	
+		Once food transitions to the next state of freshness, it can never go back.
+		Placing food in/on any station will slow down spoiling with varying 
+		effectiveness. Food's freshness affects overall quality if served/prepared.
+	
+	Food Categories:
+		Food are categorized by a general classification like Meat, Dairy, Fish,
+		Spice, Grain, Vegetable, Fruit, etc. Food can have multiple classifications.
+	
+	Sludge:
+		This is the output when you combine food that does not exist in the game's
+		recipe logs. They will produce repulsive sludge that is not fit for serving.
+		Be careful when preparing Final Dishes on a station because they have a 99%
+		chance of turning into sludge.
+
+
+ALL ABOUT STATIONS:
+	Fridge:
+		It has 15 slots where you can store food to slow down spoilage
+		by 90%.
+	
+	Counter-top:
+		This is an essential station to be able to place holdable stations such as
+		the Blender, Chopping Board, Mortar, Oven, and the Stove to be able to prepare 
+		food on them. You may also place a singular piece of food on the counter 
+		to slow down spoilage by 25%.
+	
+	Blender:
+		You can blend a singular piece of food to turn it into its Blended state.
+		Needs a tamper to operate on.
+	
+	Chopping Board:
+		Chop a singular piece of food to turn it into its Chopped state. Needs a 
+		knife to operate on.
+	
+	Oven:
+		Bake a singular piece of food to turn it into its Baked state. You may also
+		combine and bake 2-3 foods to create a new dish. Needs a sheet pan to operate
+		on.
+	
+	Stove:
+		Boil a singular piece of food to tunr it into its Boiled state. You may also
+		combine and boil 2-3 foods to create a new dish. Needs a cooking pot to
+		operate on.
+
+
+ALL ABOUT TOOLS:
+	Tools are required to operate on certain stations, they wear down every use and
+	you might have to get a new one if its worn down. Below are the existing tools
+	and the station they are used for.
+	
+	- Tamper (Blender)
+	- Knife (Chopping Board)
+	- Sheet Pan (Oven)
+	- Cooking Pot (Stove)
