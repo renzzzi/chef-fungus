@@ -3,19 +3,25 @@ extends Node2D
 
 @onready var interact_component = $InteractComponent
 @export var food_type: GameEnums.FoodType
-@export var food_freshness := GameEnums.FoodFreshness.FRESH
 
 static var player: CharacterBody2D
 var is_held = false
 var stored_in := GameEnums.StationType.NONE
 
 # How long it takes in second before food changes freshness
+var food_freshness := GameEnums.FoodFreshness.FRESH
 var expiry_counter: float = 0.0
 @export var STALE: int
 @export var EXPIRED: int
 
 func _on_timer_timeout() -> void:
 	# Slows down expiry based on where food is stored in
+	match stored_in:
+		GameEnums.StationType.FRIDGE:
+			expiry_counter += 0
+		GameEnums.StationType.COUNTERTOP, GameEnums.StationType.STOVE, GameEnums.StationType.BLENDER:
+			expiry_counter += 0.75
+			
 	if stored_in == GameEnums.StationType.FRIDGE:
 		expiry_counter += 0
 	elif stored_in == GameEnums.StationType.COUNTERTOP:
@@ -30,7 +36,7 @@ func _on_timer_timeout() -> void:
 	elif expiry_counter >= EXPIRED:
 		food_freshness = GameEnums.FoodFreshness.EXPIRED
 		modulate = GameEnums.load_color[food_freshness]
-
+	
 func get_food_type():
 	return food_type
 	
@@ -61,15 +67,15 @@ func drop():
 		Vector2(player.global_position.x, player.global_position.y + 2.5), 0.16
 	)
 
-func store_in_fridge():
+func store_in_station(station_type: GameEnums.StationType):
 	interact_component.monitoring = false
 	interact_component.monitorable = false
 	is_held = false
 	visible = false
 	global_position = Vector2.ZERO
-	stored_in = GameEnums.StationType.FRIDGE
+	stored_in = station_type
 	
-func unstore_from_fridge(station_from: Node2D):
+func unstore_from_station(station_from: Node2D):
 	interact_component.monitoring = true
 	interact_component.monitorable = true
 	global_position = station_from.global_position

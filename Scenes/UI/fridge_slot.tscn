@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ce4q50smaclni"]
 
-[ext_resource type="Script" uid="uid://b1d8iv2pw8gsn" path="res://Scripts/fridge_slot.gd" id="1_h2kqu"]
+[ext_resource type="Script" uid="uid://b1d8iv2pw8gsn" path="res://Scripts/station_slot.gd" id="1_h2kqu"]
 [ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown_food.png" id="1_mi5sf"]
 
 [node name="FridgeSlot" type="Panel" unique_id=945742431]

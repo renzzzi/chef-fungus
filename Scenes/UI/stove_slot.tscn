@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://m2ehnqtra3xu"]
+
+[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown_food.png" id="1_ocwgu"]
+[ext_resource type="Script" uid="uid://b1d8iv2pw8gsn" path="res://Scripts/station_slot.gd" id="1_t6tch"]
+
+[node name="StoveSlot" type="Panel" unique_id=1335221422]
+custom_minimum_size = Vector2(25, 25)
+mouse_default_cursor_shape = 2
+script = ExtResource("1_t6tch")
+
+[node name="FoodImage" type="TextureRect" parent="." unique_id=1428426944]
+visible = false
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 23.0
+offset_bottom = 23.0
+texture = ExtResource("1_ocwgu")

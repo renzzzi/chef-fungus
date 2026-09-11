@@ -9,14 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dj57wj6pdpk3b" path="res://Scenes/Consumables/apple.tscn" id="7_k7acu"]
 [ext_resource type="PackedScene" uid="uid://m0dnpgmpddx1" path="res://Scenes/Consumables/orange.tscn" id="8_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://dm1sehdthd4n" path="res://Scenes/UI/fridge_ui.tscn" id="9_5v1tr"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go701"]
-texture = ExtResource("1_a02cp")
-0:0/0 = 0
-1:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_yp4wr"]
-sources/0 = SubResource("TileSetAtlasSource_go701")
+[ext_resource type="PackedScene" uid="uid://dm6yp8vdt1fts" path="res://Scenes/UI/stove_ui.tscn" id="10_0fj1v"]
+[ext_resource type="PackedScene" uid="uid://dl8s78akomlwl" path="res://Scenes/Consumables/bread.tscn" id="11_ikia7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tve5p"]
 size = Vector2(192, 16)
@@ -30,40 +24,39 @@ size = Vector2(192, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7acu"]
 size = Vector2(16, 160)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_go701"]
+texture = ExtResource("1_a02cp")
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_yp4wr"]
+sources/0 = SubResource("TileSetAtlasSource_go701")
+
+[sub_resource type="GDScript" id="GDScript_ikia7"]
+script/source = "extends StaticBody2D
+
+@onready var interact_component = $InteractComponent
+
+var station_type = GameEnums.StationType.FRIDGE
+signal station_interacted(ui_active: bool)
+var ui_active = false
+
+func _ready() -> void:
+	interact_component.interacted.connect(interacted)
+	
+func interacted(_player):
+	# Toggle ui_active then send ui_active upon interaction
+	ui_active = !ui_active
+	station_interacted.emit(ui_active)
+"
+
 [node name="World" type="Node2D" unique_id=1436871316]
 y_sort_enabled = true
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=790688061]
-zoom = Vector2(5.215, 5.215)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=577390396]
-tile_map_data = PackedByteArray("AAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAD8/wAAAAAAAAAAAAADAAAAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wIAAAAAAAAAAAD8/wMAAAAAAAAAAAD8/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAADAAMAAAAAAAAAAAADAAIAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAD//wIAAAAAAAAAAAD+/wIAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAD7/wEAAAAAAAAAAAD7/wIAAAAAAAAAAAD7/wQAAAAAAAAAAAD7/wMAAAAAAAAAAAD7//z/AAABAAAAAAD8//z/AAABAAAAAAD9//z/AAABAAAAAAD+//z/AAABAAAAAAD///z/AAABAAAAAAAAAPz/AAABAAAAAAABAPz/AAABAAAAAAACAPz/AAABAAAAAAADAPz/AAABAAAAAAAEAPz/AAABAAAAAAAEAP3/AAABAAAAAAD8//3/AAABAAAAAAD9//3/AAABAAAAAAD+//3/AAABAAAAAAD///3/AAABAAAAAAAAAP3/AAABAAAAAAABAP3/AAABAAAAAAACAP3/AAABAAAAAAADAP3/AAABAAAAAAAEAPv/AAABAAAAAAADAPv/AAABAAAAAAACAPv/AAABAAAAAAABAPv/AAABAAAAAAAAAPv/AAABAAAAAAD///v/AAABAAAAAAD+//v/AAABAAAAAAD9//v/AAABAAAAAAD8//v/AAABAAAAAAD7//v/AAABAAAAAAD7//3/AAABAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAADAP//AAAAAAAAAAADAP7/AAAAAAAAAAACAP7/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAD8//7/AAAAAAAAAAD7//7/AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAD8////AAAAAAAAAAD7////AAAAAAAAAAD7/wAAAAAAAAAAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAD6/wQAAAAAAAAAAAD6/wMAAAAAAAAAAAD6/wIAAAAAAAAAAAD6/wEAAAAAAAAAAAD6/wAAAAAAAAAAAAD6////AAAAAAAAAAD6//7/AAAAAAAAAAAFAP3/AAABAAAAAAAFAPz/AAABAAAAAAAFAPv/AAABAAAAAAD6//3/AAABAAAAAAD6//z/AAABAAAAAAD6//v/AAABAAAAAAA=")
-tile_set = SubResource("TileSet_yp4wr")
-
-[node name="Fridge" parent="." unique_id=761705989 instance=ExtResource("2_go701")]
-position = Vector2(-72, -33)
-
-[node name="CounterTop" parent="." unique_id=1997985333 instance=ExtResource("3_5ukr8")]
-position = Vector2(8, -24)
-
-[node name="CounterTop2" parent="." unique_id=774131402 instance=ExtResource("3_5ukr8")]
-position = Vector2(-8, -24)
-
-[node name="CounterTop3" parent="." unique_id=362327756 instance=ExtResource("3_5ukr8")]
-position = Vector2(-24, -24)
-
-[node name="Stove" parent="." unique_id=330092845 instance=ExtResource("4_o06y3")]
-position = Vector2(24, -25)
-
-[node name="Blender" parent="." unique_id=666820841 instance=ExtResource("5_k7acu")]
-position = Vector2(40, -25)
-
-[node name="Player" parent="." unique_id=1008564758 instance=ExtResource("6_5ukr8")]
 
 [node name="Borders" type="Node2D" parent="." unique_id=1742851753]
 
 [node name="Up" type="StaticBody2D" parent="Borders" unique_id=1832062854]
-position = Vector2(2, -51)
+position = Vector2(0, -56)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Up" unique_id=2030153227]
 position = Vector2(-2, 3)
@@ -87,6 +80,34 @@ position = Vector2(-104, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Left" unique_id=190797607]
 shape = SubResource("RectangleShape2D_k7acu")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=790688061]
+zoom = Vector2(5.215, 5.215)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=577390396]
+tile_map_data = PackedByteArray("AAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAD8/wAAAAAAAAAAAAADAAAAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wIAAAAAAAAAAAD8/wMAAAAAAAAAAAD8/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAADAAMAAAAAAAAAAAADAAIAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAD//wIAAAAAAAAAAAD+/wIAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAD7/wEAAAAAAAAAAAD7/wIAAAAAAAAAAAD7/wQAAAAAAAAAAAD7/wMAAAAAAAAAAAD7//z/AAABAAAAAAD8//z/AAABAAAAAAD9//z/AAABAAAAAAD+//z/AAABAAAAAAD///z/AAABAAAAAAAAAPz/AAABAAAAAAABAPz/AAABAAAAAAACAPz/AAABAAAAAAADAPz/AAABAAAAAAAEAPz/AAABAAAAAAAEAP3/AAABAAAAAAD8//3/AAABAAAAAAD9//3/AAABAAAAAAD+//3/AAABAAAAAAD///3/AAABAAAAAAAAAP3/AAABAAAAAAABAP3/AAABAAAAAAACAP3/AAABAAAAAAADAP3/AAABAAAAAAAEAPv/AAABAAAAAAADAPv/AAABAAAAAAACAPv/AAABAAAAAAABAPv/AAABAAAAAAAAAPv/AAABAAAAAAD///v/AAABAAAAAAD+//v/AAABAAAAAAD9//v/AAABAAAAAAD8//v/AAABAAAAAAD7//v/AAABAAAAAAD7//3/AAABAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAADAP//AAAAAAAAAAADAP7/AAAAAAAAAAACAP7/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAD8//7/AAAAAAAAAAD7//7/AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAD8////AAAAAAAAAAD7////AAAAAAAAAAD7/wAAAAAAAAAAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAD6/wQAAAAAAAAAAAD6/wMAAAAAAAAAAAD6/wIAAAAAAAAAAAD6/wEAAAAAAAAAAAD6/wAAAAAAAAAAAAD6////AAAAAAAAAAD6//7/AAAAAAAAAAAFAP3/AAABAAAAAAAFAPz/AAABAAAAAAAFAPv/AAABAAAAAAD6//3/AAABAAAAAAD6//z/AAABAAAAAAD6//v/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_yp4wr")
+
+[node name="Fridge" parent="." unique_id=761705989 instance=ExtResource("2_go701")]
+position = Vector2(-72, -33)
+script = SubResource("GDScript_ikia7")
+
+[node name="CounterTop" parent="." unique_id=1997985333 instance=ExtResource("3_5ukr8")]
+position = Vector2(8, -24)
+
+[node name="CounterTop2" parent="." unique_id=774131402 instance=ExtResource("3_5ukr8")]
+position = Vector2(-8, -24)
+
+[node name="CounterTop3" parent="." unique_id=362327756 instance=ExtResource("3_5ukr8")]
+position = Vector2(-24, -24)
+
+[node name="Stove" parent="." unique_id=330092845 instance=ExtResource("4_o06y3")]
+position = Vector2(24, -25)
+
+[node name="Blender" parent="." unique_id=666820841 instance=ExtResource("5_k7acu")]
+position = Vector2(40, -25)
+
+[node name="Player" parent="." unique_id=1008564758 instance=ExtResource("6_5ukr8")]
+
 [node name="Apple" parent="." unique_id=259264233 instance=ExtResource("7_k7acu")]
 position = Vector2(31.999998, 0)
 
@@ -96,9 +117,17 @@ position = Vector2(31.999998, 40.000004)
 [node name="Apple2" parent="." unique_id=1666209601 instance=ExtResource("7_k7acu")]
 position = Vector2(-48, 8)
 
+[node name="Bread" parent="." unique_id=1543328461 instance=ExtResource("11_ikia7")]
+
 [node name="FridgeUI" parent="." unique_id=136372375 instance=ExtResource("9_5v1tr")]
 offset_left = -72.0
 offset_top = -56.0
 offset_right = -32.0
 offset_bottom = -16.0
 rotation = 0.00036820723
+
+[node name="StoveUI" parent="." unique_id=725442411 instance=ExtResource("10_0fj1v")]
+offset_left = -72.0
+offset_top = -56.0
+offset_right = -32.0
+offset_bottom = -16.0

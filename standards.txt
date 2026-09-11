@@ -5,3 +5,5 @@ Ordering:
 	Player -> 10
 	Food -> 5
 	UI -> 100
+
+Counter-top has no UI

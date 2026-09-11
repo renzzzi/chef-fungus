@@ -8,8 +8,8 @@
 z_index = 5
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_18ru7")
-STALE = 5
-EXPIRED = 10
+STALE = 50
+EXPIRED = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1840870082]
 scale = Vector2(0.9, 0.9)

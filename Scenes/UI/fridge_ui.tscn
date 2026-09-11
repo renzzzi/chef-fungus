@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dm1sehdthd4n"]
 
 [ext_resource type="Texture2D" uid="uid://bcowatgfg23jv" path="res://Sprites/player_head.png" id="1_3lbov"]
-[ext_resource type="Script" uid="uid://bpg5sptc6bs1g" path="res://Scripts/fridge_ui.gd" id="1_nsld8"]
+[ext_resource type="Script" uid="uid://70d6ayu48wmn" path="res://Scripts/station_ui.gd" id="1_jeca8"]
 [ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown_food.png" id="2_nsld8"]
 [ext_resource type="PackedScene" uid="uid://ce4q50smaclni" path="res://Scenes/UI/fridge_slot.tscn" id="4_jeca8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lbov"]
-bg_color = Color(0.5137255, 0.23137255, 0, 1)
+bg_color = Color(0.5137255, 0.23137255, 0, 0.9019608)
 
 [node name="FridgeUI" type="Control" unique_id=136372375]
 visible = false
@@ -15,7 +15,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_nsld8")
+script = ExtResource("1_jeca8")
+station_type = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=377818673]
 custom_minimum_size = Vector2(144, 112)
