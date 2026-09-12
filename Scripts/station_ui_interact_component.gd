@@ -16,3 +16,14 @@ func interacted(_player):
 		
 	ui_active = !ui_active
 	station_interacted.emit(ui_active)
+	
+# For holdable stations
+func open_ui():
+	if !ui_active:
+		ui_active = true
+	station_interacted.emit(ui_active)
+
+func close_ui():
+	if ui_active:
+		ui_active = false
+	station_interacted.emit(ui_active)

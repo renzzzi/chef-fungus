@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func interacted(player):
 	if placed_item is HoldableStation:
-		placed_item.get_station_ui_interact_component().interacted(null)
+		placed_item.get_station_ui_interact_component().open_ui()
 	elif placed_item is not Station:
 		# Player holding NO food; counter top IS storing food
 		if player.get_current_item_held() == null and placed_item != null:

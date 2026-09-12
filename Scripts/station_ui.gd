@@ -74,13 +74,11 @@ func station_slot_interacted(station_slot):
 	item_ui.texture = GameEnums.load_food_texture[texture_to_be_loaded]
 
 func pick_up_button_pressed():
-	# 1. Close UI 
-	# 2. Clear counter-top placed_item var 
-	# 2.5 If the player is holding something, then call interacted() of the counter-top 
-	# 3. Call take_from_counter_top
-	# 4. Set player's current_item_held var to the picked up holdable station 
-	
-	station.get_station_ui_interact_component().interacted(null)
+	# 1. Clear counter-top placed_item var 
+	# 1.5. If the player is holding something, then call interacted() of the counter-top 
+	# 2. Call take_from_counter_top
+	# 3. Set player's current_item_held var to the picked up holdable station
+	# 4. Close UI  
 	station.get_counter_top().clear_placed_item()
 	
 	if player.get_current_item_held() != null:
@@ -88,5 +86,6 @@ func pick_up_button_pressed():
 	
 	station.get_holdable_component().take_from_counter_top()
 	player.set_current_item_held(station)
+	station.get_station_ui_interact_component().close_ui()
 	
 	

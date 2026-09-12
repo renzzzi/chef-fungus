@@ -50,7 +50,6 @@ func place_on_counter_top(counter_top: Node2D):
 	interact_component.monitorable = false
 	is_held = false
 	
-	
 	var final_scale = Vector2(0.7, 0.7)
 	var final_pos = Vector2(counter_top.global_position.x, counter_top.global_position.y)
 	var randomPos = randf_range(-1.5, 1.5)
