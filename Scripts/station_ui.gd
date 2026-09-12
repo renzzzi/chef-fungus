@@ -17,6 +17,8 @@ func _ready() -> void:
 		for child in $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2.get_children():
 			if child is Panel:
 				child.station_slot_interacted.connect(station_slot_interacted)
+		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
+		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
 	elif station_type == GameEnums.StationType.BLENDER:
 		var slot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/BlenderSlot
 		slot.station_slot_interacted.connect(station_slot_interacted)

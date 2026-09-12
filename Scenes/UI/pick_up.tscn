@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dkklqqy33avo"]
+
+[ext_resource type="Script" uid="uid://cymhcbw57ggl7" path="res://Scripts/pick_up_button.gd" id="1_cypg8"]
+
+[node name="PickUp" type="Button" unique_id=1205296270]
+texture_filter = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 5
+text = "Pick
+Up"
+script = ExtResource("1_cypg8")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

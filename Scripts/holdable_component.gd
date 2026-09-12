@@ -50,13 +50,18 @@ func place_on_counter_top(counter_top: Node2D):
 	interact_component.monitorable = false
 	is_held = false
 	
-	var tween = create_tween()
+	
+	var final_scale = Vector2(0.7, 0.7)
+	var final_pos = Vector2(counter_top.global_position.x, counter_top.global_position.y)
 	var randomPos = randf_range(-1.5, 1.5)
-	tween.parallel().tween_property(parent_item, "global_position", 
-		Vector2(counter_top.global_position.x + randomPos, counter_top.global_position.y + randomPos), 
-		0.16
-	)
-	tween.parallel().tween_property(parent_item, "scale", Vector2(0.5, 0.5), 0.16)
+	if parent_item is Food:
+		final_scale = Vector2(0.5, 0.5)
+		final_pos.x += randomPos
+		final_pos.y += randomPos
+	
+	var tween = create_tween()
+	tween.parallel().tween_property(parent_item, "global_position", final_pos, 0.16)
+	tween.parallel().tween_property(parent_item, "scale", final_scale, 0.16)
 	if parent_item is Food:
 		parent_item.set_stored_in(GameEnums.StationType.COUNTERTOP)
 
@@ -64,8 +69,12 @@ func take_from_counter_top():
 	interact_component.monitoring = true
 	interact_component.monitorable = true
 	
+	var final_scale = Vector2(1.0, 1.0)
+	if parent_item is Food:
+		final_scale = Vector2(0.8, 0.8)
+	
 	var tween = create_tween()
-	tween.tween_property(parent_item, "scale", Vector2(0.8, 0.8), 0.16)
+	tween.tween_property(parent_item, "scale", final_scale, 0.16)
 	is_held = true
 	if parent_item is Food:
 		parent_item.set_stored_in(GameEnums.StationType.NONE)

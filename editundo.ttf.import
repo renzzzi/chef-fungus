@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dm5tjqfryx7nh"
-path="res://.godot/imported/ARCADECLASSIC.TTF-4aef9f254f11210c6b95362e3ee1751d.fontdata"
+uid="uid://c6hkonc57ee83"
+path="res://.godot/imported/editundo.ttf-077e38c22d202da0086250dcfa9a3e95.fontdata"
 
 [deps]
 
-source_file="res://ARCADECLASSIC.TTF"
-dest_files=["res://.godot/imported/ARCADECLASSIC.TTF-4aef9f254f11210c6b95362e3ee1751d.fontdata"]
+source_file="res://editundo.ttf"
+dest_files=["res://.godot/imported/editundo.ttf-077e38c22d202da0086250dcfa9a3e95.fontdata"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cxblpcyjyk660"]
 
-[ext_resource type="Script" uid="uid://2i3k7hlosuxd" path="res://Scripts/stove.gd" id="1_irg1m"]
 [ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="1_nuxey"]
+[ext_resource type="Script" uid="uid://cprtba41077bc" path="res://Scripts/holdable_station.gd" id="1_p2lj7"]
 [ext_resource type="Texture2D" uid="uid://dbvu6vopm7utp" path="res://Sprites/Stations/stove.png" id="2_map72"]
 [ext_resource type="PackedScene" uid="uid://ckn20srkumagh" path="res://Scenes/Components/station_ui_interact_component.tscn" id="4_3y2c2"]
 [ext_resource type="PackedScene" uid="uid://bd0orr7e6l105" path="res://Scenes/Components/holdable_component.tscn" id="4_p2lj7"]
@@ -9,15 +9,15 @@
 [node name="Stove" type="Node2D" unique_id=1617364925]
 modulate = Color(1, 0, 0, 1)
 z_index = 10
-script = ExtResource("1_irg1m")
+script = ExtResource("1_p2lj7")
 station_type = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1190749888]
 texture = ExtResource("2_map72")
 
 [node name="InteractComponent" parent="." unique_id=1900256740 instance=ExtResource("1_nuxey")]
-position = Vector2(0, 0.99999994)
-scale = Vector2(0.05, 0.05)
+position = Vector2(0, 2.5)
+scale = Vector2(0.55, 0.55)
 
 [node name="StationUIInteractComponent" parent="." unique_id=1805268843 instance=ExtResource("4_3y2c2")]
 

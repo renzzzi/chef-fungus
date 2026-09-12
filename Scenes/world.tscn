@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dg0fws7623m5x" path="res://Sprites/ground_wall.png" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://dimge58i6rota" path="res://Scenes/Stations/fridge.tscn" id="2_go701"]
 [ext_resource type="PackedScene" uid="uid://cqt2awawhdmmw" path="res://Scenes/Stations/counter_top.tscn" id="3_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://cxblpcyjyk660" path="res://Scenes/Stations/stove.tscn" id="5_7yui6"]
 [ext_resource type="PackedScene" uid="uid://oodero6pq2tj" path="res://Scenes/Stations/blender.tscn" id="5_k7acu"]
 [ext_resource type="PackedScene" uid="uid://d1t3xysjscs4g" path="res://Scenes/player.tscn" id="6_5ukr8"]
 [ext_resource type="PackedScene" uid="uid://dj57wj6pdpk3b" path="res://Scenes/Food/apple.tscn" id="7_k7acu"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://4uopfl36m7d2" path="res://Scenes/Tools/tamper.tscn" id="10_c5t2i"]
 [ext_resource type="PackedScene" uid="uid://dl8s78akomlwl" path="res://Scenes/Food/bread.tscn" id="11_ikia7"]
 [ext_resource type="PackedScene" uid="uid://ddl7m0np82hi5" path="res://Scenes/UI/blender_ui.tscn" id="12_7yui6"]
+[ext_resource type="PackedScene" uid="uid://dm6yp8vdt1fts" path="res://Scenes/UI/stove_ui.tscn" id="13_c5t2i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tve5p"]
 size = Vector2(192, 16)
@@ -82,6 +84,10 @@ position = Vector2(-8, -24)
 position = Vector2(-24, -24)
 
 [node name="Blender" parent="." unique_id=2147397412 instance=ExtResource("5_k7acu")]
+position = Vector2(-56, 24)
+
+[node name="Stove" parent="." unique_id=1617364925 instance=ExtResource("5_7yui6")]
+position = Vector2(48, 16)
 
 [node name="Player" parent="." unique_id=1008564758 instance=ExtResource("6_5ukr8")]
 
@@ -95,8 +101,10 @@ position = Vector2(31.999998, 40.000004)
 position = Vector2(-48, 8)
 
 [node name="Bread" parent="." unique_id=1543328461 instance=ExtResource("11_ikia7")]
+position = Vector2(-31.999998, 23.999998)
 
 [node name="Tamper" parent="." unique_id=117532560 instance=ExtResource("10_c5t2i")]
+position = Vector2(0, 40)
 
 [node name="FridgeUI" parent="." unique_id=136372375 instance=ExtResource("9_5v1tr")]
 offset_left = -72.0
@@ -106,6 +114,12 @@ offset_bottom = -16.0
 rotation = 0.00036820723
 
 [node name="BlenderUI" parent="." unique_id=690813215 instance=ExtResource("12_7yui6")]
+offset_left = -72.0
+offset_top = -56.0
+offset_right = -32.0
+offset_bottom = -16.0
+
+[node name="StoveUI" parent="." unique_id=725442411 instance=ExtResource("13_c5t2i")]
 offset_left = -72.0
 offset_top = -56.0
 offset_right = -32.0
