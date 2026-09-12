@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bd0orr7e6l105"]
+
+[ext_resource type="Script" uid="uid://bk5t7gn6k1oyt" path="res://Scripts/holdable_component.gd" id="1_rfrws"]
+
+[node name="HoldableComponent" type="Node2D" unique_id=1180060163]
+script = ExtResource("1_rfrws")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bcowatgfg23jv" path="res://Sprites/player_head.png" id="1_3lbov"]
 [ext_resource type="Script" uid="uid://70d6ayu48wmn" path="res://Scripts/station_ui.gd" id="1_jeca8"]
-[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/Food/unknown_food.png" id="2_nsld8"]
+[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown.png" id="2_nsld8"]
 [ext_resource type="PackedScene" uid="uid://ce4q50smaclni" path="res://Scenes/UI/fridge_slot.tscn" id="4_jeca8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lbov"]
@@ -52,7 +52,7 @@ offset_right = 32.0
 offset_bottom = 24.0
 texture = ExtResource("1_3lbov")
 
-[node name="FoodUI" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=749015523]
+[node name="ItemUI" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=749015523]
 layout_mode = 0
 offset_left = 11.0
 offset_top = -3.0

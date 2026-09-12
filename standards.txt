@@ -2,7 +2,60 @@ ORDERING:
 	Stations -> 10
 	Player -> 10
 	Food -> 5
+	Tool -> 5
 	UI -> 100
+
+
+CODE ARCHITECTURE:
+	Parent Scenes:
+		- Food.tscn
+		- Tool.tscn
+	
+	Station Class Inheritance Tree:
+		Station -> HoldableStation -> Blender
+								   -> Chopping Board
+								   -> Oven
+								   -> Stove
+								
+	Station Scripts Explanation:
+		station.gd:
+			Only stores class_name, station_ui_interact_component variable and the
+			getter for the component.
+		
+		station_slot:
+			Attached to a UI slot that can store food and sends a signal if its
+			area was pressed with mouse left-click. Also handles the food image
+			within itself to match whatever it's storing.
+			
+		station_ui:
+			Holds the logic of swapping food between what the player is holding or
+			lack thereof and the slot interacted with by the mouse.
+			
+		holdable_station.gd:
+			A child class of the Station class that is responsible for turning
+			station_ui_interact_component on or off accordingly for the holdable
+			station this script is attached to.
+	
+	Components:
+		interact_component.gd:
+			Register and unregisters itself within the Player's nearby_interact_components 
+			array and sends a signal when interact() has been called by player.
+			This is attached to all objects that can be interacted by the player.
+	
+		holdable_component.gd:
+			Attached to objects that can be held by the player. It handles following
+			the player, knowing if it is picked up, being placed inside or taken 
+			out from stations and on counter-tops.
+	
+		station_ui_interact_component.gd:
+			Attached to stations with UIs and is responsible for detecting if they
+			are interacted with and opens/closes the UI accordingly. For Holdable
+			Stations, this component is disabled until they are placed on a
+			counter-top.
+	
+	Player:
+		The Player is responsible for interacting with everything, picking up objects,
+		and initiating processes in stations. It is the most referenced in scripts.
 
 
 GAME ENTITIES:
@@ -14,19 +67,16 @@ GAME ENTITIES:
 	Stations:
 		- Fridge
 		- Counter-top
-			- Blender
-			- Chopping Board
-			- Oven
-			- Stove
-			- Mortar
-			- Food can be placed on the counter to slow down spoilage
+		- Blender
+		- Chopping Board
+		- Oven
+		- Stove
 	
 	Tools:
 		- Tamper (Blender)
 		- Knife (Chopping Board)
 		- Sheet Pan (Oven)
 		- Cooking Pot (Stove)
-		- Pestle (Mortar)
 	
 	Food: Check recipes.txt
 

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b3ihi1hy1i34i"]
+
+[ext_resource type="Script" uid="uid://eag03qwce62s" path="res://Scripts/tool.gd" id="1_6mibo"]
+[ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="1_xo0xg"]
+[ext_resource type="PackedScene" uid="uid://bd0orr7e6l105" path="res://Scenes/Components/holdable_component.tscn" id="2_2vanr"]
+
+[node name="Tool" type="Node2D" unique_id=117532560]
+z_index = 5
+script = ExtResource("1_6mibo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=706181308]
+
+[node name="InteractComponent" parent="." unique_id=1900256740 instance=ExtResource("1_xo0xg")]
+
+[node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("2_2vanr")]

@@ -24,11 +24,27 @@ enum ToolType {
 	NONE, TAMPER, KNIFE, SHEET_PAN, COOKING_POT
 }
 
-var load_texture = {
-	FoodType.NONE: preload("res://Sprites/Food/unknown_food.png"),
+var load_food_texture = {
+	FoodType.NONE: preload("res://Sprites/unknown.png"),
 	FoodType.APPLE: preload("res://Sprites/Food/apple.png"),
 	FoodType.ORANGE: preload("res://Sprites/Food/orange.png"),
 	FoodType.BREAD: preload("res://Sprites/Food/bread.png")
+}
+
+var load_tool_texture = {
+	ToolType.NONE: preload("res://Sprites/unknown.png"),
+	ToolType.TAMPER: preload("res://Sprites/Tools/tamper.png"),
+	ToolType.KNIFE: preload("res://Sprites/Tools/knife.png"),
+	ToolType.SHEET_PAN: preload("res://Sprites/Tools/sheet_pan.png"),
+	ToolType.COOKING_POT: preload("res://Sprites/Tools/cooking_pot.png")
+}
+
+var load_holdable_station_texture = {
+	StationType.NONE: preload("res://Sprites/unknown.png"),
+	StationType.BLENDER: preload("res://Sprites/Stations/blender.png"),
+	StationType.CHOPPING_BOARD: preload("res://Sprites/Stations/chopping_board.png"),
+	StationType.OVEN: preload("res://Sprites/Stations/oven.png"),
+	StationType.STOVE: preload("res://Sprites/Stations/stove.png")
 }
 
 var load_color = {
@@ -42,5 +58,7 @@ var load_color = {
 var load_station_string = {
 	StationType.FRIDGE: "Fridge",
 	StationType.STOVE: "Stove",
-	StationType.BLENDER: "Blender"
+	StationType.BLENDER: "Blender",
+	StationType.CHOPPING_BOARD: "ChoppingBoard",
+	StationType.OVEN: "Oven"
 }

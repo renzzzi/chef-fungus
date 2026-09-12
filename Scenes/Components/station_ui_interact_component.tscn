@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ckn20srkumagh"]
+
+[ext_resource type="Script" uid="uid://cppb3epchfnwn" path="res://Scripts/station_ui_interact_component.gd" id="1_35mk2"]
+
+[node name="StationUIInteractComponent" type="Node2D" unique_id=1805268843]
+script = ExtResource("1_35mk2")

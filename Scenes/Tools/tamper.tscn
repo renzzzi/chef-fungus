@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://4uopfl36m7d2"]
+
+[ext_resource type="Texture2D" uid="uid://cmovpxow5hfo3" path="res://Sprites/Tools/tamper.png" id="1_2vanr"]
+[ext_resource type="PackedScene" uid="uid://b3ihi1hy1i34i" path="res://Scenes/tool.tscn" id="1_xo0xg"]
+
+[node name="Tamper" unique_id=117532560 instance=ExtResource("1_xo0xg")]
+tool_type = 1
+
+[node name="Sprite2D" parent="." index="0" unique_id=706181308]
+texture = ExtResource("1_2vanr")

@@ -1,23 +1,25 @@
 [gd_scene format=3 uid="uid://oodero6pq2tj"]
 
 [ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="1_ar7ff"]
+[ext_resource type="Script" uid="uid://bbpyufvm41rxt" path="res://Scripts/blender.gd" id="1_mpxku"]
 [ext_resource type="Texture2D" uid="uid://bujumhkqb78b" path="res://Sprites/Stations/blender.png" id="2_hwfre"]
+[ext_resource type="PackedScene" uid="uid://ckn20srkumagh" path="res://Scenes/Components/station_ui_interact_component.tscn" id="3_uet6t"]
+[ext_resource type="PackedScene" uid="uid://bd0orr7e6l105" path="res://Scenes/Components/holdable_component.tscn" id="5_t6ik2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_map72"]
-size = Vector2(10, 3)
-
-[node name="Blender" type="StaticBody2D" unique_id=666820841]
+[node name="Blender" type="Node2D" unique_id=2147397412]
 modulate = Color(0, 0, 1, 1)
 z_index = 10
+script = ExtResource("1_mpxku")
+station_type = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1868344220]
 texture = ExtResource("2_hwfre")
 
 [node name="InteractComponent" parent="." unique_id=1900256740 instance=ExtResource("1_ar7ff")]
-position = Vector2(0, 0.99999994)
-scale = Vector2(0.05, 0.05)
-is_station = true
+position = Vector2(0, 2.5)
+scale = Vector2(0.55, 0.55)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=869094153]
-position = Vector2(0, -4.5)
-shape = SubResource("RectangleShape2D_map72")
+[node name="StationUIInteractComponent" parent="." unique_id=1805268843 instance=ExtResource("3_uet6t")]
+process_mode = 4
+
+[node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("5_t6ik2")]

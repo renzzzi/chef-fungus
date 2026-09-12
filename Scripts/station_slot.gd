@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 		food_image.visible = false
 	else:
 		food_image.modulate = GameEnums.load_color[stored_food.get_food_freshness()]
-		food_image.texture = GameEnums.load_texture[stored_food.get_food_type()]
+		food_image.texture = GameEnums.load_food_texture[stored_food.get_food_type()]
 		food_image.visible = true
 
 func _gui_input(event: InputEvent) -> void:

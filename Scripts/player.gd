@@ -3,22 +3,22 @@ extends CharacterBody2D
 
 const SPEED: float = 80.0
 @onready var sprite_2d = $Sprite2D
-var current_food_held = null
+var current_item_held = null
 var nearby_interact_components: Array[InteractComponent] = []
 # Stores the interact components that were recently interacted with by the player
 var recent_interact_components: Array[InteractComponent] = []
 @onready var fridge = get_tree().current_scene.get_node("Fridge")
-@onready var stove = get_tree().current_scene.get_node("Stove")
+@onready var blender = get_tree().current_scene.get_node("Blender")
 
 func _ready() -> void:
-	fridge.station_interacted.connect(station_interacted)
-	stove.station_interacted.connect(station_interacted)
+	fridge.get_station_ui_interact_component().station_interacted.connect(station_interacted)
+	blender.get_station_ui_interact_component().station_interacted.connect(station_interacted)
 
-func set_current_food_held(new_food):
-	current_food_held = new_food
+func set_current_item_held(new_item):
+	current_item_held = new_item
 
-func get_current_food_held():
-	return current_food_held
+func get_current_item_held():
+	return current_item_held
 
 func register_interact_component(interact_component):
 	if !nearby_interact_components.has(interact_component):
@@ -53,16 +53,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		# Checks for nearby stations first and interacts with them
 		for component in nearby_interact_components:
-			if component.get_is_station():
+			if component.get_is_stationary_station():
 				component.interact(self)
 				return
 		
 		if nearby_interact_components == recent_interact_components:
 			recent_interact_components.clear()
 		
-		if current_food_held:
-			current_food_held.drop()
-			current_food_held = null
+		if current_item_held:
+			current_item_held.get_holdable_component().drop()
+			current_item_held = null
 		else:
 			# Checks if the player has recently picked up a nearby interact component
 			for component in nearby_interact_components:
