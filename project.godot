@@ -18,6 +18,8 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 [autoload]
 
 GameEnums="*uid://26x66yvltegm"
+Tags="*uid://b7h858y81rkew"
+Load="*uid://ch8uc4kyypbqs"
 
 [display]
 

@@ -4,7 +4,7 @@ extends Control
 
 @onready var item_ui = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/ItemUI
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
-@onready var station = get_tree().current_scene.get_node(GameEnums.load_station_string[station_type])
+@onready var station = get_tree().current_scene.get_node(Load.load_station_string[station_type])
 
 func _ready() -> void:
 	station.get_station_ui_interact_component().station_interacted.connect(station_interacted)
@@ -53,17 +53,17 @@ func station_interacted(ui_active):
 	self.visible = ui_active
 	# Change food_ui's texture to the food type the player is currently holding
 	if player.get_current_item_held() == null:
-		item_ui.texture = GameEnums.load_food_texture[GameEnums.FoodType.NONE]
+		item_ui.texture = Load.load_food_texture[GameEnums.FoodType.NONE]
 	elif player.get_current_item_held() is HoldableStation:
-		item_ui.texture = GameEnums.load_holdable_station_texture[player.get_current_item_held().get_station_type()]
+		item_ui.texture = Load.load_holdable_station_texture[player.get_current_item_held().get_station_type()]
 	elif player.get_current_item_held() is Tool:
-		item_ui.texture = GameEnums.load_tool_texture[player.get_current_item_held().get_tool_type()]
+		item_ui.texture = Load.load_tool_texture[player.get_current_item_held().get_tool_type()]
 	elif player.get_current_item_held() is Food: 
-		item_ui.texture = GameEnums.load_food_texture[player.get_current_item_held().get_food_type()]
+		item_ui.texture = Load.load_food_texture[player.get_current_item_held().get_food_type()]
 	
 func _process(_delta: float) -> void:
 	if player.get_current_item_held() != null and player.get_current_item_held() is Food:
-		item_ui.modulate = GameEnums.load_color[player.get_current_item_held().get_food_freshness()]
+		item_ui.modulate = Load.load_color[player.get_current_item_held().get_food_freshness()]
 	else:
 		item_ui.modulate = Color.WHITE
 
@@ -95,7 +95,7 @@ func station_slot_interacted(station_slot):
 		texture_to_be_loaded = GameEnums.FoodType.NONE
 	else: 
 		texture_to_be_loaded = player.get_current_item_held().get_food_type()
-	item_ui.texture = GameEnums.load_food_texture[texture_to_be_loaded]
+	item_ui.texture = Load.load_food_texture[texture_to_be_loaded]
 
 func pick_up_button_pressed():
 	# 1. Clear counter-top placed_item var 
