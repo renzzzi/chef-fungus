@@ -14,8 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://dl8s78akomlwl" path="res://Scenes/Food/bread.tscn" id="11_ikia7"]
 [ext_resource type="PackedScene" uid="uid://ddl7m0np82hi5" path="res://Scenes/UI/blender_ui.tscn" id="12_7yui6"]
 [ext_resource type="PackedScene" uid="uid://t81040rhoaow" path="res://Scenes/Stations/deep_fryer.tscn" id="13_c5t2i"]
+[ext_resource type="PackedScene" uid="uid://krur4se41hhe" path="res://Scenes/Food/water.tscn" id="13_pyn1s"]
 [ext_resource type="PackedScene" uid="uid://b6op5s6n8vpst" path="res://Scenes/Stations/chopping_board.tscn" id="14_e0ngr"]
+[ext_resource type="PackedScene" uid="uid://cikw3jnnfntwe" path="res://Scenes/Food/flour.tscn" id="14_no8kt"]
 [ext_resource type="PackedScene" uid="uid://cnoxt8hx32mxw" path="res://Scenes/UI/chopping_board_ui.tscn" id="15_kn0ld"]
+[ext_resource type="PackedScene" uid="uid://bg5e6cxg4f8yu" path="res://Scenes/Food/dough.tscn" id="15_xbk3s"]
 [ext_resource type="PackedScene" uid="uid://dm6yp8vdt1fts" path="res://Scenes/UI/stove_ui.tscn" id="16_1cojt"]
 [ext_resource type="PackedScene" uid="uid://b2kfp4l417rs0" path="res://Scenes/UI/oven_ui.tscn" id="17_yq1aw"]
 [ext_resource type="PackedScene" uid="uid://ddm32vb8tumoh" path="res://Scenes/UI/deep_fryer_ui.tscn" id="18_pyn1s"]
@@ -117,6 +120,15 @@ position = Vector2(-48, 8)
 
 [node name="Bread" parent="." unique_id=1543328461 instance=ExtResource("11_ikia7")]
 position = Vector2(-31.999998, 23.999998)
+
+[node name="Water" parent="." unique_id=1403732969 instance=ExtResource("13_pyn1s")]
+position = Vector2(31.999998, -24)
+
+[node name="Flour" parent="." unique_id=2077051209 instance=ExtResource("14_no8kt")]
+position = Vector2(48, -24)
+
+[node name="Dough" parent="." unique_id=1983841465 instance=ExtResource("15_xbk3s")]
+position = Vector2(48, -7.9999995)
 
 [node name="Tamper" parent="." unique_id=117532560 instance=ExtResource("10_c5t2i")]
 position = Vector2(0, 40)

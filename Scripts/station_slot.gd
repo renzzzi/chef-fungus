@@ -15,7 +15,7 @@ func _process(_delta: float) -> void:
 		food_image.visible = false
 	else:
 		food_image.modulate = Load.load_color[stored_food.get_food_freshness()]
-		food_image.texture = Load.load_food_texture[stored_food.get_food_type()]
+		food_image.texture = Load.load_food_texture[stored_food.get_food_name()]
 		food_image.visible = true
 
 func _gui_input(event: InputEvent) -> void:

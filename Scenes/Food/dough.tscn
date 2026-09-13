@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bg5e6cxg4f8yu"]
+
+[ext_resource type="PackedScene" uid="uid://c58124k63fvlk" path="res://Scenes/food.tscn" id="1_ts4iu"]
+[ext_resource type="Texture2D" uid="uid://cx6fg0773n237" path="res://Sprites/Food/dough.png" id="2_igmu4"]
+
+[node name="Dough" unique_id=259264233 instance=ExtResource("1_ts4iu")]
+food_name = "Dough"
+flavor_state = Array[int]([0])
+tier = 1
+classifications = Array[int]([6])
+
+[node name="Sprite2D" parent="." index="0" unique_id=1840870082]
+texture = ExtResource("2_igmu4")

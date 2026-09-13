@@ -1,18 +1,48 @@
 class_name Food
 extends Node2D
 
-@export var food_type: GameEnums.FoodType
-@onready var holdable_component = $HoldableComponent
 var stored_in := GameEnums.StationType.NONE
-var tags: Array[String] = []
-
+@onready var holdable_component = $HoldableComponent
+@export var food_name: String
 # How long it takes in second before food changes freshness
 var expiry_counter: float = 0.0
-@export var STALE: int
-@export var SPOILED: int
+@export var STALETIME: int
+@export var SPOILEDTIME: int
 
-func _ready():
-	tags.append(Tags.FRESH)
+# --- ENUMS ---
+enum Shape { WHOLE, BLENDED, CHOPPED }
+enum Cook { RAW, BOILED, BAKED, FRIED }
+enum Tier { BASIC, PREPARED, FINAL }
+enum Freshness { FRESH, STALE, SPOILED }
+
+enum Flavor { 
+	PLAIN, SALTED, SPICY, SWEET, HERBED, BITTER, SOUR, CREAMY
+}
+
+enum Classification {
+	VEGETABLE, # Carrot, Onion, Lettuce, Mushroom
+	FRUIT,     # Apple, Berry, Banana, Lemon
+	MEAT,      # Beef, Pork, Chicken
+	SEAFOOD,   # Fish, Shrimp, Crab
+	DAIRY,     # Milk, Cheese, Butter
+	EGG,       # Chicken Egg, Duck Egg, Quail Egg
+	CARB,      # Bread, Potato, Rice, Pasta, Flour
+	FLAVORING, # Salt, Pepper, Sugar, Spices, Herbs
+	LIQUID     # Water, Broth, Cooking Oil
+}
+
+# --- PROPERTIES (Show as Dropdowns in Inspector) ---
+
+@export_group("What Has Been Done to The Food")
+@export var shape_state: Shape = Shape.WHOLE
+@export var cook_state: Cook = Cook.RAW
+@export var flavor_state: Array[Flavor]
+
+@export_group("Nature of the Food")
+@export var tier: Tier = Tier.BASIC
+@export var freshness: Freshness = Freshness.FRESH
+# Classification as an Array so an item can be Meat AND Dairy if needed
+@export var classifications: Array[Classification]
 
 func _on_timer_timeout() -> void:
 	# Slows down expiry based on where food is stored in
@@ -25,29 +55,45 @@ func _on_timer_timeout() -> void:
 			expiry_counter += 0.75
 		GameEnums.StationType.NONE:
 			expiry_counter += 1
+		GameEnums.StationType.TRASH_CAN:
+			expiry_counter += 9999
+		_:
+			expiry_counter += 1
 	
 	# Changed food_freshness and tint
-	if expiry_counter >= STALE and expiry_counter < SPOILED:
-		if !tags.has(Tags.STALE):
-			tags.erase(Tags.FRESH)
-			tags.append(Tags.STALE)
-			modulate = Load.load_color[Tags.STALE]
-	elif expiry_counter >= SPOILED:
-		if !tags.has(Tags.SPOILED):
-			tags.erase(Tags.STALE)
-			tags.append(Tags.SPOILED)
-			modulate = Load.load_color[Tags.SPOILED]
-
-func get_food_type():
-	return food_type
+	if expiry_counter >= STALETIME and expiry_counter < SPOILEDTIME:
+		if freshness != Freshness.STALE:
+			freshness = Freshness.STALE
+			modulate = Load.load_color[freshness]
+	elif expiry_counter >= SPOILEDTIME:
+		if freshness != Freshness.SPOILED:
+			freshness = Freshness.SPOILED
+			modulate = Load.load_color[freshness]
 	
+func get_food_name():
+	return food_name
+	
+func get_shape_state():
+	return shape_state
+	
+func get_cook_state():
+	return cook_state
+	
+func get_flavor_state():
+	return flavor_state
+	
+func get_tier():
+	return tier
+
+func get_food_freshness():
+	return freshness
+	
+func get_classifications() -> Array[Classification]:
+	return classifications
+
 func get_holdable_component():
 	return holdable_component
 	
-func get_food_freshness():
-	if tags.has(Tags.FRESH): return Tags.FRESH
-	elif tags.has(Tags.STALE): return Tags.STALE
-	elif tags.has(Tags.SPOILED): return Tags.SPOILED
-	
 func set_stored_in(station_type: GameEnums.StationType):
 	stored_in = station_type
+	

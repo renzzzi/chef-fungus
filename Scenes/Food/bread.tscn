@@ -4,7 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bqpqffcc6qdeu" path="res://Sprites/Food/bread.png" id="2_ccaj6"]
 
 [node name="Bread" unique_id=259264233 instance=ExtResource("1_4lnl7")]
-food_type = 3
+food_name = "Bread"
+cook_state = 2
+flavor_state = Array[int]([0])
+tier = 1
+classifications = Array[int]([6])
 
 [node name="Sprite2D" parent="." index="0" unique_id=1840870082]
 texture = ExtResource("2_ccaj6")

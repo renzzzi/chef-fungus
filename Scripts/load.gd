@@ -1,10 +1,10 @@
 extends Node
 
 var load_food_texture = {
-	GameEnums.FoodType.NONE: preload("res://Sprites/unknown.png"),
-	GameEnums.FoodType.APPLE: preload("res://Sprites/Food/apple.png"),
-	GameEnums.FoodType.ORANGE: preload("res://Sprites/Food/orange.png"),
-	GameEnums.FoodType.BREAD: preload("res://Sprites/Food/bread.png")
+	null: preload("res://Sprites/unknown.png"),
+	"Apple": preload("res://Sprites/Food/apple.png"),
+	"Orange": preload("res://Sprites/Food/orange.png"),
+	"Bread": preload("res://Sprites/Food/bread.png")
 }
 
 var load_tool_texture = {
@@ -37,7 +37,7 @@ var load_station_string = {
 }
 
 var load_color = {
-	Tags.FRESH: Color.WHITE,
-	Tags.STALE: Color(0.636, 0.321, 0.126, 1.0),
-	Tags.SPOILED: Color(0.205, 0.205, 0.205, 1.0)
+	Food.Freshness.FRESH: Color.WHITE,
+	Food.Freshness.STALE: Color(0.636, 0.321, 0.126, 1.0),
+	Food.Freshness.SPOILED: Color(0.205, 0.205, 0.205, 1.0)
 }
