@@ -1,0 +1,172 @@
+[gd_scene format=3 uid="uid://cnoxt8hx32mxw"]
+
+[ext_resource type="Script" uid="uid://70d6ayu48wmn" path="res://Scripts/station_ui.gd" id="1_1lq0y"]
+[ext_resource type="Texture2D" uid="uid://bcowatgfg23jv" path="res://Sprites/player_head.png" id="1_cmipx"]
+[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown.png" id="2_1lq0y"]
+[ext_resource type="PackedScene" uid="uid://dkklqqy33avo" path="res://Scenes/UI/pick_up.tscn" id="3_clctd"]
+[ext_resource type="Texture2D" uid="uid://divavj6qm3anx" path="res://Sprites/Stations/chopping_board.png" id="4_cmipx"]
+[ext_resource type="Script" uid="uid://b1d8iv2pw8gsn" path="res://Scripts/station_slot.gd" id="5_1lq0y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clctd"]
+bg_color = Color(0.5529412, 0.6039216, 0.69411767, 0.9019608)
+
+[node name="ChoppingBoardUI" type="Control" unique_id=1622576349]
+visible = false
+z_index = 100
+layout_mode = 3
+anchors_preset = 0
+offset_right = 144.0
+offset_bottom = 112.0
+script = ExtResource("1_1lq0y")
+station_type = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=643397546]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 112.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_clctd")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=922267668]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=54212585]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=423509782]
+custom_maximum_size = Vector2(-1, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=776290919]
+layout_mode = 2
+
+[node name="PlayerHead" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=168458895]
+modulate = Color(1, 1, 1, 0.78431374)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 11.0
+offset_right = 30.0
+offset_bottom = 26.0
+texture = ExtResource("1_cmipx")
+
+[node name="ItemUI" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=651450920]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -1.0
+offset_right = 27.0
+offset_bottom = 16.0
+texture = ExtResource("2_1lq0y")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1256494804]
+layout_mode = 2
+theme_override_constants/margin_right = 22
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2129603335]
+layout_mode = 2
+size_flags_horizontal = 6
+offset_transform_enabled = true
+theme_override_font_sizes/font_size = 12
+text = "Chopping
+Board"
+horizontal_alignment = 1
+
+[node name="PickUp" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1205296270 instance=ExtResource("3_clctd")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1800524794]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1855712648]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1533929539]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_cmipx")
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=506867486]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=1510316357]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -2.0
+offset_bottom = 71.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer" unique_id=2050067157]
+layout_mode = 2
+
+[node name="ChoppingBoardFoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer" unique_id=99575160]
+texture_filter = 2
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("5_1lq0y")
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/ChoppingBoardFoodSlot" unique_id=1267470015]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 27.0
+offset_bottom = 27.0
+texture = ExtResource("2_1lq0y")
+
+[node name="ChoppingBoardToolSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer" unique_id=937932400]
+texture_filter = 2
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("5_1lq0y")
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/ChoppingBoardToolSlot" unique_id=1041845146]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 27.0
+offset_bottom = 27.0
+texture = ExtResource("2_1lq0y")
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer" unique_id=1978930873]
+texture_filter = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 8
+text = "Chop"
+
+[node name="ChoppingBoardFoodSlotResult" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=247888960]
+visible = false
+texture_filter = 2
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = -64.0
+offset_top = 6.0
+offset_bottom = 62.0
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("5_1lq0y")
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/ChoppingBoardFoodSlotResult" unique_id=238123654]
+texture_filter = 1
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 52.0
+offset_bottom = 48.0
+texture = ExtResource("2_1lq0y")

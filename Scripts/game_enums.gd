@@ -17,11 +17,12 @@ enum FoodFreshness {
 }
 
 enum StationType {
-	NONE, FRIDGE, COUNTERTOP, STOVE, BLENDER, CHOPPING_BOARD, OVEN
+	NONE, FRIDGE, COUNTERTOP, STOVE, BLENDER, CHOPPING_BOARD, OVEN, DEEP_FRYER, SINK,
+	MIXING_BOWL, TRASH_CAN
 }
 
 enum ToolType {
-	NONE, TAMPER, KNIFE, SHEET_PAN, COOKING_POT
+	NONE, TAMPER, KNIFE, SHEET_PAN, COOKING_POT, FRYING_BASKET, WOODEN_SPOON, SPONGE
 }
 
 var load_food_texture = {
@@ -44,7 +45,9 @@ var load_holdable_station_texture = {
 	StationType.BLENDER: preload("res://Sprites/Stations/blender.png"),
 	StationType.CHOPPING_BOARD: preload("res://Sprites/Stations/chopping_board.png"),
 	StationType.OVEN: preload("res://Sprites/Stations/oven.png"),
-	StationType.STOVE: preload("res://Sprites/Stations/stove.png")
+	StationType.STOVE: preload("res://Sprites/Stations/stove.png"),
+	StationType.DEEP_FRYER: preload("res://Sprites/Stations/deep_fryer.png"),
+	StationType.MIXING_BOWL: preload("res://Sprites/Stations/mixing_bowl.png"),
 }
 
 var load_color = {
@@ -60,5 +63,7 @@ var load_station_string = {
 	StationType.STOVE: "Stove",
 	StationType.BLENDER: "Blender",
 	StationType.CHOPPING_BOARD: "ChoppingBoard",
-	StationType.OVEN: "Oven"
+	StationType.OVEN: "Oven",
+	StationType.DEEP_FRYER: "DeepFryer",
+	StationType.MIXING_BOWL: "MixingBowl"
 }

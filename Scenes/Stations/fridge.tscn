@@ -11,6 +11,7 @@ size = Vector2(16, 15)
 [node name="Fridge" type="StaticBody2D" unique_id=761705989]
 z_index = 10
 script = ExtResource("1_m08af")
+station_type = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1470067660]
 modulate = Color(1, 1, 0, 1)

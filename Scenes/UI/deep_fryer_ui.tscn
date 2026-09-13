@@ -1,0 +1,170 @@
+[gd_scene format=3 uid="uid://ddm32vb8tumoh"]
+
+[ext_resource type="Texture2D" uid="uid://bcowatgfg23jv" path="res://Sprites/player_head.png" id="1_3g7bg"]
+[ext_resource type="Script" uid="uid://70d6ayu48wmn" path="res://Scripts/station_ui.gd" id="1_v1a3a"]
+[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown.png" id="2_v1a3a"]
+[ext_resource type="PackedScene" uid="uid://dkklqqy33avo" path="res://Scenes/UI/pick_up.tscn" id="3_trkd8"]
+[ext_resource type="Texture2D" uid="uid://bujumhkqb78b" path="res://Sprites/Stations/blender.png" id="4_jwwcl"]
+[ext_resource type="Script" uid="uid://b1d8iv2pw8gsn" path="res://Scripts/station_slot.gd" id="5_enpfw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icsha"]
+bg_color = Color(0.5529412, 0.6039216, 0.69411767, 0.9019608)
+
+[node name="DeepFryerUI" type="Control" unique_id=153671428]
+visible = false
+z_index = 100
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_v1a3a")
+station_type = 7
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1552908757]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 112.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_icsha")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1222181721]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=391606103]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1065052034]
+custom_maximum_size = Vector2(-1, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1633154522]
+layout_mode = 2
+
+[node name="PlayerHead" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=1244439756]
+modulate = Color(1, 1, 1, 0.78431374)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 11.0
+offset_right = 30.0
+offset_bottom = 26.0
+texture = ExtResource("1_3g7bg")
+
+[node name="ItemUI" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=1370393748]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -1.0
+offset_right = 27.0
+offset_bottom = 16.0
+texture = ExtResource("2_v1a3a")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1878618166]
+layout_mode = 2
+theme_override_constants/margin_right = 22
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1852405436]
+layout_mode = 2
+size_flags_horizontal = 6
+offset_transform_enabled = true
+theme_override_font_sizes/font_size = 12
+text = "Deep
+Fryer"
+horizontal_alignment = 1
+
+[node name="PickUp" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1205296270 instance=ExtResource("3_trkd8")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1089526543]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=231541628]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=124699057]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_jwwcl")
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2041783752]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=974040245]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -2.0
+offset_bottom = 71.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer" unique_id=1840657661]
+layout_mode = 2
+
+[node name="DeepFryerFoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer" unique_id=1988847709]
+texture_filter = 2
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("5_enpfw")
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/DeepFryerFoodSlot" unique_id=1899002405]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 27.0
+offset_bottom = 27.0
+texture = ExtResource("2_v1a3a")
+
+[node name="DeepFryerToolSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer" unique_id=1449247380]
+texture_filter = 2
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("5_enpfw")
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/DeepFryerToolSlot" unique_id=721001379]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 27.0
+offset_bottom = 27.0
+texture = ExtResource("2_v1a3a")
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer" unique_id=54311650]
+texture_filter = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 8
+text = "Fry"
+
+[node name="DeepFryerFoodSlotResult" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=2009275031]
+visible = false
+texture_filter = 2
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = -64.0
+offset_top = 6.0
+offset_bottom = 62.0
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("5_enpfw")
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/DeepFryerFoodSlotResult" unique_id=129651374]
+texture_filter = 1
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 52.0
+offset_bottom = 48.0
+texture = ExtResource("2_v1a3a")

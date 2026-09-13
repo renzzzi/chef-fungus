@@ -16,7 +16,9 @@ CODE ARCHITECTURE:
 								   -> Chopping Board
 								   -> Oven
 								   -> Stove
-								
+								   -> Deep Fryer
+								   -> Mixing Bowl
+	
 	Station Scripts Explanation:
 		station.gd:
 			Only stores class_name, station_ui_interact_component variable and the
@@ -55,7 +57,7 @@ CODE ARCHITECTURE:
 	
 	Player:
 		The Player is responsible for interacting with everything, picking up objects,
-		and initiating processes in stations. It is the most referenced in scripts.
+		and executing processes in stations. It is the most referenced in scripts.
 
 
 GAME ENTITIES:
@@ -67,45 +69,59 @@ GAME ENTITIES:
 	Stations:
 		- Fridge
 		- Counter-top
+		- Trash Can
+		- Sink
 		- Blender
 		- Chopping Board
 		- Oven
 		- Stove
+		- Deep Fryer
+		- Mixing Bowl
 	
 	Tools:
-		- Tamper (Blender)
-		- Knife (Chopping Board)
-		- Sheet Pan (Oven)
-		- Cooking Pot (Stove)
+		- Tamper
+		- Knife
+		- Sheet Pan
+		- Cooking Pot
+		- Frying Basket
+		- Wooden Spoon
+		- Sponge
 	
 	Food: Check recipes.txt
 
 
 ALL ABOUT FOOD:
+	Food Tags:
+		Food has tags that classifies them and all food will initially have at
+		least 1 tag attributed to them. For food tiers above raw ingredient will 
+		have more than 1 tag.
+	
+		Tags are separated into 2 categories and into 5 sub-categories and these are:
+			What has been done to the food:
+				- Shape State (Whole, Blended, Chopped) | Default: Whole
+				- Cook State (Raw, Boiled, Baked, Fried) | Default: Raw
+				- Flavor State (Plain, Salted, Spicy, Sweetened, etc.) | Default: Plain
+	
+			The nature of the food:
+				- Classification (Meat, Dairy, Vegetable, etc.)
+				- Tier (Raw, Prepared, Final) | Default: Raw
+				- Freshness (Fresh, Stale, Spoiled) | Default: Fresh
+	
+		For some categories like shape state, food are initially whole and when
+		their shape changes, they cannot go back or change into another shape.
+	
 	Food Tiers:
 		This is based on how they were prepared and what they were combined with.
 	
-		Raw Ingredient -> Basic Dish/Ingredient -> Intermediate Dish -> Final Dish
+		Raw -> Prepared Ingredient -> Final Dish
 	
 		They do not necessarily have to go through each tier.
 		(e.g. Two Raw Ingredients can become a Final Dish immediately)
 	
-	Food States:
-		Food change states based on which station it was processed through. Below
-		are suffixes for these food states.
-	
-		- Chopped (Chopping Board)
-		- Blended (Blender)
-		- Baked (Oven)
-		- Boiled (Stove)
-	
-		Note: For Raw Ingredients and Final Dishes, they do not have these 
-		suffixes.
-	
 	Food Freshness:
-		Food has a timer where if a certain threshold has passed, food will degrade
-		its freshness worse and worse as time goes by. Below are the three states of
-		freshness a food can be in.
+		Food has a timer where if a certain threshold has passed, its freshness 
+		worsens as time goes by. Below are the three states of freshness a food 
+		can be in.
 	
 		Fresh -> Stale -> Spoiled
 	
@@ -113,53 +129,80 @@ ALL ABOUT FOOD:
 		Placing food in/on any station will slow down spoiling with varying 
 		effectiveness. Food's freshness affects overall quality if served/prepared.
 	
-	Food Categories:
-		Food are categorized by a general classification like Meat, Dairy, Fish,
-		Spice, Grain, Vegetable, Fruit, etc. Food can have multiple classifications.
-	
 	Sludge:
-		This is the output when you combine food that does not exist in the game's
-		recipe logs. They will produce repulsive sludge that is not fit for serving.
-		Be careful when preparing Final Dishes on a station because they have a 99%
-		chance of turning into sludge.
+		This is the output when you combine or prepare food in stations that does not 
+		exist in the game's recipe logs. They will produce repulsive sludge that is 
+		not fit for serving. An example would be putting an Egg in the blender or
+		combining Meat and Blended Apples.
 
 
 ALL ABOUT STATIONS:
-	Fridge:
-		It has 15 slots where you can store food to slow down spoilage
-		by 90%.
+	There are two types of stations and these are the Stationary Stations which
+	cannot be picked up and does something unique, while Holdable Stations must
+	be placed on a Counter-top in order for the player to operate on it, they also
+	need a specific tool that the player must be holding to apply actions on food.
+	Also Holdable Stations becomes dirty after every use so you must wash them in
+	the Sink.
 	
-	Counter-top:
-		This is an essential station to be able to place holdable stations such as
-		the Blender, Chopping Board, Mortar, Oven, and the Stove to be able to prepare 
-		food on them. You may also place a singular piece of food on the counter 
-		to slow down spoilage by 25%.
+	Stationary Stations:
+		Fridge:
+			It has 15 slots where you can store food to slow down spoilage
+			by 90%.
 	
-	Blender:
-		You can blend a singular piece of food to turn it into its Blended state.
-		Needs a tamper to operate on.
+		Counter-top:
+			This is an essential station to be able to place holdable stations 
+			such as the Blender, Chopping Board, Oven, Stove, Deep Fryer and 
+			Mixing Bowl to be able to prepare food on them. You may also place a 
+			singular piece of food on the counter to slow down spoilage by 25% and
+			a tool just because you can.
 	
-	Chopping Board:
-		Chop a singular piece of food to turn it into its Chopped state. Needs a 
-		knife to operate on.
+		Trash Can:
+			Has 4 slots where you can put food, tools, and holdable stations in and 
+			after 1 minute, they will be permanently disposed off. Food placed inside
+			will be spoiled and Tools will be dirty immediately so be careful when 
+			putting in items. Removing an item will reset the 1 minute timer for it.
+			
+		Sink:
+			Can hold 6 slots where you can simultaneously wash all 6 tools or holdable
+			station. Needs a sponge to operate on.
 	
-	Oven:
-		Bake a singular piece of food to turn it into its Baked state. You may also
-		combine and bake 2-3 foods to create a new dish. Needs a sheet pan to operate
-		on.
-	
-	Stove:
-		Boil a singular piece of food to tunr it into its Boiled state. You may also
-		combine and boil 2-3 foods to create a new dish. Needs a cooking pot to
-		operate on.
+	Holdable Stations:
+		Blender:
+			You can blend a singular piece of food to turn it into its Blended state.
+			Needs a Tamper to operate on.
+		
+		Chopping Board:
+			Chop a singular piece of food to turn it into its Chopped state. Needs a 
+			Knife to operate on.
+		
+		Oven:
+			Bake a singular piece of food to turn it into its Baked state. Needs a 
+			Sheet Pan to operate on.
+		
+		Stove:
+			Boil a singular piece of food to turn it into its Boiled state. Needs a 
+			Cooking Pot to operate on.
+		
+		Deep Fryer:
+			Fry a singular piece of food to turn it into its Fried state. Needs a 
+			Frying Basket to operate on.
+			
+		Mixing Bowl:
+			You can put in 2-3 food to combine them into a new dish and/or apply a 
+			flavor state to the food. Be careful because this is where they might
+			turn into sludge. Needs a Wooden Spoon to operate on.
 
 
 ALL ABOUT TOOLS:
-	Tools are required to operate on certain stations, they wear down every use and
-	you might have to get a new one if its worn down. Below are the existing tools
-	and the station they are used for.
+	Tools are required to operate on certain stations, they wear down and become 
+	dirty after every completion in a station and you have to wash them for each 
+	use (Except the sponge) also you might have to get a new one if its worn down. 
+	Below are the existing tools and the station they are used for.
 	
 	- Tamper (Blender)
 	- Knife (Chopping Board)
 	- Sheet Pan (Oven)
 	- Cooking Pot (Stove)
+	- Frying Basket (Deep Fryer)
+	- Wooden Spoon (Mixing Bowl)
+	- Sponge (Sink)

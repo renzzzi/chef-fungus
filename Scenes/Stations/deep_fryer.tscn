@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://t81040rhoaow"]
+
+[ext_resource type="Texture2D" uid="uid://ca8715uyihjes" path="res://Sprites/Stations/deep_fryer.png" id="1_rf7cc"]
+[ext_resource type="Script" uid="uid://cprtba41077bc" path="res://Scripts/holdable_station.gd" id="1_sb4sa"]
+[ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="2_sb4sa"]
+[ext_resource type="PackedScene" uid="uid://ckn20srkumagh" path="res://Scenes/Components/station_ui_interact_component.tscn" id="3_o5ipr"]
+[ext_resource type="PackedScene" uid="uid://bd0orr7e6l105" path="res://Scenes/Components/holdable_component.tscn" id="4_tu10o"]
+
+[node name="DeepFryer" type="Node2D" unique_id=1105919655]
+modulate = Color(0.3882353, 0, 1, 1)
+z_index = 10
+script = ExtResource("1_sb4sa")
+station_type = 7
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2137927647]
+texture = ExtResource("1_rf7cc")
+
+[node name="InteractComponent" parent="." unique_id=1900256740 instance=ExtResource("2_sb4sa")]
+position = Vector2(0, 2.5)
+scale = Vector2(0.55, 0.55)
+
+[node name="StationUIInteractComponent" parent="." unique_id=1805268843 instance=ExtResource("3_o5ipr")]
+
+[node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("4_tu10o")]

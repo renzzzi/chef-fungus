@@ -3,68 +3,70 @@
 [ext_resource type="Texture2D" uid="uid://bcowatgfg23jv" path="res://Sprites/player_head.png" id="1_cdiv2"]
 [ext_resource type="Script" uid="uid://70d6ayu48wmn" path="res://Scripts/station_ui.gd" id="1_yi8kn"]
 [ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown.png" id="2_rs18x"]
-[ext_resource type="Texture2D" uid="uid://dxhhj6hs4fqjo" path="res://Sprites/plus.png" id="3_cdiv2"]
-[ext_resource type="PackedScene" uid="uid://m2ehnqtra3xu" path="res://Scenes/UI/stove_slot.tscn" id="3_rs18x"]
 [ext_resource type="PackedScene" uid="uid://dkklqqy33avo" path="res://Scenes/UI/pick_up.tscn" id="4_r7na4"]
+[ext_resource type="Texture2D" uid="uid://dbvu6vopm7utp" path="res://Sprites/Stations/stove.png" id="5_r7na4"]
+[ext_resource type="Script" uid="uid://b1d8iv2pw8gsn" path="res://Scripts/station_slot.gd" id="6_hftfe"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yi8kn"]
-bg_color = Color(0.37036446, 0.37036452, 0.37036437, 0.9019608)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_savb5"]
+bg_color = Color(0.5529412, 0.6039216, 0.69411767, 0.9019608)
 
 [node name="StoveUI" type="Control" unique_id=725442411]
 visible = false
 z_index = 100
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 144.0
+offset_bottom = 112.0
 script = ExtResource("1_yi8kn")
 station_type = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=828732298]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2139421568]
 layout_mode = 0
 offset_right = 144.0
 offset_bottom = 112.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_yi8kn")
+theme_override_styles/panel = SubResource("StyleBoxFlat_savb5")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1173241823]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1474847406]
 layout_mode = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=740025242]
-layout_mode = 2
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=8597563]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=2053309008]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1639349901]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=691809082]
+custom_maximum_size = Vector2(-1, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=669970325]
 layout_mode = 2
 
-[node name="PlayerHead" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=27831955]
+[node name="PlayerHead" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=1026745434]
 modulate = Color(1, 1, 1, 0.78431374)
 layout_mode = 0
-offset_left = 14.0
-offset_top = 3.0
-offset_right = 38.0
-offset_bottom = 18.0
+offset_left = 6.0
+offset_top = 11.0
+offset_right = 30.0
+offset_bottom = 26.0
 texture = ExtResource("1_cdiv2")
 
-[node name="ItemUI" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=2110129704]
+[node name="ItemUI" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=1573422777]
 layout_mode = 0
-offset_left = 17.0
-offset_top = -9.0
-offset_right = 35.0
-offset_bottom = 8.0
+offset_left = 9.0
+offset_top = -1.0
+offset_right = 27.0
+offset_bottom = 16.0
 texture = ExtResource("2_rs18x")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1844209124]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=733438971]
 layout_mode = 2
-theme_override_constants/margin_right = 30
+theme_override_constants/margin_right = 22
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1342298727]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1380464553]
 layout_mode = 2
 size_flags_horizontal = 6
 offset_transform_enabled = true
@@ -74,49 +76,96 @@ horizontal_alignment = 1
 [node name="PickUp" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1205296270 instance=ExtResource("4_r7na4")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=875528082]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1863704004]
 layout_mode = 2
-alignment = 1
+size_flags_vertical = 3
 
-[node name="StoveSlot" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1335221422 instance=ExtResource("3_rs18x")]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=246281137]
-custom_maximum_size = Vector2(10, 10)
-layout_mode = 2
-size_flags_vertical = 4
-texture = ExtResource("3_cdiv2")
-
-[node name="StoveSlot2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=599071075 instance=ExtResource("3_rs18x")]
-layout_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1982824461]
-custom_maximum_size = Vector2(10, 10)
-layout_mode = 2
-size_flags_vertical = 4
-texture = ExtResource("3_cdiv2")
-
-[node name="StoveSlot3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=301472853 instance=ExtResource("3_rs18x")]
-layout_mode = 2
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=710008926]
-layout_mode = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1711400598]
-custom_minimum_size = Vector2(0, 10)
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1928781477]
 layout_mode = 2
 size_flags_horizontal = 3
-step = 1.0
-show_percentage = false
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=666570033]
-layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1464232378]
-custom_maximum_size = Vector2(80, 13)
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1008142385]
+custom_maximum_size = Vector2(60, -1)
 layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("5_r7na4")
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1688708917]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=819968448]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -2.0
+offset_bottom = 71.0
 size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer" unique_id=666838315]
+layout_mode = 2
+
+[node name="StoveFoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer" unique_id=1538651782]
+texture_filter = 2
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("6_hftfe")
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/StoveFoodSlot" unique_id=120288965]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 27.0
+offset_bottom = 27.0
+texture = ExtResource("2_rs18x")
+
+[node name="StoveToolSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer" unique_id=304434034]
+texture_filter = 2
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("6_hftfe")
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/StoveToolSlot" unique_id=758602549]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 27.0
+offset_bottom = 27.0
+texture = ExtResource("2_rs18x")
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer" unique_id=1261480443]
+texture_filter = 2
+layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 8
-text = "COOK"
+text = "Cook
+"
+
+[node name="StoveFoodSlotResult" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=1985947783]
+visible = false
+texture_filter = 2
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = -64.0
+offset_top = 6.0
+offset_bottom = 62.0
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("6_hftfe")
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/StoveFoodSlotResult" unique_id=1944281427]
+texture_filter = 1
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 52.0
+offset_bottom = 48.0
+texture = ExtResource("2_rs18x")
