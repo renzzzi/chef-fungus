@@ -13,6 +13,7 @@ var recent_interact_components: Array[InteractComponent] = []
 @onready var chopping_board = get_tree().current_scene.get_node("ChoppingBoard")
 @onready var oven = get_tree().current_scene.get_node("Oven")
 @onready var deep_fryer = get_tree().current_scene.get_node("DeepFryer")
+@onready var mixing_bowl = get_tree().current_scene.get_node("MixingBowl")
 
 func _ready() -> void:
 	fridge.get_station_ui_interact_component().station_interacted.connect(station_interacted)
@@ -21,6 +22,7 @@ func _ready() -> void:
 	chopping_board.get_station_ui_interact_component().station_interacted.connect(station_interacted)
 	oven.get_station_ui_interact_component().station_interacted.connect(station_interacted)
 	deep_fryer.get_station_ui_interact_component().station_interacted.connect(station_interacted)
+	mixing_bowl.get_station_ui_interact_component().station_interacted.connect(station_interacted)
 
 func set_current_item_held(new_item):
 	current_item_held = new_item

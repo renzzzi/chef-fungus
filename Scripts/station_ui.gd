@@ -14,37 +14,52 @@ func _ready() -> void:
 		for child in $PanelContainer/MarginContainer/VBoxContainer/GridContainer.get_children():
 			child.station_slot_interacted.connect(station_slot_interacted)
 	elif station_type == GameEnums.StationType.STOVE:
-		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/StoveFoodSlot
-		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/StoveToolSlot
+		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/StoveFoodSlot
+		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/StoveToolSlot
+		var waterSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer3/StoveWaterSlot
 		foodSlot.station_slot_interacted.connect(station_slot_interacted)
 		toolSlot.station_slot_interacted.connect(station_slot_interacted)
+		waterSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
 	elif station_type == GameEnums.StationType.BLENDER:
-		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/BlenderFoodSlot
-		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/BlenderToolSlot
+		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/BlenderFoodSlot
+		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/BlenderToolSlot
 		foodSlot.station_slot_interacted.connect(station_slot_interacted)
 		toolSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
 	elif station_type == GameEnums.StationType.OVEN:
-		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/OvenFoodSlot
-		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/OvenToolSlot
+		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/OvenFoodSlot
+		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/OvenToolSlot
 		foodSlot.station_slot_interacted.connect(station_slot_interacted)
 		toolSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
 	elif station_type == GameEnums.StationType.CHOPPING_BOARD:
-		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/ChoppingBoardFoodSlot
-		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/ChoppingBoardToolSlot
+		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/ChoppingBoardFoodSlot
+		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ChoppingBoardToolSlot
 		foodSlot.station_slot_interacted.connect(station_slot_interacted)
 		toolSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
 	elif station_type == GameEnums.StationType.DEEP_FRYER:
-		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/DeepFryerFoodSlot
-		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/DeepFryerToolSlot
+		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/DeepFryerFoodSlot
+		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/DeepFryerToolSlot
+		var oilSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer3/DeepFryerOilSlot
 		foodSlot.station_slot_interacted.connect(station_slot_interacted)
+		toolSlot.station_slot_interacted.connect(station_slot_interacted)
+		oilSlot.station_slot_interacted.connect(station_slot_interacted)
+		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
+		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
+	elif station_type == GameEnums.StationType.MIXING_BOWL:
+		var foodSlot1 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer/MixingBowlFoodSlot
+		var foodSlot2 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer2/MixingBowlFoodSlot2
+		var foodSlot3 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer3/MixingBowlFoodSlot3
+		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/MixingBowlToolSlot
+		foodSlot1.station_slot_interacted.connect(station_slot_interacted)
+		foodSlot2.station_slot_interacted.connect(station_slot_interacted)
+		foodSlot3.station_slot_interacted.connect(station_slot_interacted)
 		toolSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)

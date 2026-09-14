@@ -4,7 +4,10 @@ var load_food_texture = {
 	null: preload("res://Sprites/unknown.png"),
 	"Apple": preload("res://Sprites/Food/apple.png"),
 	"Orange": preload("res://Sprites/Food/orange.png"),
-	"Bread": preload("res://Sprites/Food/bread.png")
+	"Bread": preload("res://Sprites/Food/bread.png"),
+	"Dough": preload("res://Sprites/Food/dough.png"),
+	"Water": preload("res://Sprites/Food/water.png"),
+	"Flour": preload("res://Sprites/Food/flour.png")
 }
 
 var load_tool_texture = {
