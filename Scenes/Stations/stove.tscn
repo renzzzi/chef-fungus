@@ -5,12 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://dbvu6vopm7utp" path="res://Sprites/Stations/stove.png" id="2_map72"]
 [ext_resource type="PackedScene" uid="uid://ckn20srkumagh" path="res://Scenes/Components/station_ui_interact_component.tscn" id="4_3y2c2"]
 [ext_resource type="PackedScene" uid="uid://bd0orr7e6l105" path="res://Scenes/Components/holdable_component.tscn" id="4_p2lj7"]
+[ext_resource type="PackedScene" uid="uid://dm6yp8vdt1fts" path="res://Scenes/UI/stove_ui.tscn" id="6_ixtii"]
 
 [node name="Stove" type="Node2D" unique_id=1617364925]
 modulate = Color(1, 0, 0, 1)
 z_index = 10
 script = ExtResource("1_p2lj7")
-station_type = 3
+station_name = "Stove"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1190749888]
 texture = ExtResource("2_map72")
@@ -22,3 +23,5 @@ scale = Vector2(0.55, 0.55)
 [node name="StationUIInteractComponent" parent="." unique_id=1805268843 instance=ExtResource("4_3y2c2")]
 
 [node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("4_p2lj7")]
+
+[node name="StoveUI" parent="." unique_id=725442411 instance=ExtResource("6_ixtii")]

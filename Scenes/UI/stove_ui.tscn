@@ -18,7 +18,6 @@ anchors_preset = 0
 offset_right = 144.0
 offset_bottom = 112.0
 script = ExtResource("1_yi8kn")
-station_type = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=2139421568]
 layout_mode = 0
@@ -125,6 +124,7 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
 script = ExtResource("6_hftfe")
+allowed_item_types = Array[String](["Food"])
 
 [node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/StoveFoodSlot" unique_id=120288965]
 visible = false
@@ -156,6 +156,8 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
 script = ExtResource("6_hftfe")
+allowed_item_types = Array[String](["Tool"])
+specific_item = "CookingPot"
 
 [node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/StoveToolSlot" unique_id=758602549]
 visible = false
@@ -185,6 +187,8 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
 script = ExtResource("6_hftfe")
+allowed_item_types = Array[String](["Food"])
+specific_item = "Water"
 
 [node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer3/StoveWaterSlot" unique_id=1603667309]
 visible = false
@@ -215,6 +219,7 @@ offset_bottom = 62.0
 size_flags_vertical = 3
 mouse_default_cursor_shape = 2
 script = ExtResource("6_hftfe")
+allowed_item_types = Array[String](["Food"])
 
 [node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/StoveFoodSlotResult" unique_id=1944281427]
 texture_filter = 1

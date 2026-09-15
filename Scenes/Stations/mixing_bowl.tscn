@@ -5,12 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="3_nuxqa"]
 [ext_resource type="PackedScene" uid="uid://ckn20srkumagh" path="res://Scenes/Components/station_ui_interact_component.tscn" id="4_gargd"]
 [ext_resource type="PackedScene" uid="uid://bd0orr7e6l105" path="res://Scenes/Components/holdable_component.tscn" id="5_hx12j"]
+[ext_resource type="PackedScene" uid="uid://yxjj3yfvk2ew" path="res://Scenes/UI/mixing_bowl_ui.tscn" id="6_n08vg"]
 
 [node name="MixingBowl" type="Node2D" unique_id=830555162]
 modulate = Color(0.19215687, 1, 1, 1)
 z_index = 10
 script = ExtResource("1_8fkcv")
-station_type = 9
+station_name = "MixingBowl"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2002650172]
 texture = ExtResource("2_n08vg")
@@ -22,3 +23,5 @@ scale = Vector2(0.55, 0.55)
 [node name="StationUIInteractComponent" parent="." unique_id=1805268843 instance=ExtResource("4_gargd")]
 
 [node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("5_hx12j")]
+
+[node name="MixingBowlUI" parent="." unique_id=1947888438 instance=ExtResource("6_n08vg")]

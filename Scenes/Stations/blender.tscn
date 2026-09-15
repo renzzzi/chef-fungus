@@ -5,12 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://bujumhkqb78b" path="res://Sprites/Stations/blender.png" id="2_hwfre"]
 [ext_resource type="PackedScene" uid="uid://ckn20srkumagh" path="res://Scenes/Components/station_ui_interact_component.tscn" id="3_uet6t"]
 [ext_resource type="PackedScene" uid="uid://bd0orr7e6l105" path="res://Scenes/Components/holdable_component.tscn" id="5_t6ik2"]
+[ext_resource type="PackedScene" uid="uid://ddl7m0np82hi5" path="res://Scenes/UI/blender_ui.tscn" id="6_j4q05"]
 
 [node name="Blender" type="Node2D" unique_id=2147397412]
 modulate = Color(0, 0, 1, 1)
 z_index = 10
 script = ExtResource("1_t6ik2")
-station_type = 4
+station_name = "Blender"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1868344220]
 texture = ExtResource("2_hwfre")
@@ -22,3 +23,6 @@ scale = Vector2(0.55, 0.55)
 [node name="StationUIInteractComponent" parent="." unique_id=1805268843 instance=ExtResource("3_uet6t")]
 
 [node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("5_t6ik2")]
+
+[node name="BlenderUI" parent="." unique_id=690813215 node_paths=PackedStringArray("station") instance=ExtResource("6_j4q05")]
+station = NodePath("..")

@@ -7,6 +7,7 @@
 custom_minimum_size = Vector2(20, 20)
 mouse_default_cursor_shape = 2
 script = ExtResource("1_h2kqu")
+allowed_item_types = Array[String](["Food"])
 
 [node name="FoodImage" type="TextureRect" parent="." unique_id=377112202]
 visible = false

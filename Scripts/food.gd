@@ -1,7 +1,7 @@
 class_name Food
 extends Node2D
 
-var stored_in := GameEnums.StationType.NONE
+var stored_in := ""
 @onready var holdable_component = $HoldableComponent
 @export var food_name: String
 # How long it takes in second before food changes freshness
@@ -47,15 +47,13 @@ enum Classification {
 func _on_timer_timeout() -> void:
 	# Slows down expiry based on where food is stored in
 	match stored_in:
-		GameEnums.StationType.FRIDGE:
+		"Fridge":
 			expiry_counter += 0.1
-		GameEnums.StationType.OVEN, GameEnums.StationType.BLENDER:
+		"Oven", "Blender":
 			expiry_counter += 0.6
-		GameEnums.StationType.COUNTERTOP, GameEnums.StationType.STOVE, GameEnums.StationType.MIXING_BOWL, GameEnums.StationType.DEEP_FRYER:
+		"CounterTop", "Stove", "MixingBowl", "DeepFryer", "ChoppingBoard":
 			expiry_counter += 0.75
-		GameEnums.StationType.NONE:
-			expiry_counter += 1
-		GameEnums.StationType.TRASH_CAN:
+		"TrashCan":
 			expiry_counter += 9999
 		_:
 			expiry_counter += 1
@@ -94,6 +92,6 @@ func get_classifications() -> Array[Classification]:
 func get_holdable_component():
 	return holdable_component
 	
-func set_stored_in(station_type: GameEnums.StationType):
+func set_stored_in(station_type: String):
 	stored_in = station_type
 	

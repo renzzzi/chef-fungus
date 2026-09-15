@@ -11,33 +11,36 @@ var load_food_texture = {
 }
 
 var load_tool_texture = {
-	GameEnums.ToolType.NONE: preload("res://Sprites/unknown.png"),
-	GameEnums.ToolType.TAMPER: preload("res://Sprites/Tools/tamper.png"),
-	GameEnums.ToolType.KNIFE: preload("res://Sprites/Tools/knife.png"),
-	GameEnums.ToolType.SHEET_PAN: preload("res://Sprites/Tools/sheet_pan.png"),
-	GameEnums.ToolType.COOKING_POT: preload("res://Sprites/Tools/cooking_pot.png")
+	null: preload("res://Sprites/unknown.png"),
+	"Tamper": preload("res://Sprites/Tools/tamper.png"),
+	"Knife": preload("res://Sprites/Tools/knife.png"),
+	"SheetPan": preload("res://Sprites/Tools/sheet_pan.png"),
+	"CookingPot": preload("res://Sprites/Tools/cooking_pot.png")
+	#"FryingBasket": preload("res://Sprites/Tools/frying_basket.png"),
+	#"WoodenSpoon": preload("res://Sprites/Tools/wooden_spoon.png"),
+	#"Sponge": preload("res://Sprites/Tools/sponge.png")
 }
 
 var load_holdable_station_texture = {
-	GameEnums.StationType.NONE: preload("res://Sprites/unknown.png"),
-	GameEnums.StationType.BLENDER: preload("res://Sprites/Stations/blender.png"),
-	GameEnums.StationType.CHOPPING_BOARD: preload("res://Sprites/Stations/chopping_board.png"),
-	GameEnums.StationType.OVEN: preload("res://Sprites/Stations/oven.png"),
-	GameEnums.StationType.STOVE: preload("res://Sprites/Stations/stove.png"),
-	GameEnums.StationType.DEEP_FRYER: preload("res://Sprites/Stations/deep_fryer.png"),
-	GameEnums.StationType.MIXING_BOWL: preload("res://Sprites/Stations/mixing_bowl.png"),
+	"": preload("res://Sprites/unknown.png"),
+	"Blender": preload("res://Sprites/Stations/blender.png"),
+	"ChoppingBoard": preload("res://Sprites/Stations/chopping_board.png"),
+	"Oven": preload("res://Sprites/Stations/oven.png"),
+	"Stove": preload("res://Sprites/Stations/stove.png"),
+	"DeepFryer": preload("res://Sprites/Stations/deep_fryer.png"),
+	"MixingBowl": preload("res://Sprites/Stations/mixing_bowl.png")
 }
 
 # Used for stations with UI, refer to station_ui.gd
-var load_station_string = {
-	GameEnums.StationType.FRIDGE: "Fridge",
-	GameEnums.StationType.STOVE: "Stove",
-	GameEnums.StationType.BLENDER: "Blender",
-	GameEnums.StationType.CHOPPING_BOARD: "ChoppingBoard",
-	GameEnums.StationType.OVEN: "Oven",
-	GameEnums.StationType.DEEP_FRYER: "DeepFryer",
-	GameEnums.StationType.MIXING_BOWL: "MixingBowl"
-}
+#var load_station_string = {
+	#GameEnums.StationType.FRIDGE: "Fridge",
+	#GameEnums.StationType.STOVE: "Stove",
+	#GameEnums.StationType.BLENDER: "Blender",
+	#GameEnums.StationType.CHOPPING_BOARD: "ChoppingBoard",
+	#GameEnums.StationType.OVEN: "Oven",
+	#GameEnums.StationType.DEEP_FRYER: "DeepFryer",
+	#GameEnums.StationType.MIXING_BOWL: "MixingBowl"
+#}
 
 var load_color = {
 	Food.Freshness.FRESH: Color.WHITE,

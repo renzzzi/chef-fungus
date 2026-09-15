@@ -9,21 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://dj57wj6pdpk3b" path="res://Scenes/Food/apple.tscn" id="7_k7acu"]
 [ext_resource type="PackedScene" uid="uid://m0dnpgmpddx1" path="res://Scenes/Food/orange.tscn" id="8_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://dnoujndnvwpf" path="res://Scenes/Stations/oven.tscn" id="8_e0ngr"]
-[ext_resource type="PackedScene" uid="uid://dm1sehdthd4n" path="res://Scenes/UI/fridge_ui.tscn" id="9_5v1tr"]
 [ext_resource type="PackedScene" uid="uid://dsvdse7n3kdfl" path="res://Scenes/Stations/mixing_bowl.tscn" id="9_xbk3s"]
 [ext_resource type="PackedScene" uid="uid://4uopfl36m7d2" path="res://Scenes/Tools/tamper.tscn" id="10_c5t2i"]
 [ext_resource type="PackedScene" uid="uid://dl8s78akomlwl" path="res://Scenes/Food/bread.tscn" id="11_ikia7"]
-[ext_resource type="PackedScene" uid="uid://ddl7m0np82hi5" path="res://Scenes/UI/blender_ui.tscn" id="12_7yui6"]
 [ext_resource type="PackedScene" uid="uid://t81040rhoaow" path="res://Scenes/Stations/deep_fryer.tscn" id="13_c5t2i"]
 [ext_resource type="PackedScene" uid="uid://krur4se41hhe" path="res://Scenes/Food/water.tscn" id="13_pyn1s"]
 [ext_resource type="PackedScene" uid="uid://b6op5s6n8vpst" path="res://Scenes/Stations/chopping_board.tscn" id="14_e0ngr"]
 [ext_resource type="PackedScene" uid="uid://cikw3jnnfntwe" path="res://Scenes/Food/flour.tscn" id="14_no8kt"]
-[ext_resource type="PackedScene" uid="uid://cnoxt8hx32mxw" path="res://Scenes/UI/chopping_board_ui.tscn" id="15_kn0ld"]
 [ext_resource type="PackedScene" uid="uid://bg5e6cxg4f8yu" path="res://Scenes/Food/dough.tscn" id="15_xbk3s"]
-[ext_resource type="PackedScene" uid="uid://dm6yp8vdt1fts" path="res://Scenes/UI/stove_ui.tscn" id="16_1cojt"]
-[ext_resource type="PackedScene" uid="uid://b2kfp4l417rs0" path="res://Scenes/UI/oven_ui.tscn" id="17_yq1aw"]
-[ext_resource type="PackedScene" uid="uid://ddm32vb8tumoh" path="res://Scenes/UI/deep_fryer_ui.tscn" id="18_pyn1s"]
-[ext_resource type="PackedScene" uid="uid://yxjj3yfvk2ew" path="res://Scenes/UI/mixing_bowl_ui.tscn" id="23_no8kt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tve5p"]
 size = Vector2(192, 16)
@@ -137,46 +130,3 @@ position = Vector2(48, -7.9999995)
 
 [node name="Tamper" parent="." unique_id=117532560 instance=ExtResource("10_c5t2i")]
 position = Vector2(0, 40)
-
-[node name="FridgeUI" parent="." unique_id=136372375 instance=ExtResource("9_5v1tr")]
-offset_left = -72.0
-offset_top = -56.0
-offset_right = -32.0
-offset_bottom = -16.0
-rotation = 0.00036820723
-
-[node name="StoveUI" parent="." unique_id=725442411 instance=ExtResource("16_1cojt")]
-offset_left = -72.0
-offset_top = -56.0
-offset_right = 72.0
-offset_bottom = 56.0
-
-[node name="OvenUI" parent="." unique_id=690813215 instance=ExtResource("17_yq1aw")]
-offset_left = -72.0
-offset_top = -56.0
-offset_right = 72.0
-offset_bottom = 56.0
-
-[node name="DeepFryerUI" parent="." unique_id=153671428 instance=ExtResource("18_pyn1s")]
-offset_left = -72.0
-offset_top = -56.0
-offset_right = -72.0
-offset_bottom = -56.0
-
-[node name="ChoppingBoardUI" parent="." unique_id=1622576349 instance=ExtResource("15_kn0ld")]
-offset_left = -72.0
-offset_top = -56.0
-offset_right = 72.0
-offset_bottom = 56.0
-
-[node name="BlenderUI" parent="." unique_id=262245336 instance=ExtResource("12_7yui6")]
-offset_left = -72.0
-offset_top = -56.0
-offset_right = 72.0
-offset_bottom = 56.0
-
-[node name="MixingBowlUI" parent="." unique_id=1947888438 instance=ExtResource("23_no8kt")]
-offset_left = -72.0
-offset_top = -56.0
-offset_right = 72.0
-offset_bottom = 56.0

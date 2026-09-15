@@ -7,6 +7,7 @@ signal station_interacted(ui_active: bool)
 var ui_active = false
 
 func _ready() -> void:
+	
 	interact_component.interacted.connect(interacted)
 	
 func interacted(_player):

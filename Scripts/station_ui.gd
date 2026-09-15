@@ -1,19 +1,23 @@
 extends Control
 
-@export var station_type: GameEnums.StationType
+@onready var station: Station = get_parent()
 
 @onready var item_ui = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/ItemUI
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
-@onready var station = get_tree().current_scene.get_node(Load.load_station_string[station_type])
 
+# After nesting the UI within the Station scene, _ready of UI runs first than
+# Station _ready so var station is null, it needs to be deferred by at one call
 func _ready() -> void:
+	call_deferred("_initialize")
+	
+func _initialize() -> void:
 	station.get_station_ui_interact_component().station_interacted.connect(station_interacted)
 
 	# Connect signals of every instance of the Station Slot
-	if station_type == GameEnums.StationType.FRIDGE:
+	if station.get_station_name() == "Fridge":
 		for child in $PanelContainer/MarginContainer/VBoxContainer/GridContainer.get_children():
 			child.station_slot_interacted.connect(station_slot_interacted)
-	elif station_type == GameEnums.StationType.STOVE:
+	elif station.get_station_name() == "Stove":
 		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/StoveFoodSlot
 		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/StoveToolSlot
 		var waterSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer3/StoveWaterSlot
@@ -22,28 +26,28 @@ func _ready() -> void:
 		waterSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
-	elif station_type == GameEnums.StationType.BLENDER:
+	elif station.get_station_name() == "Blender":
 		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/BlenderFoodSlot
 		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/BlenderToolSlot
 		foodSlot.station_slot_interacted.connect(station_slot_interacted)
 		toolSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
-	elif station_type == GameEnums.StationType.OVEN:
+	elif station.get_station_name() == "Oven":
 		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/OvenFoodSlot
 		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/OvenToolSlot
 		foodSlot.station_slot_interacted.connect(station_slot_interacted)
 		toolSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
-	elif station_type == GameEnums.StationType.CHOPPING_BOARD:
+	elif station.get_station_name() == "ChoppingBoard":
 		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/ChoppingBoardFoodSlot
 		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ChoppingBoardToolSlot
 		foodSlot.station_slot_interacted.connect(station_slot_interacted)
 		toolSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
-	elif station_type == GameEnums.StationType.DEEP_FRYER:
+	elif station.get_station_name() == "DeepFryer":
 		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/DeepFryerFoodSlot
 		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/DeepFryerToolSlot
 		var oilSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer3/DeepFryerOilSlot
@@ -52,7 +56,7 @@ func _ready() -> void:
 		oilSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
-	elif station_type == GameEnums.StationType.MIXING_BOWL:
+	elif station.get_station_name() == "MixingBowl":
 		var foodSlot1 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer/MixingBowlFoodSlot
 		var foodSlot2 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer2/MixingBowlFoodSlot2
 		var foodSlot3 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer3/MixingBowlFoodSlot3
@@ -70,9 +74,9 @@ func station_interacted(ui_active):
 	if player.get_current_item_held() == null:
 		item_ui.texture = Load.load_food_texture[null]
 	elif player.get_current_item_held() is HoldableStation:
-		item_ui.texture = Load.load_holdable_station_texture[player.get_current_item_held().get_station_type()]
+		item_ui.texture = Load.load_holdable_station_texture[player.get_current_item_held().get_station_name()]
 	elif player.get_current_item_held() is Tool:
-		item_ui.texture = Load.load_tool_texture[player.get_current_item_held().get_tool_type()]
+		item_ui.texture = Load.load_tool_texture[player.get_current_item_held().get_tool_name()]
 	elif player.get_current_item_held() is Food: 
 		item_ui.texture = Load.load_food_texture[player.get_current_item_held().get_food_name()]
 	
@@ -83,32 +87,46 @@ func _process(_delta: float) -> void:
 		item_ui.modulate = Color.WHITE
 
 func station_slot_interacted(station_slot):
-	if player.get_current_item_held() != null and player.get_current_item_held() is not Food:
-		return
+	# This block checks if the current item the player is holding matches the item type
+	# that the station slot is allowed to store
+	if player.get_current_item_held() is Food:
+		if !station_slot.check_allowed_item_types(player.get_current_item_held()):
+			return
+	elif player.get_current_item_held() is Tool:
+		if !station_slot.check_allowed_item_types(player.get_current_item_held()):
+			return
+	elif player.get_current_item_held() is HoldableStation:
+		if !station_slot.check_allowed_item_types(player.get_current_item_held()):
+			return
 	
 	# Player holding NO food; slot IS storing food
-	if player.get_current_item_held() == null and station_slot.get_stored_food() != null:
-		player.set_current_item_held(station_slot.get_stored_food())
-		station_slot.set_stored_food(null)
+	if player.get_current_item_held() == null and station_slot.get_stored_item() != null:
+		player.set_current_item_held(station_slot.get_stored_item())
+		station_slot.set_stored_item(null)
 		player.get_current_item_held().get_holdable_component().unstore_from_station(station)
 	# Player IS holding food; slot is NOT storing food
-	elif player.get_current_item_held() != null and station_slot.get_stored_food() == null:
-		station_slot.set_stored_food(player.get_current_item_held())
+	elif player.get_current_item_held() != null and station_slot.get_stored_item() == null:
+		station_slot.set_stored_item(player.get_current_item_held())
 		player.set_current_item_held(null)
-		station_slot.get_stored_food().get_holdable_component().store_in_station(station_type)
+		station_slot.get_stored_item().get_holdable_component().store_in_station(station.get_station_name())
 	# Player IS holding food; slot IS storing food
-	elif player.get_current_item_held() != null and station_slot.get_stored_food() != null:
+	elif player.get_current_item_held() != null and station_slot.get_stored_item() != null:
 		var temp = player.get_current_item_held()
-		player.set_current_item_held(station_slot.get_stored_food())
-		station_slot.set_stored_food(temp)
+		player.set_current_item_held(station_slot.get_stored_item())
+		station_slot.set_stored_item(temp)
 		player.get_current_item_held().get_holdable_component().unstore_from_station(station)
-		station_slot.get_stored_food().get_holdable_component().store_in_station(station_type)
+		station_slot.get_stored_item().get_holdable_component().store_in_station(station.get_station_name())
 	
 	# Reload Station's Food UI
 	if player.get_current_item_held() == null: 
 		item_ui.texture = Load.load_food_texture[null]
 	else: 
-		item_ui.texture = Load.load_food_texture[player.get_current_item_held().get_food_name()]
+		if player.get_current_item_held() is Food:
+			item_ui.texture = Load.load_food_texture[player.get_current_item_held().get_food_name()]
+		elif player.get_current_item_held() is Tool:
+			item_ui.texture = Load.load_tool_texture[player.get_current_item_held().get_tool_name()]
+		elif player.get_current_item_held() is HoldableStation:
+			item_ui.texture = Load.load_holdable_station_texture[player.get_current_item_held().get_station_name()]
 	
 
 func pick_up_button_pressed():

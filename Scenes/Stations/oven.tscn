@@ -5,12 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="2_1xekr"]
 [ext_resource type="PackedScene" uid="uid://ckn20srkumagh" path="res://Scenes/Components/station_ui_interact_component.tscn" id="3_5ambn"]
 [ext_resource type="PackedScene" uid="uid://bd0orr7e6l105" path="res://Scenes/Components/holdable_component.tscn" id="4_jj7rg"]
+[ext_resource type="PackedScene" uid="uid://b2kfp4l417rs0" path="res://Scenes/UI/oven_ui.tscn" id="6_5ambn"]
 
 [node name="Oven" type="Node2D" unique_id=454536546]
 modulate = Color(1, 0, 1, 1)
 z_index = 10
 script = ExtResource("1_1xekr")
-station_type = 6
+station_name = "Oven"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=655739524]
 texture = ExtResource("1_ek7yi")
@@ -22,3 +23,5 @@ scale = Vector2(0.55, 0.55)
 [node name="StationUIInteractComponent" parent="." unique_id=1805268843 instance=ExtResource("3_5ambn")]
 
 [node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("4_jj7rg")]
+
+[node name="OvenUI" parent="." unique_id=690813215 instance=ExtResource("6_5ambn")]

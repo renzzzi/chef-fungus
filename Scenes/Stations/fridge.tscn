@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="1_u6um1"]
 [ext_resource type="Texture2D" uid="uid://vaur51ad47bj" path="res://Sprites/Stations/fridge.png" id="2_0xlii"]
 [ext_resource type="PackedScene" uid="uid://ckn20srkumagh" path="res://Scenes/Components/station_ui_interact_component.tscn" id="3_uhp70"]
+[ext_resource type="PackedScene" uid="uid://dm1sehdthd4n" path="res://Scenes/UI/fridge_ui.tscn" id="5_7dr7g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tve5p"]
 size = Vector2(16, 15)
@@ -11,7 +12,7 @@ size = Vector2(16, 15)
 [node name="Fridge" type="StaticBody2D" unique_id=761705989]
 z_index = 10
 script = ExtResource("1_m08af")
-station_type = 1
+station_name = "Fridge"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1470067660]
 modulate = Color(1, 1, 0, 1)
@@ -27,3 +28,5 @@ position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_tve5p")
 
 [node name="StationUIInteractComponent" parent="." unique_id=1805268843 instance=ExtResource("3_uhp70")]
+
+[node name="FridgeUI" parent="." unique_id=136372375 instance=ExtResource("5_7dr7g")]
