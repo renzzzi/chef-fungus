@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bq13l88y4cwgi"]
+
+[ext_resource type="PackedScene" uid="uid://b3ihi1hy1i34i" path="res://Scenes/tool.tscn" id="1_k6657"]
+[ext_resource type="Texture2D" uid="uid://b0b2iq45qxhl1" path="res://Sprites/Tools/cooking_pot.png" id="2_l6676"]
+
+[node name="CookingPot" unique_id=117532560 instance=ExtResource("1_k6657")]
+tool_name = "CookingPot"
+
+[node name="Sprite2D" parent="." index="0" unique_id=706181308]
+texture = ExtResource("2_l6676")
