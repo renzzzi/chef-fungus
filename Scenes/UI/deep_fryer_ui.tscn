@@ -202,7 +202,7 @@ offset_right = 17.0
 offset_bottom = 17.0
 texture = ExtResource("2_v1a3a")
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer" unique_id=54311650]
+[node name="ExecuteStationButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer" unique_id=54311650]
 texture_filter = 2
 layout_mode = 2
 mouse_default_cursor_shape = 2
