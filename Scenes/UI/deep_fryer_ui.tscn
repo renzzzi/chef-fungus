@@ -16,7 +16,6 @@ z_index = 100
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_v1a3a")
-station_type = 7
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1552908757]
 layout_mode = 0
@@ -210,7 +209,7 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 8
 text = "Fry"
 
-[node name="DeepFryerFoodSlotResult" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=2009275031]
+[node name="DeepFryerFoodResultSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=2009275031]
 visible = false
 texture_filter = 2
 custom_minimum_size = Vector2(30, 30)
@@ -223,7 +222,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("5_enpfw")
 allowed_item_types = Array[String](["Food"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/DeepFryerFoodSlotResult" unique_id=129651374]
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/DeepFryerFoodResultSlot" unique_id=129651374]
 texture_filter = 1
 layout_mode = 0
 offset_left = 12.0

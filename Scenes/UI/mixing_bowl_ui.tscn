@@ -18,7 +18,6 @@ anchors_preset = 0
 offset_right = 144.0
 offset_bottom = 112.0
 script = ExtResource("1_5fhkv")
-station_type = 9
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=247218358]
 layout_mode = 0
@@ -247,7 +246,7 @@ X"
 [node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1647207323]
 layout_mode = 2
 
-[node name="MixingBowlFoodSlotResult" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=814169752]
+[node name="MixingBowlFoodResultSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=814169752]
 visible = false
 texture_filter = 2
 custom_minimum_size = Vector2(30, 30)
@@ -260,7 +259,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("5_w3nsc")
 allowed_item_types = Array[String](["Food"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/MixingBowlFoodSlotResult" unique_id=262470160]
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/MixingBowlFoodResultSlot" unique_id=262470160]
 texture_filter = 1
 layout_mode = 0
 offset_left = 12.0

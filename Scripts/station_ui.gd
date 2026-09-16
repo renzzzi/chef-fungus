@@ -26,6 +26,8 @@ func _initialize() -> void:
 		waterSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
+		var execute_station_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/Button
+		var food_result_slot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/StoveFoodResultSlot
 	elif station.get_station_name() == "Blender":
 		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/BlenderFoodSlot
 		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/BlenderToolSlot
@@ -33,6 +35,8 @@ func _initialize() -> void:
 		toolSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
+		var execute_station_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/Button
+		var food_result_slot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/BlenderFoodResultSlot
 	elif station.get_station_name() == "Oven":
 		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/OvenFoodSlot
 		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/OvenToolSlot
@@ -40,6 +44,8 @@ func _initialize() -> void:
 		toolSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
+		var execute_station_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/Button
+		var food_result_slot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/OvenFoodResultSlot
 	elif station.get_station_name() == "ChoppingBoard":
 		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/ChoppingBoardFoodSlot
 		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ChoppingBoardToolSlot
@@ -47,6 +53,8 @@ func _initialize() -> void:
 		toolSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
+		var execute_station_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/Button
+		var food_result_slot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/ChoppingBoardFoodResultSlot
 	elif station.get_station_name() == "DeepFryer":
 		var foodSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/DeepFryerFoodSlot
 		var toolSlot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/DeepFryerToolSlot
@@ -56,6 +64,8 @@ func _initialize() -> void:
 		oilSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
+		var execute_station_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/Button
+		var food_result_slot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/DeepFryerFoodResultSlot
 	elif station.get_station_name() == "MixingBowl":
 		var foodSlot1 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer/MixingBowlFoodSlot
 		var foodSlot2 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer2/MixingBowlFoodSlot2
@@ -67,7 +77,11 @@ func _initialize() -> void:
 		toolSlot.station_slot_interacted.connect(station_slot_interacted)
 		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
 		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
-	
+		var execute_station_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Button
+		var food_result_slot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/MixingBowlFoodResultSlot
+
+
+
 func station_interacted(ui_active):
 	self.visible = ui_active
 	# Change food_ui's texture to the food type the player is currently holding
