@@ -99,7 +99,6 @@ func fry():
 		expiry_counter = STALETIME
 	
 func blend():
-	print("here")
 	if shape_state != Shape.WHOLE:
 		push_error("Cannot blend " + food_name + " since it was either chopped or blended already.")
 		return

@@ -61,13 +61,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Interact"):
 		if nearby_interact_components.is_empty():
 			return
-		
+	
 		# Checks for nearby stations first and interacts with them
 		for component in nearby_interact_components:
 			if component.get_is_stationary_station():
 				component.interact(self)
 				return
-		
+	
 		if nearby_interact_components == recent_interact_components:
 			recent_interact_components.clear()
 		
@@ -81,7 +81,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					component.interact(self)
 					recent_interact_components.append(component)
 					break
-				
+	
 		nearby_interact_components.sort_custom(func(a, b):
 			return a.get_instance_id() < b.get_instance_id()
 		)

@@ -66,13 +66,13 @@ func execute_process_food(food_slot: StationSlot, tool_slot: StationSlot, cookin
 		cooking_medium_slot.get_stored_item().queue_free()
 		cooking_medium_slot.set_stored_item(null)
 	
-	# If result is sludge
+	# If result is a new food scene
 	if result is PackedScene:
 		# instantiate() -> add to tree -> delete food in slot -> add sludge to slot -> initiate store station for sludge
-		var sludge = result.instantiate()
-		get_tree().current_scene.add_child(sludge)
+		var result_food = result.instantiate()
+		get_tree().current_scene.add_child(result_food)
 		food_slot.get_stored_item().queue_free()
-		food_slot.set_stored_item(sludge)
+		food_slot.set_stored_item(result_food)
 		food_slot.get_stored_item().get_holdable_component().store_in_station(station.get_station_name())
 	# If result is a string method
 	else:
