@@ -116,7 +116,7 @@ theme_override_font_sizes/font_size = 7
 text = "Food"
 horizontal_alignment = 1
 
-[node name="BlenderFoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1994726176]
+[node name="FoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1994726176]
 texture_filter = 2
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
@@ -125,7 +125,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("3_detbn")
 allowed_item_types = Array[String](["Food"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/BlenderFoodSlot" unique_id=553126107]
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/FoodSlot" unique_id=553126107]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -147,7 +147,7 @@ theme_override_font_sizes/font_size = 7
 text = "Tool"
 horizontal_alignment = 1
 
-[node name="BlenderToolSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1146493211]
+[node name="ToolSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1146493211]
 texture_filter = 2
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
@@ -157,7 +157,7 @@ script = ExtResource("3_detbn")
 allowed_item_types = Array[String](["Tool"])
 specific_item = "Tamper"
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/BlenderToolSlot" unique_id=1043975967]
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ToolSlot" unique_id=1043975967]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -173,25 +173,3 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 8
 text = "Blend"
-
-[node name="BlenderFoodResultSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=58683052]
-visible = false
-texture_filter = 2
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 0
-offset_left = -64.0
-offset_top = 6.0
-offset_bottom = 62.0
-size_flags_vertical = 3
-mouse_default_cursor_shape = 2
-script = ExtResource("3_detbn")
-allowed_item_types = Array[String](["Food"])
-
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/BlenderFoodResultSlot" unique_id=582766126]
-texture_filter = 1
-layout_mode = 0
-offset_left = 12.0
-offset_top = 8.0
-offset_right = 52.0
-offset_bottom = 48.0
-texture = ExtResource("2_detbn")

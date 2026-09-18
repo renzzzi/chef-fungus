@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dypw7dwv5gfxn"]
+
+[ext_resource type="PackedScene" uid="uid://c58124k63fvlk" path="res://Scenes/food.tscn" id="1_ftaye"]
+[ext_resource type="Texture2D" uid="uid://bvuybwh348loi" path="res://Sprites/Food/Blended/blended_apple.png" id="2_t5dco"]
+
+[node name="BlendedApples" unique_id=259264233 instance=ExtResource("1_ftaye")]
+food_name = "Blended Apples"
+shape_state = null
+cook_state = null
+flavor_state = null
+tier = null
+freshness = null
+classifications = null
+
+[node name="Sprite2D" parent="." index="0" unique_id=1840870082]
+texture = ExtResource("2_t5dco")

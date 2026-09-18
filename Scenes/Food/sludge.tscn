@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://tdhokvpif8i8"]
+
+[ext_resource type="PackedScene" uid="uid://c58124k63fvlk" path="res://Scenes/food.tscn" id="1_5b6nk"]
+[ext_resource type="Texture2D" uid="uid://dm0e0ceiueuc7" path="res://Sprites/Food/sludge.png" id="2_lemjl"]
+
+[node name="Sludge" unique_id=259264233 instance=ExtResource("1_5b6nk")]
+food_name = "Sludge"
+
+[node name="Sprite2D" parent="." index="0" unique_id=1840870082]
+texture = ExtResource("2_lemjl")

@@ -7,6 +7,7 @@ var current_item_held = null
 var nearby_interact_components: Array[InteractComponent] = []
 # Stores the interact components that were recently interacted with by the player
 var recent_interact_components: Array[InteractComponent] = []
+# get_node() must receive a string literal because Constant has space but node tree doesn't
 @onready var fridge = get_tree().current_scene.get_node("Fridge")
 @onready var blender = get_tree().current_scene.get_node("Blender")
 @onready var stove = get_tree().current_scene.get_node("Stove")

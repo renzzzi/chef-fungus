@@ -18,6 +18,38 @@ CODE ARCHITECTURE:
 								   -> Stove
 								   -> Deep Fryer
 								   -> Mixing Bowl
+								
+	
+	How Cooking works:
+		recipe.gd:
+			Stores the definition of what a recipe is, it is branched out to two
+			types which are combine recipes and process recipes. This script is empty
+			and only serves to signify that the two recipe types are of the same
+			parent.
+	
+		combine_recipe.gd:
+			Stores the input and output for recipes that are done when combining
+			food in the mixing bowl. It accepts 2-3 food and outputs a food scene
+			as a result.
+	
+		process_recipe.gd:
+			Stores the input station name and food name then outputs a method name
+			in food.gd to determine what will happen to the food after it was
+			processed in a particular station. 
+	
+		recipe_manager.gd:
+			Initializes and stores all the possible recipes the game has to offer 
+			and 2 functions to check if a recipe exist for combine recipes and
+			process recipes.
+	
+		station_ui.gd:
+			This is where everything is orchestrated and where results, food, and
+			tools will be added, changed, and removed accordingly to each station
+			slots.
+	
+	
+		recipe.gd -> combine_recipe.gd -> recipe_manager.gd -> station_ui.gd
+					 process_recipe.gd
 	
 	Station Scripts Explanation:
 		station.gd:
@@ -31,7 +63,8 @@ CODE ARCHITECTURE:
 			
 		station_ui:
 			Holds the logic of swapping food between what the player is holding or
-			lack thereof and the slot interacted with by the mouse.
+			lack thereof and the slot interacted with by the mouse, and the execution
+			of stations.
 			
 		holdable_station.gd:
 			A child class of the Station class that is responsible for turning
@@ -87,25 +120,22 @@ GAME ENTITIES:
 		- Wooden Spoon
 		- Sponge
 	
-	Food: Check recipes.txt
+	Food:
 
 
 ALL ABOUT FOOD:
-	Food Tags:
-		Food has tags that classifies them and all food will initially have at
-		least 1 tag attributed to them. For food tiers above raw ingredient will 
-		have more than 1 tag.
-	
-		Tags are separated into 2 categories and into 5 sub-categories and these are:
+	Food Properties:
+		Food has properties that defines them. They're separated into 2 categories 
+		and into 5 sub-categories which are:
 			What has been done to the food:
-				- Shape State (Whole, Blended, Chopped) | Default: Whole
-				- Cook State (Raw, Boiled, Baked, Fried) | Default: Raw
-				- Flavor State (Plain, Salted, Spicy, Sweetened, etc.) | Default: Plain
+				- Shape State (Whole, Blended, Chopped)
+				- Cook State (Raw, Boiled, Baked, Fried)
+				- Flavor State (Plain, Salted, Spicy, Sweet, etc.)
 	
 			The nature of the food:
 				- Classification (Meat, Dairy, Vegetable, etc.)
-				- Tier (Raw, Prepared, Final) | Default: Raw
-				- Freshness (Fresh, Stale, Spoiled) | Default: Fresh
+				- Tier (Basic, Prepared, Final)
+				- Freshness (Fresh, Stale, Spoiled)
 	
 		For some categories like shape state, food are initially whole and when
 		their shape changes, they cannot go back or change into another shape.
@@ -113,10 +143,10 @@ ALL ABOUT FOOD:
 	Food Tiers:
 		This is based on how they were prepared and what they were combined with.
 	
-		Raw -> Prepared Ingredient -> Final Dish
+		Basic -> Prepared -> Final
 	
 		They do not necessarily have to go through each tier.
-		(e.g. Two Raw Ingredients can become a Final Dish immediately)
+		(e.g. Two Basic Ingredients can become a Final Dish immediately)
 	
 	Food Freshness:
 		Food has a timer where if a certain threshold has passed, its freshness 
@@ -181,11 +211,11 @@ ALL ABOUT STATIONS:
 		
 		Stove:
 			Boil a singular piece of food to turn it into its Boiled state. Needs a 
-			Cooking Pot to operate on.
+			Cooking Pot to operate on. It needs "Water" as the cooking medium.
 		
 		Deep Fryer:
 			Fry a singular piece of food to turn it into its Fried state. Needs a 
-			Frying Basket to operate on.
+			Frying Basket to operate on. It needs "Oil" as the cooking medium.
 			
 		Mixing Bowl:
 			You can put in 2-3 food to combine them into a new dish and/or apply a 

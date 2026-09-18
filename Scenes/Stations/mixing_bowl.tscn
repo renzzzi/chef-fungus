@@ -11,7 +11,7 @@
 modulate = Color(0.19215687, 1, 1, 1)
 z_index = 10
 script = ExtResource("1_8fkcv")
-station_name = "MixingBowl"
+station_name = "Mixing Bowl"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2002650172]
 texture = ExtResource("2_n08vg")

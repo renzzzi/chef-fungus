@@ -118,7 +118,7 @@ theme_override_font_sizes/font_size = 7
 text = "Food"
 horizontal_alignment = 1
 
-[node name="ChoppingBoardFoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=99575160]
+[node name="FoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=99575160]
 texture_filter = 2
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
@@ -127,7 +127,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("5_1lq0y")
 allowed_item_types = Array[String](["Food"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/ChoppingBoardFoodSlot" unique_id=1267470015]
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/FoodSlot" unique_id=1267470015]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -149,7 +149,7 @@ theme_override_font_sizes/font_size = 7
 text = "Tool"
 horizontal_alignment = 1
 
-[node name="ChoppingBoardToolSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=937932400]
+[node name="ToolSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=937932400]
 texture_filter = 2
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
@@ -159,7 +159,7 @@ script = ExtResource("5_1lq0y")
 allowed_item_types = Array[String](["Tool"])
 specific_item = "Knife"
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ChoppingBoardToolSlot" unique_id=1041845146]
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ToolSlot" unique_id=1041845146]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -175,25 +175,3 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 8
 text = "Chop"
-
-[node name="ChoppingBoardFoodResultSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=247888960]
-visible = false
-texture_filter = 2
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 0
-offset_left = -64.0
-offset_top = 6.0
-offset_bottom = 62.0
-size_flags_vertical = 3
-mouse_default_cursor_shape = 2
-script = ExtResource("5_1lq0y")
-allowed_item_types = Array[String](["Food"])
-
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/ChoppingBoardFoodResultSlot" unique_id=238123654]
-texture_filter = 1
-layout_mode = 0
-offset_left = 12.0
-offset_top = 8.0
-offset_right = 52.0
-offset_bottom = 48.0
-texture = ExtResource("2_1lq0y")

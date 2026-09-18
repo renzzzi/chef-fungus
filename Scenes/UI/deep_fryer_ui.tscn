@@ -116,7 +116,7 @@ theme_override_font_sizes/font_size = 7
 text = "Food"
 horizontal_alignment = 1
 
-[node name="DeepFryerFoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1988847709]
+[node name="FoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1988847709]
 texture_filter = 2
 custom_minimum_size = Vector2(18, 18)
 custom_maximum_size = Vector2(18, 18)
@@ -126,7 +126,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("5_enpfw")
 allowed_item_types = Array[String](["Food"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/DeepFryerFoodSlot" unique_id=1899002405]
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/FoodSlot" unique_id=1899002405]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -148,7 +148,7 @@ theme_override_font_sizes/font_size = 7
 text = "Tool"
 horizontal_alignment = 1
 
-[node name="DeepFryerToolSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1449247380]
+[node name="ToolSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1449247380]
 texture_filter = 2
 custom_minimum_size = Vector2(18, 18)
 custom_maximum_size = Vector2(18, 18)
@@ -157,9 +157,9 @@ size_flags_vertical = 3
 mouse_default_cursor_shape = 2
 script = ExtResource("5_enpfw")
 allowed_item_types = Array[String](["Tool"])
-specific_item = "FryingBasket"
+specific_item = "Frying Basket"
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/DeepFryerToolSlot" unique_id=721001379]
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ToolSlot" unique_id=721001379]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -181,7 +181,7 @@ theme_override_font_sizes/font_size = 7
 text = "Oil"
 horizontal_alignment = 1
 
-[node name="DeepFryerOilSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=1264054948]
+[node name="CookingMediumSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=1264054948]
 texture_filter = 2
 custom_minimum_size = Vector2(18, 18)
 custom_maximum_size = Vector2(18, 18)
@@ -192,7 +192,7 @@ script = ExtResource("5_enpfw")
 allowed_item_types = Array[String](["Food"])
 specific_item = "Oil"
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer3/DeepFryerOilSlot" unique_id=2058520734]
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer3/CookingMediumSlot" unique_id=2058520734]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -208,25 +208,3 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 8
 text = "Fry"
-
-[node name="DeepFryerFoodResultSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=2009275031]
-visible = false
-texture_filter = 2
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 0
-offset_left = -64.0
-offset_top = 6.0
-offset_bottom = 62.0
-size_flags_vertical = 3
-mouse_default_cursor_shape = 2
-script = ExtResource("5_enpfw")
-allowed_item_types = Array[String](["Food"])
-
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/DeepFryerFoodResultSlot" unique_id=129651374]
-texture_filter = 1
-layout_mode = 0
-offset_left = 12.0
-offset_top = 8.0
-offset_right = 52.0
-offset_bottom = 48.0
-texture = ExtResource("2_v1a3a")

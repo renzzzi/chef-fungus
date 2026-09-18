@@ -11,7 +11,7 @@
 modulate = Color(0, 1, 0, 1)
 z_index = 10
 script = ExtResource("1_b6rho")
-station_name = "ChoppingBoard"
+station_name = "Chopping Board"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1053666160]
 texture = ExtResource("2_rakid")

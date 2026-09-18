@@ -24,5 +24,4 @@ scale = Vector2(0.55, 0.55)
 
 [node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("5_t6ik2")]
 
-[node name="BlenderUI" parent="." unique_id=690813215 node_paths=PackedStringArray("station") instance=ExtResource("6_j4q05")]
-station = NodePath("..")
+[node name="BlenderUI" parent="." unique_id=690813215 instance=ExtResource("6_j4q05")]

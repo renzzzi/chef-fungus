@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://lfr4vf7gyub3" path="res://Scenes/Tools/sheet_pan.tscn" id="18_1cojt"]
 [ext_resource type="PackedScene" uid="uid://dr6nevmj8dhvq" path="res://Scenes/Tools/knife.tscn" id="19_yq1aw"]
 [ext_resource type="PackedScene" uid="uid://bq13l88y4cwgi" path="res://Scenes/Tools/cooking_pot.tscn" id="20_pyn1s"]
+[ext_resource type="PackedScene" uid="uid://dvwxynxcpdftc" path="res://Scenes/Tools/wooden_spoon.tscn" id="21_pyn1s"]
+[ext_resource type="PackedScene" uid="uid://bxlvox2ah4cdv" path="res://Scenes/Tools/frying_basket.tscn" id="22_no8kt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tve5p"]
 size = Vector2(192, 16)
@@ -142,3 +144,9 @@ position = Vector2(-24, 40)
 
 [node name="Knife" parent="." unique_id=1125220689 instance=ExtResource("19_yq1aw")]
 position = Vector2(-16, 24)
+
+[node name="WoodenSpoon" parent="." unique_id=712424008 instance=ExtResource("21_pyn1s")]
+position = Vector2(64, -8)
+
+[node name="FryingBasket" parent="." unique_id=173745987 instance=ExtResource("22_no8kt")]
+position = Vector2(72, 16)

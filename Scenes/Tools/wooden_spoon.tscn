@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dvwxynxcpdftc"]
+
+[ext_resource type="PackedScene" uid="uid://b3ihi1hy1i34i" path="res://Scenes/tool.tscn" id="1_kubcv"]
+[ext_resource type="Texture2D" uid="uid://th1knhsuu74x" path="res://Sprites/Tools/wooden_spoon.png" id="2_cy0t5"]
+
+[node name="WoodenSpoon" unique_id=117532560 instance=ExtResource("1_kubcv")]
+tool_name = "Wooden Spoon"
+
+[node name="Sprite2D" parent="." index="0" unique_id=706181308]
+texture = ExtResource("2_cy0t5")

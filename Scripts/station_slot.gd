@@ -1,3 +1,4 @@
+class_name StationSlot
 extends Panel
 
 @onready var food_image = $FoodImage
@@ -9,7 +10,7 @@ extends Panel
 ## Allowed string values = ["Food", "Tool", "HoldableStation"]
 @export var allowed_item_types: Array[String] = []
 @export_category("For more info please read the tooltip")
-## Used if the slot only accepts a specific item (e.g. "Oil" for DeepFryerOilSlot in DeepFryerUI)
+## Used if the slot only accepts a specific item (e.g. "Sheet Pan")
 @export var specific_item: String = ""
 var stored_item = null
 signal station_slot_interacted(station_slot)

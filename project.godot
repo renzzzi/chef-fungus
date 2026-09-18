@@ -18,6 +18,8 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 [autoload]
 
 Load="*uid://ch8uc4kyypbqs"
+Constants="*uid://55fw3mae1cu0"
+RecipeManager="*uid://we4oqw6apx1b"
 
 [display]
 

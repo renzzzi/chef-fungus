@@ -104,7 +104,7 @@ theme_override_font_sizes/font_size = 5
 text = "Food"
 horizontal_alignment = 1
 
-[node name="MixingBowlFoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=252520193]
+[node name="FoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer" unique_id=252520193]
 texture_filter = 2
 custom_minimum_size = Vector2(18, 18)
 custom_maximum_size = Vector2(18, 18)
@@ -114,7 +114,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("5_w3nsc")
 allowed_item_types = Array[String](["Food"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer/MixingBowlFoodSlot" unique_id=1573563980]
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer/FoodSlot" unique_id=1573563980]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -136,7 +136,7 @@ theme_override_font_sizes/font_size = 5
 text = "Food"
 horizontal_alignment = 1
 
-[node name="MixingBowlFoodSlot2" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer2" unique_id=354327972]
+[node name="FoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer2" unique_id=354327972]
 texture_filter = 2
 custom_minimum_size = Vector2(18, 18)
 custom_maximum_size = Vector2(18, 18)
@@ -146,7 +146,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("5_w3nsc")
 allowed_item_types = Array[String](["Food"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer2/MixingBowlFoodSlot2" unique_id=626110210]
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer2/FoodSlot" unique_id=626110210]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -168,7 +168,7 @@ theme_override_font_sizes/font_size = 5
 text = "Food"
 horizontal_alignment = 1
 
-[node name="MixingBowlFoodSlot3" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer3" unique_id=2039499806]
+[node name="FoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer3" unique_id=2039499806]
 texture_filter = 2
 custom_minimum_size = Vector2(18, 18)
 custom_maximum_size = Vector2(18, 18)
@@ -178,7 +178,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("5_w3nsc")
 allowed_item_types = Array[String](["Food"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer3/MixingBowlFoodSlot3" unique_id=538231885]
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer3/FoodSlot" unique_id=538231885]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -210,16 +210,16 @@ theme_override_font_sizes/font_size = 5
 text = "Tool"
 horizontal_alignment = 1
 
-[node name="MixingBowlToolSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer" unique_id=795350721]
+[node name="ToolSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer" unique_id=795350721]
 custom_minimum_size = Vector2(18, 18)
 custom_maximum_size = Vector2(18, 18)
 layout_mode = 2
 mouse_default_cursor_shape = 2
 script = ExtResource("5_w3nsc")
 allowed_item_types = Array[String](["Tool"])
-specific_item = "WoodenSpoon"
+specific_item = "Wooden Spoon"
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/MixingBowlToolSlot" unique_id=1164639486]
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/ToolSlot" unique_id=1164639486]
 visible = false
 layout_mode = 0
 offset_left = 1.0
@@ -242,28 +242,3 @@ theme_override_font_sizes/font_size = 8
 text = "M
 I
 X"
-
-[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1647207323]
-layout_mode = 2
-
-[node name="MixingBowlFoodResultSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=814169752]
-visible = false
-texture_filter = 2
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 0
-offset_left = -64.0
-offset_top = 6.0
-offset_bottom = 62.0
-size_flags_vertical = 3
-mouse_default_cursor_shape = 2
-script = ExtResource("5_w3nsc")
-allowed_item_types = Array[String](["Food"])
-
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/MixingBowlFoodResultSlot" unique_id=262470160]
-texture_filter = 1
-layout_mode = 0
-offset_left = 12.0
-offset_top = 8.0
-offset_right = 52.0
-offset_bottom = 48.0
-texture = ExtResource("2_5fhkv")

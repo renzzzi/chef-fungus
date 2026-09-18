@@ -11,7 +11,7 @@
 modulate = Color(0.3882353, 0, 1, 1)
 z_index = 10
 script = ExtResource("1_sb4sa")
-station_name = "DeepFryer"
+station_name = "Deep Fryer"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2137927647]
 texture = ExtResource("1_rf7cc")
