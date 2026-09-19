@@ -172,8 +172,11 @@ func station_interacted(ui_active):
 		item_ui.texture = Load.load_food_texture[player.get_current_item_held().get_food_name()]
 	
 func _process(_delta: float) -> void:
-	if player.get_current_item_held() != null and player.get_current_item_held() is Food:
-		item_ui.modulate = Load.load_color[player.get_current_item_held().get_food_freshness()]
+	if player.get_current_item_held() != null:
+		if player.get_current_item_held() is Food:
+			item_ui.modulate = Load.load_color[player.get_current_item_held().get_food_freshness()]
+		elif player.get_current_item_held() is Tool:
+			item_ui.modulate = Load.load_color[player.get_current_item_held().get_is_dirty()]
 	else:
 		item_ui.modulate = Color.WHITE
 

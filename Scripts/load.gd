@@ -36,6 +36,8 @@ var load_color = {
 	Food.Freshness.FRESH: Color.WHITE,
 	Food.Freshness.STALE: Color(0.636, 0.321, 0.126, 1.0),
 	Food.Freshness.SPOILED: Color(0.205, 0.205, 0.205, 1.0),
+	
+	# is_dirty (Tool)
 	true: Color(0.636, 0.321, 0.126, 1.0),
 	false: Color.WHITE
 }

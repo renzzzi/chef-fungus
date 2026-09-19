@@ -62,6 +62,7 @@ func _process(_delta: float) -> void:
 			food_image.modulate = Load.load_color[stored_item.get_food_freshness()]
 			food_image.texture = Load.load_food_texture[stored_item.get_food_name()]
 		elif stored_item is Tool:
+			food_image.modulate = Load.load_color[stored_item.get_is_dirty()]
 			food_image.texture = Load.load_tool_texture[stored_item.get_tool_name()]
 		elif stored_item is HoldableStation:
 			food_image.texture = Load.load_holdable_station_texture[stored_item.get_station_name()]
