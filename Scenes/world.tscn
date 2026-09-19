@@ -162,3 +162,13 @@ position = Vector2(72, 16)
 
 [node name="Sponge" parent="." unique_id=1395162942 instance=ExtResource("25_i4fjy")]
 position = Vector2(-80, 0)
+
+[editable path="Fridge"]
+[editable path="Sink"]
+[editable path="TrashCan"]
+[editable path="Blender"]
+[editable path="Stove"]
+[editable path="ChoppingBoard"]
+[editable path="DeepFryer"]
+[editable path="Oven"]
+[editable path="MixingBowl"]

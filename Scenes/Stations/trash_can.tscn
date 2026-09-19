@@ -30,7 +30,5 @@ shape = SubResource("RectangleShape2D_wr54c")
 [node name="StationUIInteractComponent" parent="." unique_id=1805268843 instance=ExtResource("2_cmb38")]
 
 [node name="TrashCanUI" parent="." unique_id=1542182569 instance=ExtResource("4_wr54c")]
-visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
+offset_right = -72.0
+offset_bottom = -56.0

@@ -29,8 +29,7 @@ shape = SubResource("RectangleShape2D_qddp6")
 
 [node name="StationUIInteractComponent" parent="." unique_id=1805268843 instance=ExtResource("2_etd0p")]
 
-[node name="SinkUi" parent="." unique_id=660707807 instance=ExtResource("4_xtxln")]
+[node name="SinkUI" parent="." unique_id=660707807 instance=ExtResource("4_xtxln")]
 z_index = 100
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
+offset_right = -72.0
+offset_bottom = -56.0

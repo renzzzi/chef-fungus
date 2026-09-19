@@ -25,3 +25,5 @@ scale = Vector2(0.55, 0.55)
 [node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("4_tu10o")]
 
 [node name="DeepFryerUI" parent="." unique_id=153671428 instance=ExtResource("6_o5ipr")]
+offset_right = -72.0
+offset_bottom = -56.0

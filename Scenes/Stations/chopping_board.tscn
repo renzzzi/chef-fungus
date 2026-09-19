@@ -25,3 +25,5 @@ scale = Vector2(0.55, 0.55)
 [node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("3_rakid")]
 
 [node name="ChoppingBoardUI" parent="." unique_id=1622576349 instance=ExtResource("6_a1v8w")]
+offset_right = -72.0
+offset_bottom = -56.0

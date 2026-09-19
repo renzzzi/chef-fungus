@@ -25,3 +25,5 @@ scale = Vector2(0.55, 0.55)
 [node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("5_t6ik2")]
 
 [node name="BlenderUI" parent="." unique_id=690813215 instance=ExtResource("6_j4q05")]
+offset_right = -72.0
+offset_bottom = -56.0

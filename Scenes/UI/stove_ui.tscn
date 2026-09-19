@@ -12,11 +12,14 @@ bg_color = Color(0.5529412, 0.6039216, 0.69411767, 0.9019608)
 
 [node name="StoveUI" type="Control" unique_id=725442411]
 visible = false
+top_level = true
 z_index = 100
 layout_mode = 3
 anchors_preset = 0
-offset_right = 144.0
-offset_bottom = 112.0
+offset_left = -72.0
+offset_top = -56.0
+offset_right = 72.0
+offset_bottom = 56.0
 script = ExtResource("1_yi8kn")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=2139421568]

@@ -25,3 +25,5 @@ scale = Vector2(0.55, 0.55)
 [node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("5_hx12j")]
 
 [node name="MixingBowlUI" parent="." unique_id=1947888438 instance=ExtResource("6_n08vg")]
+offset_right = -72.0
+offset_bottom = -56.0

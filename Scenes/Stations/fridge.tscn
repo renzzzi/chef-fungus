@@ -30,3 +30,5 @@ shape = SubResource("RectangleShape2D_tve5p")
 [node name="StationUIInteractComponent" parent="." unique_id=1805268843 instance=ExtResource("3_uhp70")]
 
 [node name="FridgeUI" parent="." unique_id=136372375 instance=ExtResource("5_7dr7g")]
+offset_right = -72.0
+offset_bottom = -56.0

@@ -25,3 +25,5 @@ scale = Vector2(0.55, 0.55)
 [node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("4_p2lj7")]
 
 [node name="StoveUI" parent="." unique_id=725442411 instance=ExtResource("6_ixtii")]
+offset_right = -72.0
+offset_bottom = -56.0

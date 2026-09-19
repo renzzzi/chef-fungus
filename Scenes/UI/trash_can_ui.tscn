@@ -9,10 +9,15 @@
 bg_color = Color(0.5137255, 0.23137255, 0, 0.9019608)
 
 [node name="TrashCanUI" type="Control" unique_id=1542182569]
+visible = false
+top_level = true
 z_index = 100
 layout_mode = 3
-anchor_right = 0.120000005
-anchor_bottom = 0.16000001
+anchors_preset = 0
+offset_left = -72.0
+offset_top = -56.0
+offset_right = 72.0
+offset_bottom = 56.0
 script = ExtResource("1_s6s18")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=23147172]

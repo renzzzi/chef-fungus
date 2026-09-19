@@ -25,3 +25,5 @@ scale = Vector2(0.55, 0.55)
 [node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("4_jj7rg")]
 
 [node name="OvenUI" parent="." unique_id=690813215 instance=ExtResource("6_5ambn")]
+offset_right = -72.0
+offset_bottom = -56.0
