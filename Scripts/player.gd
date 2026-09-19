@@ -7,6 +7,8 @@ var current_item_held = null
 var nearby_interact_components: Array[InteractComponent] = []
 # Stores the interact components that were recently interacted with by the player
 var recent_interact_components: Array[InteractComponent] = []
+var last_interacted_station_ui: InteractComponent
+var in_station_interface = false
 # get_node() must receive a string literal because Constant has space but node tree doesn't
 @onready var fridge = get_tree().current_scene.get_node("Fridge")
 @onready var sink = get_tree().current_scene.get_node("Sink")
@@ -49,6 +51,7 @@ func unregister_interact_component(interact_component):
 func station_interacted(ui_active):
 	# If ui_active is true then disable player physics and vice-versa
 	set_physics_process(!ui_active)
+	in_station_interface = ui_active
 	
 func _process(_delta: float) -> void:
 	if velocity.x < -0.1:
@@ -63,6 +66,11 @@ func _physics_process(_delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Interact"):
+		if last_interacted_station_ui != null:
+			last_interacted_station_ui.interact(self)
+			last_interacted_station_ui = null
+			return
+		
 		if nearby_interact_components.is_empty():
 			return
 	
@@ -70,6 +78,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		for component in nearby_interact_components:
 			if component.get_is_stationary_station():
 				component.interact(self)
+				if in_station_interface:
+					last_interacted_station_ui = component
 				return
 	
 		if nearby_interact_components == recent_interact_components:
