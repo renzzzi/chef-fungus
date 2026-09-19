@@ -52,6 +52,8 @@ func station_interacted(ui_active):
 	# If ui_active is true then disable player physics and vice-versa
 	set_physics_process(!ui_active)
 	in_station_interface = ui_active
+	if !ui_active:
+		last_interacted_station_ui = null
 	
 func _process(_delta: float) -> void:
 	if velocity.x < -0.1:

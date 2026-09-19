@@ -131,7 +131,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("5_enpfw")
 allowed_item_types = Array[String](["Food"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/FoodSlot" unique_id=1899002405]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/FoodSlot" unique_id=1899002405]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -164,7 +164,7 @@ script = ExtResource("5_enpfw")
 allowed_item_types = Array[String](["Tool"])
 specific_item = "Frying Basket"
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ToolSlot" unique_id=721001379]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ToolSlot" unique_id=721001379]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -197,7 +197,7 @@ script = ExtResource("5_enpfw")
 allowed_item_types = Array[String](["Food"])
 specific_item = "Oil"
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer3/CookingMediumSlot" unique_id=2058520734]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer3/CookingMediumSlot" unique_id=2058520734]
 visible = false
 texture_filter = 1
 layout_mode = 0

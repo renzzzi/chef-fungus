@@ -128,7 +128,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("3_detbn")
 allowed_item_types = Array[String](["Food"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/FoodSlot" unique_id=553126107]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/FoodSlot" unique_id=553126107]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -160,7 +160,7 @@ script = ExtResource("3_detbn")
 allowed_item_types = Array[String](["Tool"])
 specific_item = "Tamper"
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ToolSlot" unique_id=1043975967]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ToolSlot" unique_id=1043975967]
 visible = false
 texture_filter = 1
 layout_mode = 0

@@ -26,7 +26,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("2_s28ug")
 allowed_item_types = Array[String](["Food", "Tool", "HoldableStation"])
 
-[node name="FoodImage" type="TextureRect" parent="TrashSlot" unique_id=1514225782]
+[node name="SlotImage" type="TextureRect" parent="TrashSlot" unique_id=1514225782]
 visible = false
 texture_filter = 1
 layout_mode = 0

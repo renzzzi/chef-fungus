@@ -117,7 +117,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("5_w3nsc")
 allowed_item_types = Array[String](["Food"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer/FoodSlot" unique_id=1573563980]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer/FoodSlot" unique_id=1573563980]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -149,7 +149,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("5_w3nsc")
 allowed_item_types = Array[String](["Food"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer2/FoodSlot" unique_id=626110210]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer2/FoodSlot" unique_id=626110210]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -181,7 +181,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("5_w3nsc")
 allowed_item_types = Array[String](["Food"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer3/FoodSlot" unique_id=538231885]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer3/FoodSlot" unique_id=538231885]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -222,7 +222,7 @@ script = ExtResource("5_w3nsc")
 allowed_item_types = Array[String](["Tool"])
 specific_item = "Wooden Spoon"
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/ToolSlot" unique_id=1164639486]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/ToolSlot" unique_id=1164639486]
 visible = false
 layout_mode = 0
 offset_left = 1.0

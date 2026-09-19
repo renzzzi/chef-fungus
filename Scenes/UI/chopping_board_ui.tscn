@@ -130,7 +130,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("5_1lq0y")
 allowed_item_types = Array[String](["Food"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/FoodSlot" unique_id=1267470015]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/FoodSlot" unique_id=1267470015]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -162,7 +162,7 @@ script = ExtResource("5_1lq0y")
 allowed_item_types = Array[String](["Tool"])
 specific_item = "Knife"
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ToolSlot" unique_id=1041845146]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ToolSlot" unique_id=1041845146]
 visible = false
 texture_filter = 1
 layout_mode = 0

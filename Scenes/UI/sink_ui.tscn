@@ -103,7 +103,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("3_2hah6")
 allowed_item_types = Array[String](["Tool"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer/SinkSlot" unique_id=1813173200]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer/SinkSlot" unique_id=1813173200]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -135,7 +135,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("3_2hah6")
 allowed_item_types = Array[String](["Tool"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer2/SinkSlot" unique_id=1743772914]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer2/SinkSlot" unique_id=1743772914]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -167,7 +167,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("3_2hah6")
 allowed_item_types = Array[String](["Tool"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer3/SinkSlot" unique_id=1923702617]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer3/SinkSlot" unique_id=1923702617]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -199,7 +199,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("3_2hah6")
 allowed_item_types = Array[String](["Tool"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer4/SinkSlot" unique_id=1751533239]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer4/SinkSlot" unique_id=1751533239]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -231,7 +231,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("3_2hah6")
 allowed_item_types = Array[String](["Tool"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer5/SinkSlot" unique_id=1268700760]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer5/SinkSlot" unique_id=1268700760]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -263,7 +263,7 @@ mouse_default_cursor_shape = 2
 script = ExtResource("3_2hah6")
 allowed_item_types = Array[String](["Tool"])
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer6/SinkSlot" unique_id=1365446817]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer6/SinkSlot" unique_id=1365446817]
 visible = false
 texture_filter = 1
 layout_mode = 0
@@ -303,7 +303,7 @@ script = ExtResource("3_2hah6")
 allowed_item_types = Array[String](["Tool"])
 specific_item = "Sponge"
 
-[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer/ToolSlot" unique_id=401309906]
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer/ToolSlot" unique_id=401309906]
 visible = false
 texture_filter = 1
 layout_mode = 0

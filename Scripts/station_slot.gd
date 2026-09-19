@@ -1,7 +1,7 @@
 class_name StationSlot
 extends Panel
 
-@onready var food_image = $FoodImage
+@onready var slot_image = $SlotImage
 
 # An array where each item is picked from the ItemType dropdown:
 # I just resorted to a string cause the other
@@ -56,17 +56,17 @@ func check_allowed_item_types(player_current_item_held) -> bool:
 	
 func _process(_delta: float) -> void:
 	if stored_item == null:
-		food_image.visible = false
+		slot_image.visible = false
 	else:
 		if stored_item is Food:
-			food_image.modulate = Load.load_color[stored_item.get_food_freshness()]
-			food_image.texture = Load.load_food_texture[stored_item.get_food_name()]
+			slot_image.modulate = Load.load_color[stored_item.get_food_freshness()]
+			slot_image.texture = Load.load_food_texture[stored_item.get_food_name()]
 		elif stored_item is Tool:
-			food_image.modulate = Load.load_color[stored_item.get_is_dirty()]
-			food_image.texture = Load.load_tool_texture[stored_item.get_tool_name()]
+			slot_image.modulate = Load.load_color[stored_item.get_is_dirty()]
+			slot_image.texture = Load.load_tool_texture[stored_item.get_tool_name()]
 		elif stored_item is HoldableStation:
-			food_image.texture = Load.load_holdable_station_texture[stored_item.get_station_name()]
-		food_image.visible = true
+			slot_image.texture = Load.load_holdable_station_texture[stored_item.get_station_name()]
+		slot_image.visible = true
 
 func _gui_input(event: InputEvent) -> void:
 	if (event is InputEventMouseButton and
