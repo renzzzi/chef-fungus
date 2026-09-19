@@ -5,6 +5,13 @@ extends Node2D
 ## Tool name must be in PascalCase with a space after each word (e.g. "Sheet Pan")
 @export var tool_name: String
 var is_dirty = false
+var uses_left = 2
+
+func decrement_uses_left():
+	uses_left -= 1
+
+func get_uses_left():
+	return uses_left
 
 func set_is_dirty(is_dirty):
 	self.is_dirty = is_dirty

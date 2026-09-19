@@ -12,12 +12,12 @@ CODE ARCHITECTURE:
 		- Tool.tscn
 	
 	Station Class Inheritance Tree:
-		Station -> HoldableStation -> Blender
-								   -> Chopping Board
-								   -> Oven
-								   -> Stove
-								   -> Deep Fryer
-								   -> Mixing Bowl
+		Station -> Fridge -> HoldableStation -> Blender
+				-> Sink 					 ->Chopping Board
+				-> Countertop 	 			 -> Oven
+				-> Trash Can 				 -> Stove
+											 -> Deep Fryer
+											 -> Mixing Bowl
 								
 	
 	How Cooking works:

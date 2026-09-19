@@ -86,8 +86,18 @@ func _initialize() -> void:
 		)
 
 func execute_process_food(food_slot: StationSlot, tool_slot: StationSlot, cooking_medium_slot: StationSlot = null):
-	if food_slot.get_stored_item() == null or tool_slot.get_stored_item() == null or tool_slot.get_stored_item().get_is_dirty():
+	if food_slot.get_stored_item() == null:
 		return
+	
+	if tool_slot.get_stored_item() == null:
+		return
+	
+	if tool_slot.get_stored_item().get_is_dirty():
+		return
+	
+	if tool_slot.get_stored_item().get_uses_left() < 1:
+		return
+	
 	
 	var result = RecipeManager.check_process_recipe(station.get_station_name(), food_slot.get_stored_item().get_food_name())
 	
@@ -108,15 +118,25 @@ func execute_process_food(food_slot: StationSlot, tool_slot: StationSlot, cookin
 		food_slot.get_stored_item().call(result)
 		
 	tool_slot.get_stored_item().set_is_dirty(true)
+	tool_slot.get_stored_item().decrement_uses_left()
 		
 func execute_combine_food(food_slots: Array[StationSlot], tool_slot: StationSlot):
-	# Checks if food_slots has at least 2 slots that are storing food
+	# Checks if food_slots has at least 2 slots out of 3 that are storing food
 	var null_count = 0
 	for slot in food_slots:
 		if slot.get_stored_item() == null:
 			null_count += 1
 			
-	if null_count > 1 or tool_slot.get_stored_item() == null or tool_slot.get_stored_item().get_is_dirty():
+	if null_count > 1:
+		return
+	
+	if tool_slot.get_stored_item() == null:
+		return
+	
+	if tool_slot.get_stored_item().get_is_dirty():
+		return
+		
+	if tool_slot.get_stored_item().get_uses_left() < 1:
 		return
 	
 	# Get the food in each slot and stores it in another array
@@ -128,7 +148,7 @@ func execute_combine_food(food_slots: Array[StationSlot], tool_slot: StationSlot
 	var result_food = result.instantiate()
 	get_tree().current_scene.add_child(result_food)
 	
-	# These blocks are to clear each slots and put the result food in slot 0
+	# These blocks are to clear each slots and put the result food in food_slots[0]
 	if food_slots[0].get_stored_item() != null: 
 		food_slots[0].get_stored_item().queue_free()
 		food_slots[0].set_stored_item(result_food)
@@ -144,20 +164,29 @@ func execute_combine_food(food_slots: Array[StationSlot], tool_slot: StationSlot
 	# Then trigger the store_in_station of the result food
 	food_slots[0].get_stored_item().get_holdable_component().store_in_station(station.get_station_name())
 	tool_slot.get_stored_item().set_is_dirty(true)
+	tool_slot.get_stored_item().decrement_uses_left()
 	
 func execute_sink(sink_slots: Array[StationSlot], tool_slot: StationSlot):
-	# Checks if sink_slots has at least 1 slot that is storing a tool
+	# Checks if sink_slots has at least 1 slot out of 6 that is storing a tool
 	var null_count = 0
 	for slot in sink_slots:
 		if slot.get_stored_item() == null:
 			null_count += 1
 	
-	if null_count > 5 or tool_slot.get_stored_item() == null:
+	if null_count > 5:
+		return
+	
+	if tool_slot.get_stored_item() == null:
+		return
+		
+	if tool_slot.get_stored_item().get_uses_left() < 1:
 		return
 	
 	for slot in sink_slots:
 		if slot.get_stored_item() != null:
 			slot.get_stored_item().set_is_dirty(false)
+	
+	tool_slot.get_stored_item().decrement_uses_left()
 
 func station_interacted(ui_active):
 	self.visible = ui_active
