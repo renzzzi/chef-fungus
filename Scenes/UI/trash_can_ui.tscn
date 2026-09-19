@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://opeffoy5y7p1"]
+
+[ext_resource type="Texture2D" uid="uid://bcowatgfg23jv" path="res://Sprites/player_head.png" id="1_0n6wf"]
+[ext_resource type="Script" uid="uid://70d6ayu48wmn" path="res://Scripts/station_ui.gd" id="1_s6s18"]
+[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown.png" id="2_w77rr"]
+[ext_resource type="PackedScene" uid="uid://bkgivqkns4qpw" path="res://Scenes/UI/trash_slot_container.tscn" id="4_w77rr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwix5"]
+bg_color = Color(0.5137255, 0.23137255, 0, 0.9019608)
+
+[node name="TrashCanUI" type="Control" unique_id=1542182569]
+z_index = 100
+layout_mode = 3
+anchor_right = 0.120000005
+anchor_bottom = 0.16000001
+script = ExtResource("1_s6s18")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=23147172]
+custom_minimum_size = Vector2(144, 112)
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 112.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xwix5")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=667781998]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1067370726]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2027767067]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=992361254]
+layout_mode = 2
+
+[node name="PlayerHead" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=380263955]
+modulate = Color(1, 1, 1, 0.78431374)
+layout_mode = 0
+offset_left = 9.0
+offset_top = 2.0
+offset_right = 33.0
+offset_bottom = 17.0
+texture = ExtResource("1_0n6wf")
+
+[node name="ItemUI" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=731084062]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -10.0
+offset_right = 30.0
+offset_bottom = 7.0
+texture = ExtResource("2_w77rr")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=47031809]
+layout_mode = 2
+theme_override_constants/margin_right = 15
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=690357850]
+layout_mode = 2
+size_flags_horizontal = 6
+offset_transform_enabled = true
+text = "Trash Can"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2062686950]
+layout_mode = 2
+
+[node name="TrashSlotContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=875232881 instance=ExtResource("4_w77rr")]
+layout_mode = 2
+
+[node name="TrashSlotContainer2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=171744560 instance=ExtResource("4_w77rr")]
+layout_mode = 2
+
+[node name="TrashSlotContainer3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=467585574 instance=ExtResource("4_w77rr")]
+layout_mode = 2
+
+[node name="TrashSlotContainer4" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=592441711 instance=ExtResource("4_w77rr")]
+layout_mode = 2

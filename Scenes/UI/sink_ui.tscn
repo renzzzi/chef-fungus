@@ -8,7 +8,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_di2xk"]
 bg_color = Color(0.5137255, 0.23137255, 0, 0.9019608)
 
-[node name="SinkUi" type="Control" unique_id=660707807]
+[node name="SinkUI" type="Control" unique_id=660707807]
 visible = false
 layout_mode = 3
 anchor_right = 0.120000005

@@ -10,6 +10,7 @@ var recent_interact_components: Array[InteractComponent] = []
 # get_node() must receive a string literal because Constant has space but node tree doesn't
 @onready var fridge = get_tree().current_scene.get_node("Fridge")
 @onready var sink = get_tree().current_scene.get_node("Sink")
+@onready var trash_can = get_tree().current_scene.get_node("TrashCan")
 @onready var blender = get_tree().current_scene.get_node("Blender")
 @onready var stove = get_tree().current_scene.get_node("Stove")
 @onready var chopping_board = get_tree().current_scene.get_node("ChoppingBoard")
@@ -20,6 +21,7 @@ var recent_interact_components: Array[InteractComponent] = []
 func _ready() -> void:
 	fridge.get_station_ui_interact_component().station_interacted.connect(station_interacted)
 	sink.get_station_ui_interact_component().station_interacted.connect(station_interacted)
+	trash_can.get_station_ui_interact_component().station_interacted.connect(station_interacted)
 	blender.get_station_ui_interact_component().station_interacted.connect(station_interacted)
 	stove.get_station_ui_interact_component().station_interacted.connect(station_interacted)
 	chopping_board.get_station_ui_interact_component().station_interacted.connect(station_interacted)

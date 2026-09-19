@@ -17,6 +17,15 @@ func _initialize() -> void:
 	if station.get_station_name() == Constants.FRIDGE:
 		for child in $PanelContainer/MarginContainer/VBoxContainer/GridContainer.get_children():
 			child.station_slot_interacted.connect(station_slot_interacted)
+	elif station.get_station_name() == Constants.TRASH_CAN:
+		var trash_slot_1 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TrashSlotContainer/TrashSlot
+		var trash_slot_2 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TrashSlotContainer2/TrashSlot
+		var trash_slot_3 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TrashSlotContainer3/TrashSlot
+		var trash_slot_4 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TrashSlotContainer4/TrashSlot
+		trash_slot_1.station_slot_interacted.connect(station_slot_interacted)
+		trash_slot_2.station_slot_interacted.connect(station_slot_interacted)
+		trash_slot_3.station_slot_interacted.connect(station_slot_interacted)
+		trash_slot_4.station_slot_interacted.connect(station_slot_interacted)
 	elif station.get_station_name() == Constants.SINK:
 		var sink_slot_1 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer/SinkSlot
 		var sink_slot_2 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer2/SinkSlot
@@ -75,8 +84,6 @@ func _initialize() -> void:
 			func():
 				execute_process_food(food_slot, tool_slot, cooking_medium_slot)
 		)
-			
-		
 
 func execute_process_food(food_slot: StationSlot, tool_slot: StationSlot, cooking_medium_slot: StationSlot = null):
 	if food_slot.get_stored_item() == null or tool_slot.get_stored_item() == null or tool_slot.get_stored_item().get_is_dirty():
