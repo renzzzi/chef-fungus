@@ -13,10 +13,9 @@ visible = false
 z_index = 100
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 144.0
+offset_bottom = 112.0
 script = ExtResource("1_jeca8")
-station_type = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=377818673]
 custom_minimum_size = Vector2(144, 112)

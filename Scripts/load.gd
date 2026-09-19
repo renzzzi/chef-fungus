@@ -7,8 +7,8 @@ var load_tool_texture = {
 	Constants.SHEET_PAN: preload("res://Sprites/Tools/sheet_pan.png"),
 	Constants.COOKING_POT: preload("res://Sprites/Tools/cooking_pot.png"),
 	Constants.FRYING_BASKET: preload("res://Sprites/Tools/frying_basket.png"),
-	Constants.WOODEN_SPOON: preload("res://Sprites/Tools/wooden_spoon.png")
-	#Constants.SPONGE: preload("res://Sprites/Tools/sponge.png")
+	Constants.WOODEN_SPOON: preload("res://Sprites/Tools/wooden_spoon.png"),
+	Constants.SPONGE: preload("res://Sprites/Tools/sponge.png")
 }
 
 var load_holdable_station_texture = {
@@ -35,7 +35,9 @@ var load_holdable_station_texture = {
 var load_color = {
 	Food.Freshness.FRESH: Color.WHITE,
 	Food.Freshness.STALE: Color(0.636, 0.321, 0.126, 1.0),
-	Food.Freshness.SPOILED: Color(0.205, 0.205, 0.205, 1.0)
+	Food.Freshness.SPOILED: Color(0.205, 0.205, 0.205, 1.0),
+	true: Color(0.636, 0.321, 0.126, 1.0),
+	false: Color.WHITE
 }
 
 var load_food_texture = {

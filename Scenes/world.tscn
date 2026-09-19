@@ -22,6 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://bq13l88y4cwgi" path="res://Scenes/Tools/cooking_pot.tscn" id="20_pyn1s"]
 [ext_resource type="PackedScene" uid="uid://dvwxynxcpdftc" path="res://Scenes/Tools/wooden_spoon.tscn" id="21_pyn1s"]
 [ext_resource type="PackedScene" uid="uid://bxlvox2ah4cdv" path="res://Scenes/Tools/frying_basket.tscn" id="22_no8kt"]
+[ext_resource type="PackedScene" uid="uid://6s7bgo0kucmv" path="res://Scenes/Stations/sink.tscn" id="23_xbk3s"]
+[ext_resource type="PackedScene" uid="uid://w15r8evuyetd" path="res://Scenes/Stations/trash_can.tscn" id="24_i4fjy"]
+[ext_resource type="PackedScene" uid="uid://djk2nb4o1p8s3" path="res://Scenes/Tools/sponge.tscn" id="25_i4fjy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tve5p"]
 size = Vector2(192, 16)
@@ -92,6 +95,12 @@ position = Vector2(-8, -24)
 [node name="CounterTop3" parent="." unique_id=362327756 instance=ExtResource("3_5ukr8")]
 position = Vector2(-24, -24)
 
+[node name="Sink" parent="." unique_id=689468705 instance=ExtResource("23_xbk3s")]
+position = Vector2(-56, -24)
+
+[node name="TrashCan" parent="." unique_id=1677065389 instance=ExtResource("24_i4fjy")]
+position = Vector2(48, 64)
+
 [node name="Blender" parent="." unique_id=2147397412 instance=ExtResource("5_k7acu")]
 position = Vector2(-56, 24)
 
@@ -150,3 +159,6 @@ position = Vector2(64, -8)
 
 [node name="FryingBasket" parent="." unique_id=173745987 instance=ExtResource("22_no8kt")]
 position = Vector2(72, 16)
+
+[node name="Sponge" parent="." unique_id=1395162942 instance=ExtResource("25_i4fjy")]
+position = Vector2(-80, 0)

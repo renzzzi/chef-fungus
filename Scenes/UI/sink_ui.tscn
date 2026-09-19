@@ -1,0 +1,317 @@
+[gd_scene format=3 uid="uid://7iawaft6oedq"]
+
+[ext_resource type="Script" uid="uid://70d6ayu48wmn" path="res://Scripts/station_ui.gd" id="1_ldift"]
+[ext_resource type="Texture2D" uid="uid://bcowatgfg23jv" path="res://Sprites/player_head.png" id="1_s4spl"]
+[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown.png" id="2_ldift"]
+[ext_resource type="Script" uid="uid://b1d8iv2pw8gsn" path="res://Scripts/station_slot.gd" id="3_2hah6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_di2xk"]
+bg_color = Color(0.5137255, 0.23137255, 0, 0.9019608)
+
+[node name="SinkUi" type="Control" unique_id=660707807]
+visible = false
+layout_mode = 3
+anchor_right = 0.120000005
+anchor_bottom = 0.16000001
+script = ExtResource("1_ldift")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1840271968]
+custom_minimum_size = Vector2(144, 112)
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 112.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_di2xk")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=342623960]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=2022131377]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1440941803]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1060450009]
+layout_mode = 2
+
+[node name="PlayerHead" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=1046985433]
+modulate = Color(1, 1, 1, 0.78431374)
+layout_mode = 0
+offset_left = 9.0
+offset_top = 2.0
+offset_right = 33.0
+offset_bottom = 17.0
+texture = ExtResource("1_s4spl")
+
+[node name="ItemUI" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=1029695638]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -10.0
+offset_right = 30.0
+offset_bottom = 7.0
+texture = ExtResource("2_ldift")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1348554470]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1173592434]
+layout_mode = 2
+size_flags_horizontal = 6
+offset_transform_enabled = true
+text = "Sink"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1799572231]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1004945911]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1868200519]
+layout_mode = 2
+columns = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer" unique_id=804860524]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer" unique_id=485204443]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, 0)
+theme_override_font_sizes/font_size = 5
+text = "Dirty Tool"
+horizontal_alignment = 1
+
+[node name="SinkSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer" unique_id=1859596189]
+texture_filter = 2
+custom_minimum_size = Vector2(25, 25)
+custom_maximum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("3_2hah6")
+allowed_item_types = Array[String](["Tool"])
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer/SinkSlot" unique_id=1813173200]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 22.0
+offset_bottom = 22.0
+texture = ExtResource("2_ldift")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer" unique_id=1029425584]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer2" unique_id=701860825]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, 0)
+theme_override_font_sizes/font_size = 5
+text = "Dirty Tool"
+horizontal_alignment = 1
+
+[node name="SinkSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer2" unique_id=950306177]
+texture_filter = 2
+custom_minimum_size = Vector2(25, 25)
+custom_maximum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("3_2hah6")
+allowed_item_types = Array[String](["Tool"])
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer2/SinkSlot" unique_id=1743772914]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 22.0
+offset_bottom = 22.0
+texture = ExtResource("2_ldift")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer" unique_id=568607988]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer3" unique_id=1290353088]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, 0)
+theme_override_font_sizes/font_size = 5
+text = "Dirty Tool"
+horizontal_alignment = 1
+
+[node name="SinkSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer3" unique_id=817705083]
+texture_filter = 2
+custom_minimum_size = Vector2(25, 25)
+custom_maximum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("3_2hah6")
+allowed_item_types = Array[String](["Tool"])
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer3/SinkSlot" unique_id=1923702617]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 22.0
+offset_bottom = 22.0
+texture = ExtResource("2_ldift")
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer" unique_id=166368741]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer4" unique_id=394083548]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, 0)
+theme_override_font_sizes/font_size = 5
+text = "Dirty Tool"
+horizontal_alignment = 1
+
+[node name="SinkSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer4" unique_id=1398467674]
+texture_filter = 2
+custom_minimum_size = Vector2(25, 25)
+custom_maximum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("3_2hah6")
+allowed_item_types = Array[String](["Tool"])
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer4/SinkSlot" unique_id=1751533239]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 22.0
+offset_bottom = 22.0
+texture = ExtResource("2_ldift")
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer" unique_id=2128952026]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer5" unique_id=1303330148]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, 0)
+theme_override_font_sizes/font_size = 5
+text = "Dirty Tool"
+horizontal_alignment = 1
+
+[node name="SinkSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer5" unique_id=467738118]
+texture_filter = 2
+custom_minimum_size = Vector2(25, 25)
+custom_maximum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("3_2hah6")
+allowed_item_types = Array[String](["Tool"])
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer5/SinkSlot" unique_id=1268700760]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 22.0
+offset_bottom = 22.0
+texture = ExtResource("2_ldift")
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer" unique_id=587209802]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer6" unique_id=2043791801]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, 0)
+theme_override_font_sizes/font_size = 5
+text = "Dirty Tool"
+horizontal_alignment = 1
+
+[node name="SinkSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer6" unique_id=144238157]
+texture_filter = 2
+custom_minimum_size = Vector2(25, 25)
+custom_maximum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("3_2hah6")
+allowed_item_types = Array[String](["Tool"])
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer6/SinkSlot" unique_id=1365446817]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 22.0
+offset_bottom = 22.0
+texture = ExtResource("2_ldift")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1628680990]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1912155908]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer" unique_id=1254457755]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, 0)
+theme_override_font_sizes/font_size = 5
+text = "Tool"
+horizontal_alignment = 1
+
+[node name="ToolSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer" unique_id=609158157]
+texture_filter = 2
+custom_minimum_size = Vector2(25, 25)
+custom_maximum_size = Vector2(25, 25)
+layout_mode = 2
+offset_transform_enabled = true
+mouse_default_cursor_shape = 2
+script = ExtResource("3_2hah6")
+allowed_item_types = Array[String](["Tool"])
+specific_item = "Sponge"
+
+[node name="FoodImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer/ToolSlot" unique_id=401309906]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 22.0
+offset_bottom = 22.0
+texture = ExtResource("2_ldift")
+
+[node name="ExecuteStationButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1901338733]
+texture_filter = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 8
+text = "Clean"

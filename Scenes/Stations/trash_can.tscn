@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://w15r8evuyetd"]
+
+[ext_resource type="Texture2D" uid="uid://bpfxjjq5yhdog" path="res://Sprites/Stations/trash_can.png" id="1_cmb38"]
+[ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="1_p0g5w"]
+[ext_resource type="PackedScene" uid="uid://ckn20srkumagh" path="res://Scenes/Components/station_ui_interact_component.tscn" id="2_cmb38"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wr54c"]
+size = Vector2(12, 5)
+
+[node name="TrashCan" type="StaticBody2D" unique_id=1677065389]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=578144668]
+texture = ExtResource("1_cmb38")
+
+[node name="InteractComponent" parent="." unique_id=1900256740 instance=ExtResource("1_p0g5w")]
+position = Vector2(1.6940659e-21, 2)
+scale = Vector2(0.05, 0.05)
+is_stationary_station = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1559733705]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_wr54c")
+
+[node name="StationUIInteractComponent" parent="." unique_id=1805268843 instance=ExtResource("2_cmb38")]

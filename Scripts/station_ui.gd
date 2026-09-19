@@ -17,6 +17,28 @@ func _initialize() -> void:
 	if station.get_station_name() == Constants.FRIDGE:
 		for child in $PanelContainer/MarginContainer/VBoxContainer/GridContainer.get_children():
 			child.station_slot_interacted.connect(station_slot_interacted)
+	elif station.get_station_name() == Constants.SINK:
+		var sink_slot_1 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer/SinkSlot
+		var sink_slot_2 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer2/SinkSlot
+		var sink_slot_3 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer3/SinkSlot
+		var sink_slot_4 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer4/SinkSlot
+		var sink_slot_5 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer5/SinkSlot
+		var sink_slot_6 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer6/SinkSlot
+		var tool_slot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer/ToolSlot
+		sink_slot_1.station_slot_interacted.connect(station_slot_interacted)
+		sink_slot_2.station_slot_interacted.connect(station_slot_interacted)
+		sink_slot_3.station_slot_interacted.connect(station_slot_interacted)
+		sink_slot_4.station_slot_interacted.connect(station_slot_interacted)
+		sink_slot_5.station_slot_interacted.connect(station_slot_interacted)
+		sink_slot_6.station_slot_interacted.connect(station_slot_interacted)
+		tool_slot.station_slot_interacted.connect(station_slot_interacted)
+		
+		var execute_station_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/ExecuteStationButton
+		execute_station_button.pressed.connect(
+			func():
+				execute_sink([sink_slot_1, sink_slot_2, sink_slot_3, sink_slot_4, sink_slot_5, sink_slot_6], tool_slot)
+		)
+		
 	elif station.get_station_name() == Constants.MIXING_BOWL:
 		var food_slot_1 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer/FoodSlot
 		var food_slot_2 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer2/FoodSlot
@@ -57,7 +79,7 @@ func _initialize() -> void:
 		
 
 func execute_process_food(food_slot: StationSlot, tool_slot: StationSlot, cooking_medium_slot: StationSlot = null):
-	if food_slot.get_stored_item() == null or tool_slot.get_stored_item() == null:
+	if food_slot.get_stored_item() == null or tool_slot.get_stored_item() == null or tool_slot.get_stored_item().get_is_dirty():
 		return
 	
 	var result = RecipeManager.check_process_recipe(station.get_station_name(), food_slot.get_stored_item().get_food_name())
@@ -78,6 +100,8 @@ func execute_process_food(food_slot: StationSlot, tool_slot: StationSlot, cookin
 	else:
 		food_slot.get_stored_item().call(result)
 		
+	tool_slot.get_stored_item().set_is_dirty(true)
+		
 func execute_combine_food(food_slots: Array[StationSlot], tool_slot: StationSlot):
 	# Checks if food_slots has at least 2 slots that are storing food
 	var null_count = 0
@@ -85,7 +109,7 @@ func execute_combine_food(food_slots: Array[StationSlot], tool_slot: StationSlot
 		if slot.get_stored_item() == null:
 			null_count += 1
 			
-	if null_count > 1 or tool_slot.get_stored_item() == null:
+	if null_count > 1 or tool_slot.get_stored_item() == null or tool_slot.get_stored_item().get_is_dirty():
 		return
 	
 	# Get the food in each slot and stores it in another array
@@ -112,7 +136,21 @@ func execute_combine_food(food_slots: Array[StationSlot], tool_slot: StationSlot
 	
 	# Then trigger the store_in_station of the result food
 	food_slots[0].get_stored_item().get_holdable_component().store_in_station(station.get_station_name())
+	tool_slot.get_stored_item().set_is_dirty(true)
 	
+func execute_sink(sink_slots: Array[StationSlot], tool_slot: StationSlot):
+	# Checks if sink_slots has at least 1 slot that is storing a tool
+	var null_count = 0
+	for slot in sink_slots:
+		if slot.get_stored_item() == null:
+			null_count += 1
+	
+	if null_count > 5 or tool_slot.get_stored_item() == null:
+		return
+	
+	for slot in sink_slots:
+		if slot.get_stored_item() != null:
+			slot.get_stored_item().set_is_dirty(false)
 
 func station_interacted(ui_active):
 	self.visible = ui_active

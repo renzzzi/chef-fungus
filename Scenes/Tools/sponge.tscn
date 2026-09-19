@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://djk2nb4o1p8s3"]
+
+[ext_resource type="PackedScene" uid="uid://b3ihi1hy1i34i" path="res://Scenes/tool.tscn" id="1_uh12h"]
+[ext_resource type="Texture2D" uid="uid://dbq51jssgqtm0" path="res://Sprites/Tools/sponge.png" id="2_jkcfh"]
+
+[node name="Sponge" unique_id=117532560 instance=ExtResource("1_uh12h")]
+tool_name = "Sponge"
+
+[node name="Sprite2D" parent="." index="0" unique_id=706181308]
+texture = ExtResource("2_jkcfh")
