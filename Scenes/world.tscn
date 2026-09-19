@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://6s7bgo0kucmv" path="res://Scenes/Stations/sink.tscn" id="23_xbk3s"]
 [ext_resource type="PackedScene" uid="uid://w15r8evuyetd" path="res://Scenes/Stations/trash_can.tscn" id="24_i4fjy"]
 [ext_resource type="PackedScene" uid="uid://djk2nb4o1p8s3" path="res://Scenes/Tools/sponge.tscn" id="25_i4fjy"]
+[ext_resource type="Script" uid="uid://dexlgcy2qdicr" path="res://Scripts/toast_manager.gd" id="26_pt3ps"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tve5p"]
 size = Vector2(192, 16)
@@ -162,6 +163,26 @@ position = Vector2(72, 16)
 
 [node name="Sponge" parent="." unique_id=1395162942 instance=ExtResource("25_i4fjy")]
 position = Vector2(-80, 0)
+
+[node name="ToastManager" type="Control" parent="." unique_id=1649513364]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("26_pt3ps")
+
+[node name="ToastContainer" type="VBoxContainer" parent="." unique_id=486167469]
+z_index = 200
+propagate_maximum_size = false
+clip_contents = true
+offset_left = -40.0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 72.0
+size_flags_vertical = 3
+mouse_filter = 2
+alignment = 2
 
 [editable path="Fridge"]
 [editable path="Sink"]

@@ -4,6 +4,7 @@ extends Control
 
 @onready var item_ui = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/ItemUI
 @onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
+@onready var toast_manager = get_tree().current_scene.get_node("ToastManager")
 
 # After nesting the UI within the Station scene, _ready of UI runs first than
 # Station _ready so var station is null, it needs to be deferred by at one call
@@ -87,17 +88,20 @@ func _initialize() -> void:
 
 func execute_process_food(food_slot: StationSlot, tool_slot: StationSlot, cooking_medium_slot: StationSlot = null):
 	if food_slot.get_stored_item() == null:
+		toast_manager.create_toast("Place in a food")
 		return
 	
 	if tool_slot.get_stored_item() == null:
-		return
-	
-	if tool_slot.get_stored_item().get_is_dirty():
+		toast_manager.create_toast("Place in the appropriate tool")
 		return
 	
 	if tool_slot.get_stored_item().get_uses_left() < 1:
+		toast_manager.create_toast("The tool is broken, buy a new one")
 		return
 	
+	if tool_slot.get_stored_item().get_is_dirty():
+		toast_manager.create_toast("The tool is dirty, get it cleaned")
+		return
 	
 	var result = RecipeManager.check_process_recipe(station.get_station_name(), food_slot.get_stored_item().get_food_name())
 	
@@ -126,17 +130,21 @@ func execute_combine_food(food_slots: Array[StationSlot], tool_slot: StationSlot
 	for slot in food_slots:
 		if slot.get_stored_item() == null:
 			null_count += 1
-			
+	
 	if null_count > 1:
+		toast_manager.create_toast("Place in at least 2 food")
 		return
 	
 	if tool_slot.get_stored_item() == null:
+		toast_manager.create_toast("Place in the appropriate tool")
+		return
+	
+	if tool_slot.get_stored_item().get_uses_left() < 1:
+		toast_manager.create_toast("The tool is broken, buy a new one")
 		return
 	
 	if tool_slot.get_stored_item().get_is_dirty():
-		return
-		
-	if tool_slot.get_stored_item().get_uses_left() < 1:
+		toast_manager.create_toast("The tool is dirty, get it cleaned")
 		return
 	
 	# Get the food in each slot and stores it in another array
@@ -174,12 +182,15 @@ func execute_sink(sink_slots: Array[StationSlot], tool_slot: StationSlot):
 			null_count += 1
 	
 	if null_count > 5:
+		toast_manager.create_toast("Place in at least 1 tool to clean")
 		return
 	
 	if tool_slot.get_stored_item() == null:
+		toast_manager.create_toast("Place in the appropriate cleaning tool")
 		return
 		
 	if tool_slot.get_stored_item().get_uses_left() < 1:
+		toast_manager.create_toast("The cleaning tool is broken, buy a new one")
 		return
 	
 	for slot in sink_slots:
@@ -214,12 +225,20 @@ func station_slot_interacted(station_slot):
 	# that the station slot is allowed to store
 	if player.get_current_item_held() is Food:
 		if !station_slot.check_allowed_item_types(player.get_current_item_held()):
+			toast_manager.create_toast("You can't put that food in this slot")
 			return
 	elif player.get_current_item_held() is Tool:
 		if !station_slot.check_allowed_item_types(player.get_current_item_held()):
+			toast_manager.create_toast("You can't put that tool in this slot")
 			return
 	elif player.get_current_item_held() is HoldableStation:
 		if !station_slot.check_allowed_item_types(player.get_current_item_held()):
+			# Checks if the first letter of the station's name is a vowel or not 
+			# then uses "a" or "an" in the toast message accordingly.
+			var grammar = "a"
+			if player.get_current_item_held().get_station_name()[0] in ["A", "E", "I", "O", "U",]:
+				grammar = "an"
+			toast_manager.create_toast("You can't put " + grammar + " " + player.get_current_item_held().get_station_name() + " in this slot")
 			return
 	
 	# Player holding NO food; slot IS storing food
