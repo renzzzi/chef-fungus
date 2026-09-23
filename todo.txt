@@ -1,0 +1,19 @@
+1. Store system with currency: Add the tablet
+2. Simplest rat customer system:
+	- Rat goes in store
+	- Rat orders
+	- If correct dish served, rat pays 100. If wrong order rat pays 20.
+3. Add the spice station and a spice meter going up and down
+4. Rats should start sometimes ordering a specific spice level
+
+Future Ideas:
+1. Rats will only sometimes ask for an exact flavor but they will always ask for
+the exact dish.
+2. You can "kick out" rats if they ordered something you deem not feasible, but
+all food in the game can be made at the very start, only if you have the money.
+3. Players can close and open the dining area as they please, but if they close
+while there are still rats ordering, the player still has to serve em.
+4. The player has an app in the tablet where they can earn a small amount of money
+by doing a very simple task.
+5.Game has an ending where the player pays all of his debts and a summary
+what he has done is given.

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cx6fg0773n237" path="res://Sprites/Food/dough.png" id="2_igmu4"]
 
 [node name="Dough" unique_id=259264233 instance=ExtResource("1_ts4iu")]
-food_name = "Dough"
+entity_name = "Dough"
 flavor_state = Array[int]([0])
 tier = 1
 classifications = Array[int]([6])

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://70d6ayu48wmn" path="res://Scripts/station_ui.gd" id="1_5fhkv"]
 [ext_resource type="Texture2D" uid="uid://bcowatgfg23jv" path="res://Sprites/player_head.png" id="1_wv8fy"]
 [ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown.png" id="2_5fhkv"]
-[ext_resource type="PackedScene" uid="uid://dkklqqy33avo" path="res://Scenes/UI/pick_up.tscn" id="3_bhe2t"]
 [ext_resource type="Script" uid="uid://b1d8iv2pw8gsn" path="res://Scripts/station_slot.gd" id="5_w3nsc"]
 [ext_resource type="Texture2D" uid="uid://cdp0y3rieq2tw" path="res://Sprites/Stations/mixing_bowl.png" id="5_wv8fy"]
 
@@ -21,6 +20,7 @@ offset_top = -56.0
 offset_right = 72.0
 offset_bottom = 56.0
 script = ExtResource("1_5fhkv")
+station_name = "Mixing Bowl"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=247218358]
 layout_mode = 0
@@ -56,7 +56,7 @@ offset_right = 30.0
 offset_bottom = 26.0
 texture = ExtResource("1_wv8fy")
 
-[node name="ItemUI" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=2080359592]
+[node name="UIItemImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=2080359592 groups=["ui_item_image"]]
 layout_mode = 0
 offset_left = 9.0
 offset_top = -1.0
@@ -77,8 +77,13 @@ text = "Mixing
 Bowl"
 horizontal_alignment = 1
 
-[node name="PickUp" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1205296270 instance=ExtResource("3_bhe2t")]
+[node name="PickUpButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1205296270 groups=["pick_up_button"]]
+texture_filter = 2
 layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 5
+text = "Pick
+Up"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=49695205]
 layout_mode = 2
@@ -237,7 +242,7 @@ layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("5_wv8fy")
 
-[node name="ExecuteStationButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=459082172]
+[node name="ExecuteStationButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=459082172 groups=["execute_station_button"]]
 texture_filter = 2
 layout_mode = 2
 mouse_default_cursor_shape = 2

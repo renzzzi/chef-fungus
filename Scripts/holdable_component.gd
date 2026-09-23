@@ -37,7 +37,7 @@ func store_in_station(station_type: String):
 	parent_item.global_position = Vector2.ZERO
 	
 	if parent_item is Food:
-		parent_item.set_stored_in(station_type)
+		parent_item.stored_in = station_type
 	
 func unstore_from_station(station_from: Node2D):
 	interact_component.monitoring = true
@@ -47,7 +47,7 @@ func unstore_from_station(station_from: Node2D):
 	parent_item.visible = true
 	
 	if parent_item is Food:
-		parent_item.set_stored_in("")
+		parent_item.stored_in = ""
 
 func place_on_counter_top(counter_top: Node2D):
 	interact_component.monitoring = false
@@ -66,7 +66,7 @@ func place_on_counter_top(counter_top: Node2D):
 	tween.parallel().tween_property(parent_item, "global_position", final_pos, 0.16)
 	tween.parallel().tween_property(parent_item, "scale", final_scale, 0.16)
 	if parent_item is Food:
-		parent_item.set_stored_in("CounterTop")
+		parent_item.stored_in = Constants.COUNTERTOP
 
 func take_from_counter_top():
 	interact_component.monitoring = true
@@ -80,6 +80,6 @@ func take_from_counter_top():
 	tween.tween_property(parent_item, "scale", final_scale, 0.16)
 	is_held = true
 	if parent_item is Food:
-		parent_item.set_stored_in("")
+		parent_item.stored_in = ""
 	elif parent_item is HoldableStation:
-		parent_item.set_counter_top(null)
+		parent_item.counter_top = null

@@ -4,16 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="1_p0g5w"]
 [ext_resource type="Script" uid="uid://c4stw8vgxf4ek" path="res://Scripts/station.gd" id="1_qddp6"]
 [ext_resource type="PackedScene" uid="uid://ckn20srkumagh" path="res://Scenes/Components/station_ui_interact_component.tscn" id="2_cmb38"]
-[ext_resource type="PackedScene" uid="uid://opeffoy5y7p1" path="res://Scenes/UI/trash_can_ui.tscn" id="4_wr54c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wr54c"]
 size = Vector2(12, 5)
 
-[node name="TrashCan" type="StaticBody2D" unique_id=1677065389]
+[node name="TrashCan" type="StaticBody2D" unique_id=1677065389 groups=["station", "trash_can"]]
 modulate = Color(1, 0.5058824, 0.69411767, 1)
 z_index = 10
 script = ExtResource("1_qddp6")
-station_name = "Trash Can"
+entity_name = "Trash Can"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=578144668]
 texture = ExtResource("1_cmb38")
@@ -28,7 +27,3 @@ position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_wr54c")
 
 [node name="StationUIInteractComponent" parent="." unique_id=1805268843 instance=ExtResource("2_cmb38")]
-
-[node name="TrashCanUI" parent="." unique_id=1542182569 instance=ExtResource("4_wr54c")]
-offset_right = -72.0
-offset_bottom = -56.0

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Chef Fungus"
 config/description="A fungus turned chef discovers new food recipes by combining them and tries to appease rats."
-run/main_scene="uid://csukoboud5xhx"
+run/main_scene="uid://iytcpaaewqnb"
 config/features=PackedStringArray("4.7", "Forward Plus")
 
 [autoload]
@@ -26,6 +26,15 @@ RecipeManager="*uid://we4oqw6apx1b"
 window/size/viewport_width=1200
 window/size/viewport_height=700
 window/stretch/mode="canvas_items"
+
+[global_group]
+
+station=""
+player=""
+ui_item_image=""
+execute_station_button=""
+pick_up_button=""
+trash_can="For delete_trash.gd"
 
 [gui]
 

@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bcowatgfg23jv" path="res://Sprites/player_head.png" id="1_3g7bg"]
 [ext_resource type="Script" uid="uid://70d6ayu48wmn" path="res://Scripts/station_ui.gd" id="1_v1a3a"]
 [ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown.png" id="2_v1a3a"]
-[ext_resource type="PackedScene" uid="uid://dkklqqy33avo" path="res://Scenes/UI/pick_up.tscn" id="3_trkd8"]
 [ext_resource type="Script" uid="uid://b1d8iv2pw8gsn" path="res://Scripts/station_slot.gd" id="5_enpfw"]
 [ext_resource type="Texture2D" uid="uid://ca8715uyihjes" path="res://Sprites/Stations/deep_fryer.png" id="5_v1a3a"]
 
@@ -21,6 +20,7 @@ offset_top = -56.0
 offset_right = 72.0
 offset_bottom = 56.0
 script = ExtResource("1_v1a3a")
+station_name = "Deep Fryer"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1552908757]
 layout_mode = 0
@@ -56,7 +56,7 @@ offset_right = 30.0
 offset_bottom = 26.0
 texture = ExtResource("1_3g7bg")
 
-[node name="ItemUI" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=1370393748]
+[node name="UIItemImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=1370393748 groups=["ui_item_image"]]
 layout_mode = 0
 offset_left = 9.0
 offset_top = -1.0
@@ -77,8 +77,13 @@ text = "Deep
 Fryer"
 horizontal_alignment = 1
 
-[node name="PickUp" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1205296270 instance=ExtResource("3_trkd8")]
+[node name="PickUpButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1205296270 groups=["pick_up_button"]]
+texture_filter = 2
 layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 5
+text = "Pick
+Up"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1089526543]
 layout_mode = 2
@@ -207,7 +212,7 @@ offset_right = 17.0
 offset_bottom = 17.0
 texture = ExtResource("2_v1a3a")
 
-[node name="ExecuteStationButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer" unique_id=54311650]
+[node name="ExecuteStationButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer" unique_id=54311650 groups=["execute_station_button"]]
 texture_filter = 2
 layout_mode = 2
 mouse_default_cursor_shape = 2

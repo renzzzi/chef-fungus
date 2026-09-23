@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bvuybwh348loi" path="res://Sprites/Food/Blended/blended_apple.png" id="2_t5dco"]
 
 [node name="BlendedApples" unique_id=259264233 instance=ExtResource("1_ftaye")]
-food_name = "Blended Apples"
+entity_name = "Blended Apples"
 shape_state = null
 cook_state = null
 flavor_state = null

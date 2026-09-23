@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cjtxwrx3yj6n8" path="res://Sprites/Tools/sheet_pan.png" id="2_fbbvy"]
 
 [node name="SheetPan" unique_id=117532560 instance=ExtResource("1_7blpc")]
-tool_name = "Sheet Pan"
+entity_name = "Sheet Pan"
 
 [node name="Sprite2D" parent="." index="0" unique_id=706181308]
 texture = ExtResource("2_fbbvy")

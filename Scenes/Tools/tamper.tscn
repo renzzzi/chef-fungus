@@ -4,11 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b3ihi1hy1i34i" path="res://Scenes/tool.tscn" id="1_xo0xg"]
 
 [node name="Tamper" unique_id=117532560 instance=ExtResource("1_xo0xg")]
-tool_name = "Tamper"
+entity_name = "Tamper"
 
 [node name="Sprite2D" parent="." index="0" unique_id=706181308]
 texture = ExtResource("1_2vanr")
-
-[node name="InteractComponent" parent="." index="1" unique_id=1900256740]
-position = Vector2(0, 1.5)
-scale = Vector2(0.7, 0.7)

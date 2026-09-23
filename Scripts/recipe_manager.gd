@@ -1,8 +1,8 @@
 extends Node
 
-static var recipes: Array[Recipe]
+static var recipes: Array[Recipe] = []
 
-static var sludge_scene = Load.load_food_scene[Constants.SLUDGE]
+static var sludge_scene: PackedScene
 
 # Returns a string method name or food scene if successful, and sludge food scene if it fails 
 static func check_process_recipe(station_name: String, food_name: String):
@@ -10,11 +10,11 @@ static func check_process_recipe(station_name: String, food_name: String):
 		if recipe is not ProcessRecipe:
 			continue
 	
-		if recipe.get_station_name() == station_name and recipe.get_food_name() == food_name:
-			if recipe.get_result_food_scene() != null:
-				return recipe.get_result_food_scene()
+		if recipe.station_name == station_name and recipe.food_name == food_name:
+			if recipe.result_food_scene != null:
+				return recipe.result_food_scene
 			else:
-				return recipe.get_food_processing_method()
+				return recipe.food_processing_method
 	
 	return sludge_scene
 
@@ -24,7 +24,7 @@ static func check_combine_recipe(food_in_slots: Array[Food]) -> PackedScene:
 	# Store the names of the food in an array
 	for food in food_in_slots:
 		if food != null:
-			input_names.append(food.get_food_name())
+			input_names.append(food.food_name)
 	
 	input_names.sort()
 	
@@ -33,16 +33,18 @@ static func check_combine_recipe(food_in_slots: Array[Food]) -> PackedScene:
 		if recipe is not CombineRecipe:
 			continue
 		
-		if recipe.get_required_food_names() == input_names:
-			return recipe.get_result_food_scene()
+		if recipe.required_food_names == input_names:
+			return recipe.result_food_scene
 	
 	return sludge_scene
 
 # ALL THE RECIPES
 func _ready():
+	sludge_scene = Load.load_entity_scene[Constants.SLUDGE]
+	
 	# Process Recipes
 	recipes.append(ProcessRecipe.new(Constants.BLENDER, Constants.APPLE))
-	recipes.append(ProcessRecipe.new(Constants.OVEN, Constants.DOUGH, Load.load_food_scene[Constants.BREAD]))
+	recipes.append(ProcessRecipe.new(Constants.OVEN, Constants.DOUGH, Load.load_entity_scene[Constants.BREAD]))
 	
 	# Combine Recipes
-	recipes.append(CombineRecipe.new([Constants.WATER, Constants.FLOUR], Load.load_food_scene[Constants.DOUGH]))
+	recipes.append(CombineRecipe.new([Constants.WATER, Constants.FLOUR], Load.load_entity_scene[Constants.DOUGH]))

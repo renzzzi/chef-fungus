@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dm0e0ceiueuc7" path="res://Sprites/Food/sludge.png" id="2_lemjl"]
 
 [node name="Sludge" unique_id=259264233 instance=ExtResource("1_5b6nk")]
-food_name = "Sludge"
+entity_name = "Sludge"
 
 [node name="Sprite2D" parent="." index="0" unique_id=1840870082]
 texture = ExtResource("2_lemjl")

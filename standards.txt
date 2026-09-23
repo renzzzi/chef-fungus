@@ -53,23 +53,29 @@ CODE ARCHITECTURE:
 	
 	Station Scripts Explanation:
 		station.gd:
-			Only stores class_name, station_ui_interact_component variable and the
-			getter for the component.
+			Stores class_name and station_ui_interact_component variable. Checks the
+			allowed item type of the slot and if what the player is holding is allowed,
+			if so it will handle the swapping logic. Also stores functions about
+			executing station functionality.
 		
-		station_slot:
-			Attached to a UI slot that can store food and sends a signal if its
-			area was pressed with mouse left-click. Also handles the food image
-			within itself to match whatever it's storing.
-			
-		station_ui:
-			Holds the logic of swapping food between what the player is holding or
-			lack thereof and the slot interacted with by the mouse, and the execution
-			of stations.
-			
 		holdable_station.gd:
-			A child class of the Station class that is responsible for turning
-			station_ui_interact_component on or off accordingly for the holdable
-			station this script is attached to.
+			A child class of the Station class that is responsible for storing the
+			holdable component and which counter-top a holdable station is placed
+			on or the lack thereof.
+		
+		station_slot.gd:
+			Attached to a UI slot that sends a signal if its area was pressed with 
+			mouse left-click. Also handles the food image within itself to match 
+			whatever it's storing and what item types are allowed to store within.
+		
+		station_ui_controller.gd:
+			Receives the signal if a station with a UI is interacted and opens the
+			corresponding UI. It also sends a reference for the UI and unreferences
+			it if the UI is closed.
+		
+		station_ui.gd:
+			Responsible for orchestrating when should certain functions be ran and
+			the child control nodes functionality.
 	
 	Components:
 		interact_component.gd:
@@ -119,6 +125,7 @@ GAME ENTITIES:
 		- Frying Basket
 		- Wooden Spoon
 		- Sponge
+		- Plate
 	
 	Food:
 
@@ -193,8 +200,8 @@ ALL ABOUT STATIONS:
 			putting in items. Removing an item will reset the 1 minute timer for it.
 			
 		Sink:
-			Can hold 6 slots where you can simultaneously wash all 6 tools or holdable
-			station. Needs a sponge to operate on.
+			Can hold 6 slots where you can simultaneously wash all 6 tools. Needs 
+			a sponge to operate on.
 	
 	Holdable Stations:
 		Blender:
@@ -221,13 +228,20 @@ ALL ABOUT STATIONS:
 			You can put in 2-3 food to combine them into a new dish and/or apply a 
 			flavor state to the food. Be careful because this is where they might
 			turn into sludge. Needs a Wooden Spoon to operate on.
+		
+		Magic Almanac:
+			Stores all information about every food, tool, station, rats, and
+			the whole game in general. The Inspect tab is where you can place in
+			an item and it will tell you all about that item and its current state.
+			Only entities that you have encountered/obtained has information in 
+			the almanac, needing you to explore and discover them first.
 
 
 ALL ABOUT TOOLS:
-	Tools are required to operate on certain stations, they wear down and become 
-	dirty after every completion in a station and you have to wash them for each 
-	use (Except the sponge) also you might have to get a new one if its worn down. 
-	Below are the existing tools and the station they are used for.
+	Tools are required to operate on certain stations or for general use, they wear 
+	down and become dirty after every completion in a station and you have to wash 
+	them for each use (Except the sponge) also you might have to get a new one if 
+	its worn down. Below are the existing tools and the station they are used for.
 	
 	- Tamper (Blender)
 	- Knife (Chopping Board)
@@ -236,3 +250,55 @@ ALL ABOUT TOOLS:
 	- Frying Basket (Deep Fryer)
 	- Wooden Spoon (Mixing Bowl)
 	- Sponge (Sink)
+	
+	- Plate: Used for serving a finished dish to rat customers. They shatter when
+	dropped on the floor. Has to be cleaned after a rat customer eats on it. Never
+	wears down after each use.
+
+
+ALL ABOUT RATS:
+	Rats are your main customer where they go in and out of your dining area and 
+	orders food. Different types of rats has different tastes and preference. They
+	give their rating and money depending on factors like food accuracy, food
+	freshness, and flavor accuracy. Certain decor you put in the dining area attracts
+	certain types of rats. Low ratings will attract rats that are picky but doesn't
+	pay as much. Below are the types of rats and their tiers.
+	
+	Low Tier:
+		Worker Rat:
+			Pickiness Rating: 10/100
+			Payment Range: 20-70 scraps
+		
+		Jolly Rat:
+			Pickiness Rating: 15/100
+			Payment Range: 60-100 scraps
+		
+		Pretentious Rat:
+			Pickiness Rating: 40/100
+			Payment Range: 65-130 scraps
+	
+	Mid Tier:
+		Merchant Rat:
+			Pickiness Rating: 20/100
+			Payment Range: 40-130 scraps
+		
+		Fashionista Rat:
+			Pickiness Rating: 30/100
+			Payment Range: 50-180 scraps
+			
+		Mechanic Rat:
+			Pickiness Rating: 15/100
+			Payment Range: 30-140 scraps
+	
+	High Tier:
+		Connoisseur Rat:
+			Pickiness Rating: 50/100
+			Payment Range: 50-230 scraps
+			
+		Food Critic Rat:
+			Pickiness Rating: 75/100
+			Payment Range: 80-300 scraps
+			
+		Supertaster Rat:
+			Pickiness Rating: 90/100
+			Payment Range: 40-500 scraps

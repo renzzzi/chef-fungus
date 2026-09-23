@@ -18,6 +18,7 @@ offset_top = -56.0
 offset_right = 72.0
 offset_bottom = 56.0
 script = ExtResource("1_ldift")
+station_name = "Sink"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1840271968]
 custom_minimum_size = Vector2(144, 112)
@@ -53,7 +54,7 @@ offset_right = 33.0
 offset_bottom = 17.0
 texture = ExtResource("1_s4spl")
 
-[node name="ItemUI" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=1029695638]
+[node name="UIItemImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=1029695638 groups=["ui_item_image"]]
 layout_mode = 0
 offset_left = 12.0
 offset_top = -10.0
@@ -313,7 +314,7 @@ offset_right = 22.0
 offset_bottom = 22.0
 texture = ExtResource("2_ldift")
 
-[node name="ExecuteStationButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1901338733]
+[node name="ExecuteStationButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1901338733 groups=["execute_station_button"]]
 texture_filter = 2
 layout_mode = 2
 mouse_default_cursor_shape = 2

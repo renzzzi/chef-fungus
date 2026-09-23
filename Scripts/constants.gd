@@ -14,6 +14,7 @@ const OVEN = "Oven"
 const CHOPPING_BOARD = "Chopping Board"
 const DEEP_FRYER = "Deep Fryer"
 const MIXING_BOWL = "Mixing Bowl"
+const TABLET = "Tablet"
 
 # Tools
 const TAMPER = "Tamper"

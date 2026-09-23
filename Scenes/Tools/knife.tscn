@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ceohd8d2opeed" path="res://Sprites/Tools/knife.png" id="2_wof84"]
 
 [node name="Knife" unique_id=117532560 instance=ExtResource("1_4y7rc")]
-tool_name = "Knife"
+entity_name = "Knife"
 
 [node name="Sprite2D" parent="." index="0" unique_id=706181308]
 texture = ExtResource("2_wof84")

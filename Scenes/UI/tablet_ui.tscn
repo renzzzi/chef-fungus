@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://ba7txs5hipwx4"]
+
+[ext_resource type="Script" uid="uid://70d6ayu48wmn" path="res://Scripts/station_ui.gd" id="1_scn8b"]
+[ext_resource type="Texture2D" uid="uid://bcowatgfg23jv" path="res://Sprites/player_head.png" id="1_wl5cs"]
+[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown.png" id="2_scn8b"]
+[ext_resource type="Texture2D" uid="uid://crcwg0yfn12aq" path="res://Sprites/Stations/oven.png" id="4_mfwis"]
+[ext_resource type="Script" uid="uid://b1d8iv2pw8gsn" path="res://Scripts/station_slot.gd" id="5_3of0a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7d05b"]
+bg_color = Color(0.5529412, 0.6039216, 0.69411767, 0.9019608)
+
+[node name="TabletUI" type="Control" unique_id=557103639]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 144.0
+offset_bottom = 112.0
+script = ExtResource("1_scn8b")
+station_name = "Tablet"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=792838580]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 112.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7d05b")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1039478660]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1548291639]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1477485727]
+custom_maximum_size = Vector2(-1, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=131302740]
+layout_mode = 2
+
+[node name="PlayerHead" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=2018620145]
+modulate = Color(1, 1, 1, 0.78431374)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 11.0
+offset_right = 30.0
+offset_bottom = 26.0
+texture = ExtResource("1_wl5cs")
+
+[node name="ItemUI" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control" unique_id=693583018 groups=["ui_item_image"]]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -1.0
+offset_right = 27.0
+offset_bottom = 16.0
+texture = ExtResource("2_scn8b")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=352502199]
+layout_mode = 2
+theme_override_constants/margin_right = 22
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2077667278]
+layout_mode = 2
+size_flags_horizontal = 6
+offset_transform_enabled = true
+text = "Oven"
+horizontal_alignment = 1
+
+[node name="PickUpButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1205296270 groups=["pick_up_button"]]
+texture_filter = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 5
+text = "Pick
+Up"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2052297152]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2106405509]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1366467415]
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("4_mfwis")
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=50015252]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=783800786]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -2.0
+offset_bottom = 71.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer" unique_id=1616842514]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer" unique_id=75802056]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1500375926]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, 0)
+theme_override_font_sizes/font_size = 7
+text = "Food"
+horizontal_alignment = 1
+
+[node name="FoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1535016191]
+texture_filter = 2
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("5_3of0a")
+allowed_item_types = Array[String](["Food"])
+
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/FoodSlot" unique_id=774043193]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 27.0
+offset_bottom = 27.0
+texture = ExtResource("2_scn8b")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer" unique_id=1770071803]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=61119257]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, 0)
+theme_override_font_sizes/font_size = 7
+text = "Tool"
+horizontal_alignment = 1
+
+[node name="ToolSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=2106226132]
+texture_filter = 2
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("5_3of0a")
+allowed_item_types = Array[String](["Tool"])
+specific_item = "Sheet Pan"
+
+[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ToolSlot" unique_id=149844630]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 27.0
+offset_bottom = 27.0
+texture = ExtResource("2_scn8b")
+
+[node name="ExecuteStationButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer" unique_id=472938119 groups=["execute_station_button"]]
+texture_filter = 2
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 8
+text = "Bake"

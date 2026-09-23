@@ -8,6 +8,9 @@ const MAX_TOAST = 3
 
 func _ready() -> void:
 	toast_container = get_parent().get_node("ToastContainer")
+	
+	for station in get_tree().get_nodes_in_group("station"):
+		station.create_toast.connect(create_toast)
 
 
 func create_toast(toast_text: String):

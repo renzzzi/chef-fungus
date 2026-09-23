@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dlr2l1c1vf5mb" path="res://Sprites/Food/water.png" id="2_8or2d"]
 
 [node name="Water" unique_id=259264233 instance=ExtResource("1_ks8f2")]
-food_name = "Water"
+entity_name = "Water"
 flavor_state = Array[int]([0])
 classifications = Array[int]([8])
 

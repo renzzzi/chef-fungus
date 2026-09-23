@@ -1,287 +1,117 @@
 extends Control
 
-@onready var station: Station = get_parent()
+# opened_station.player is used so that station_ui should not have a player reference
 
-@onready var item_ui = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/ItemUI
-@onready var player: CharacterBody2D = get_tree().current_scene.get_node("Player")
-@onready var toast_manager = get_tree().current_scene.get_node("ToastManager")
+var ui_item_image: TextureRect
+var pick_up_button: Button
+var execute_station_button: Button
 
-# After nesting the UI within the Station scene, _ready of UI runs first than
-# Station _ready so var station is null, it needs to be deferred by at one call
-func _ready() -> void:
-	call_deferred("_initialize")
-	
-func _initialize() -> void:
-	station.get_station_ui_interact_component().station_interacted.connect(station_interacted)
+## Enter station where this UI is used for
+@export var station_name: String
 
-	# Connect signals of every instance of the Station Slot
-	if station.get_station_name() == Constants.FRIDGE:
-		for child in $PanelContainer/MarginContainer/VBoxContainer/GridContainer.get_children():
-			child.station_slot_interacted.connect(station_slot_interacted)
-	elif station.get_station_name() == Constants.TRASH_CAN:
-		var trash_slot_1 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TrashSlotContainer/TrashSlot
-		var trash_slot_2 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TrashSlotContainer2/TrashSlot
-		var trash_slot_3 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TrashSlotContainer3/TrashSlot
-		var trash_slot_4 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/TrashSlotContainer4/TrashSlot
-		trash_slot_1.station_slot_interacted.connect(station_slot_interacted)
-		trash_slot_2.station_slot_interacted.connect(station_slot_interacted)
-		trash_slot_3.station_slot_interacted.connect(station_slot_interacted)
-		trash_slot_4.station_slot_interacted.connect(station_slot_interacted)
-	elif station.get_station_name() == Constants.SINK:
-		var sink_slot_1 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer/SinkSlot
-		var sink_slot_2 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer2/SinkSlot
-		var sink_slot_3 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer3/SinkSlot
-		var sink_slot_4 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer4/SinkSlot
-		var sink_slot_5 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer5/SinkSlot
-		var sink_slot_6 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/GridContainer/VBoxContainer6/SinkSlot
-		var tool_slot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer/ToolSlot
-		sink_slot_1.station_slot_interacted.connect(station_slot_interacted)
-		sink_slot_2.station_slot_interacted.connect(station_slot_interacted)
-		sink_slot_3.station_slot_interacted.connect(station_slot_interacted)
-		sink_slot_4.station_slot_interacted.connect(station_slot_interacted)
-		sink_slot_5.station_slot_interacted.connect(station_slot_interacted)
-		sink_slot_6.station_slot_interacted.connect(station_slot_interacted)
-		tool_slot.station_slot_interacted.connect(station_slot_interacted)
-		
-		var execute_station_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer2/ExecuteStationButton
-		execute_station_button.pressed.connect(
-			func():
-				execute_sink([sink_slot_1, sink_slot_2, sink_slot_3, sink_slot_4, sink_slot_5, sink_slot_6], tool_slot)
-		)
-		
-	elif station.get_station_name() == Constants.MIXING_BOWL:
-		var food_slot_1 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer/FoodSlot
-		var food_slot_2 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer2/FoodSlot
-		var food_slot_3 = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer/VBoxContainer3/FoodSlot
-		var tool_slot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/VBoxContainer2/HBoxContainer/VBoxContainer/ToolSlot
-		food_slot_1.station_slot_interacted.connect(station_slot_interacted)
-		food_slot_2.station_slot_interacted.connect(station_slot_interacted)
-		food_slot_3.station_slot_interacted.connect(station_slot_interacted)
-		tool_slot.station_slot_interacted.connect(station_slot_interacted)
-		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
-		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
-		
-		var execute_station_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/ExecuteStationButton
-		execute_station_button.pressed.connect(
-			func():
-				execute_combine_food([food_slot_1, food_slot_2, food_slot_3], tool_slot)
-		)
-	else:
-		var food_slot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/FoodSlot
-		var tool_slot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ToolSlot
-		food_slot.station_slot_interacted.connect(station_slot_interacted)
-		tool_slot.station_slot_interacted.connect(station_slot_interacted)
-		var pick_up_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/PickUp
-		pick_up_button.pick_up_button_pressed.connect(pick_up_button_pressed)
-	
-		var cooking_medium_slot = null
-		if (station.get_station_name() == Constants.DEEP_FRYER or 
-			station.get_station_name() == Constants.STOVE):
-			cooking_medium_slot = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer3/CookingMediumSlot
-			cooking_medium_slot.station_slot_interacted.connect(station_slot_interacted)
-		
-		var execute_station_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/ExecuteStationButton
-		execute_station_button.pressed.connect(
-			func():
-				execute_process_food(food_slot, tool_slot, cooking_medium_slot)
-		)
+# Reference to the current station currently opened
+var opened_station: Station
 
-func execute_process_food(food_slot: StationSlot, tool_slot: StationSlot, cooking_medium_slot: StationSlot = null):
-	if food_slot.get_stored_item() == null:
-		toast_manager.create_toast("Place in a food")
-		return
+func _ready():
+	for child in self.find_children("*", "StationSlot"):
+		child.station_slot_interacted.connect(opened_station.interact_stored_items)
 	
-	if tool_slot.get_stored_item() == null:
-		toast_manager.create_toast("Place in the appropriate tool")
-		return
+	# If the station UI is for a holdable station, get pick_up_button reference
+	match station_name:
+		Constants.FRIDGE, Constants.SINK, Constants.TRASH_CAN:
+			pass
+		_:
+			pick_up_button = get_specific_control_node(self, "pick_up_button")
+			pick_up_button.pressed.connect(pick_up_button_pressed)
 	
-	if tool_slot.get_stored_item().get_uses_left() < 1:
-		toast_manager.create_toast("The tool is broken, buy a new one")
-		return
+	ui_item_image = get_specific_control_node(self, "ui_item_image")
+	execute_station_button = get_specific_control_node(self, "execute_station_button")
+	execute_station_button.pressed.connect(execute_station)
+
+func execute_station():
+	var slots: Array[StationSlot] = []
+	match station_name:
+		Constants.MIXING_BOWL:
+			pass
+		Constants.SINK:
+			pass
+		# For stations that processes food
+		_:
+			for child in self.find_children("*", "StationSlot"):
+				if child.allowed_item_types.has("Food"):
+					# If the slot is a cooking_medium_slot
+					if child.specific_item != "":
+						slots[2] = (child)
+						continue
+					# If the slot is a food_slot
+					slots[0] = (child)
+				elif child.allowed_item_types.has("Tool"):
+					# If the slot is a tool_slot
+					slots[1] = (child)
 	
-	if tool_slot.get_stored_item().get_is_dirty():
-		toast_manager.create_toast("The tool is dirty, get it cleaned")
-		return
+			opened_station.execute_process_food(slots)
+				
+
+# Searches the whole UI tree to find a specific node that is under a particular group
+func get_specific_control_node(node: Node, group_name: String):
+	var result: Array[Node] = []
 	
-	var result = RecipeManager.check_process_recipe(station.get_station_name(), food_slot.get_stored_item().get_food_name())
-	
-	if cooking_medium_slot != null:
-		cooking_medium_slot.get_stored_item().queue_free()
-		cooking_medium_slot.set_stored_item(null)
-	
-	# If result is a new food scene
-	if result is PackedScene:
-		# instantiate() -> add to tree -> delete food in slot -> add sludge to slot -> initiate store station for sludge
-		var result_food = result.instantiate()
-		get_tree().current_scene.add_child(result_food)
-		food_slot.get_stored_item().queue_free()
-		food_slot.set_stored_item(result_food)
-		food_slot.get_stored_item().get_holdable_component().store_in_station(station.get_station_name())
-	# If result is a string method
-	else:
-		food_slot.get_stored_item().call(result)
+	for child in node.get_children():
+		if child.is_in_group(group_name):
+			result.append(child)
 		
-	tool_slot.get_stored_item().set_is_dirty(true)
-	tool_slot.get_stored_item().decrement_uses_left()
-		
-func execute_combine_food(food_slots: Array[StationSlot], tool_slot: StationSlot):
-	# Checks if food_slots has at least 2 slots out of 3 that are storing food
-	var null_count = 0
-	for slot in food_slots:
-		if slot.get_stored_item() == null:
-			null_count += 1
+		result.append_array(get_specific_control_node(child, group_name))
 	
-	if null_count > 1:
-		toast_manager.create_toast("Place in at least 2 food")
-		return
+	return result
 	
-	if tool_slot.get_stored_item() == null:
-		toast_manager.create_toast("Place in the appropriate tool")
-		return
-	
-	if tool_slot.get_stored_item().get_uses_left() < 1:
-		toast_manager.create_toast("The tool is broken, buy a new one")
-		return
-	
-	if tool_slot.get_stored_item().get_is_dirty():
-		toast_manager.create_toast("The tool is dirty, get it cleaned")
-		return
-	
-	# Get the food in each slot and stores it in another array
-	var food_in_slots: Array[Food]
-	for slot in food_slots:
-		food_in_slots.append(slot.get_stored_item())
-	
-	var result = RecipeManager.check_combine_recipe(food_in_slots)
-	var result_food = result.instantiate()
-	get_tree().current_scene.add_child(result_food)
-	
-	# These blocks are to clear each slots and put the result food in food_slots[0]
-	if food_slots[0].get_stored_item() != null: 
-		food_slots[0].get_stored_item().queue_free()
-		food_slots[0].set_stored_item(result_food)
-		
-	if food_slots[1].get_stored_item() != null: 
-		food_slots[1].get_stored_item().queue_free()
-		food_slots[1].set_stored_item(null)
-	
-	if food_slots[2].get_stored_item() != null: 
-		food_slots[2].get_stored_item().queue_free()
-		food_slots[2].set_stored_item(null)
-	
-	# Then trigger the store_in_station of the result food
-	food_slots[0].get_stored_item().get_holdable_component().store_in_station(station.get_station_name())
-	tool_slot.get_stored_item().set_is_dirty(true)
-	tool_slot.get_stored_item().decrement_uses_left()
-	
-func execute_sink(sink_slots: Array[StationSlot], tool_slot: StationSlot):
-	# Checks if sink_slots has at least 1 slot out of 6 that is storing a tool
-	var null_count = 0
-	for slot in sink_slots:
-		if slot.get_stored_item() == null:
-			null_count += 1
-	
-	if null_count > 5:
-		toast_manager.create_toast("Place in at least 1 tool to clean")
-		return
-	
-	if tool_slot.get_stored_item() == null:
-		toast_manager.create_toast("Place in the appropriate cleaning tool")
+func bind_station(station: Station):
+	opened_station = station
+	opened_station.update_ui_item_image.connect(update_ui_item_image)
+
+func unbind_station(station: Station):
+	if opened_station == null:
 		return
 		
-	if tool_slot.get_stored_item().get_uses_left() < 1:
-		toast_manager.create_toast("The cleaning tool is broken, buy a new one")
+	if station_name == opened_station.entity_name:
+		opened_station = null
+
+func update_ui_item_image(station_slot: StationSlot, player_current_item_held: String, new_slot_item: String):
+	if opened_station == null:
 		return
 	
-	for slot in sink_slots:
-		if slot.get_stored_item() != null:
-			slot.get_stored_item().set_is_dirty(false)
-	
-	tool_slot.get_stored_item().decrement_uses_left()
+	if station_name == opened_station.entity_name:
+		ui_item_image.texture = Load.load_entity_texture[player_current_item_held]
+		station_slot.slot_image.texture = Load.load_entity_texture[new_slot_item]
 
 func station_interacted(ui_active):
 	self.visible = ui_active
-	# Change food_ui's texture to the food type the player is currently holding
-	if player.get_current_item_held() == null:
-		item_ui.texture = Load.load_food_texture[null]
-	elif player.get_current_item_held() is HoldableStation:
-		item_ui.texture = Load.load_holdable_station_texture[player.get_current_item_held().get_station_name()]
-	elif player.get_current_item_held() is Tool:
-		item_ui.texture = Load.load_tool_texture[player.get_current_item_held().get_tool_name()]
-	elif player.get_current_item_held() is Food: 
-		item_ui.texture = Load.load_food_texture[player.get_current_item_held().get_food_name()]
 	
-func _process(_delta: float) -> void:
-	if player.get_current_item_held() != null:
-		if player.get_current_item_held() is Food:
-			item_ui.modulate = Load.load_color[player.get_current_item_held().get_food_freshness()]
-		elif player.get_current_item_held() is Tool:
-			item_ui.modulate = Load.load_color[player.get_current_item_held().get_is_dirty()]
-	else:
-		item_ui.modulate = Color.WHITE
+	# Change ui_item_image's texture to the item the player is currently holding
+	ui_item_image.texture = Load.load_food_texture[opened_station.player.current_item_held.entity_name]
+	
+	# Changes the slot image for each slot according to the opened station's stored_items dictionary
+	if ui_active:
+		for child in self.find_children("*", "StationSlot"):
+			# Need to cast child as StationSlot because find_children returns Node
+			var station_slot := child as StationSlot
+			if opened_station.stored_items.has(child):
+				child.slot_image.texture = Load.load_entity_texture[opened_station.stored_items[station_slot].entity_name]
 
-func station_slot_interacted(station_slot):
-	# This block checks if the current item the player is holding matches the item type
-	# that the station slot is allowed to store
-	if player.get_current_item_held() is Food:
-		if !station_slot.check_allowed_item_types(player.get_current_item_held()):
-			toast_manager.create_toast("You can't put that food in this slot")
-			return
-	elif player.get_current_item_held() is Tool:
-		if !station_slot.check_allowed_item_types(player.get_current_item_held()):
-			toast_manager.create_toast("You can't put that tool in this slot")
-			return
-	elif player.get_current_item_held() is HoldableStation:
-		if !station_slot.check_allowed_item_types(player.get_current_item_held()):
-			# Checks if the first letter of the station's name is a vowel or not 
-			# then uses "a" or "an" in the toast message accordingly.
-			var grammar = "a"
-			if player.get_current_item_held().get_station_name()[0] in ["A", "E", "I", "O", "U",]:
-				grammar = "an"
-			toast_manager.create_toast("You can't put " + grammar + " " + player.get_current_item_held().get_station_name() + " in this slot")
-			return
-	
-	# Player holding NO food; slot IS storing food
-	if player.get_current_item_held() == null and station_slot.get_stored_item() != null:
-		player.set_current_item_held(station_slot.get_stored_item())
-		station_slot.set_stored_item(null)
-		player.get_current_item_held().get_holdable_component().unstore_from_station(station)
-	# Player IS holding food; slot is NOT storing food
-	elif player.get_current_item_held() != null and station_slot.get_stored_item() == null:
-		station_slot.set_stored_item(player.get_current_item_held())
-		player.set_current_item_held(null)
-		station_slot.get_stored_item().get_holdable_component().store_in_station(station.get_station_name())
-	# Player IS holding food; slot IS storing food
-	elif player.get_current_item_held() != null and station_slot.get_stored_item() != null:
-		var temp = player.get_current_item_held()
-		player.set_current_item_held(station_slot.get_stored_item())
-		station_slot.set_stored_item(temp)
-		player.get_current_item_held().get_holdable_component().unstore_from_station(station)
-		station_slot.get_stored_item().get_holdable_component().store_in_station(station.get_station_name())
-	
-	# Reload Station's Food UI
-	if player.get_current_item_held() == null: 
-		item_ui.texture = Load.load_food_texture[null]
-	else: 
-		if player.get_current_item_held() is Food:
-			item_ui.texture = Load.load_food_texture[player.get_current_item_held().get_food_name()]
-		elif player.get_current_item_held() is Tool:
-			item_ui.texture = Load.load_tool_texture[player.get_current_item_held().get_tool_name()]
-		elif player.get_current_item_held() is HoldableStation:
-			item_ui.texture = Load.load_holdable_station_texture[player.get_current_item_held().get_station_name()]
-	
-
+# For HoldableStation only
 func pick_up_button_pressed():
+	if opened_station == null:
+		return
+	
 	# 1. Clear counter-top placed_item var 
 	# 1.5. If the player is holding something, then call interacted() of the counter-top 
 	# 2. Call take_from_counter_top
 	# 3. Set player's current_item_held var to the picked up holdable station
 	# 4. Close UI  
-	station.get_counter_top().clear_placed_item()
+	opened_station.counter_top.placed_item = null
 	
-	if player.get_current_item_held() != null:
-		station.get_counter_top().interacted(player)
+	if opened_station.player.current_item_held != null:
+		opened_station.counter_top.interacted(opened_station.player)
 	
-	station.get_holdable_component().take_from_counter_top()
-	player.set_current_item_held(station)
-	station.get_station_ui_interact_component().close_ui()
+	opened_station.holdable_component.take_from_counter_top()
+	opened_station.player.current_item_held = opened_station
+	opened_station.station_ui_interact_component.close_ui()

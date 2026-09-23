@@ -9,33 +9,10 @@ var nearby_interact_components: Array[InteractComponent] = []
 var recent_interact_components: Array[InteractComponent] = []
 var last_interacted_station_ui: InteractComponent
 var in_station_interface = false
-# get_node() must receive a string literal because Constant has space but node tree doesn't
-@onready var fridge = get_tree().current_scene.get_node("Fridge")
-@onready var sink = get_tree().current_scene.get_node("Sink")
-@onready var trash_can = get_tree().current_scene.get_node("TrashCan")
-@onready var blender = get_tree().current_scene.get_node("Blender")
-@onready var stove = get_tree().current_scene.get_node("Stove")
-@onready var chopping_board = get_tree().current_scene.get_node("ChoppingBoard")
-@onready var oven = get_tree().current_scene.get_node("Oven")
-@onready var deep_fryer = get_tree().current_scene.get_node("DeepFryer")
-@onready var mixing_bowl = get_tree().current_scene.get_node("MixingBowl")
 
 func _ready() -> void:
-	fridge.get_station_ui_interact_component().station_interacted.connect(station_interacted)
-	sink.get_station_ui_interact_component().station_interacted.connect(station_interacted)
-	trash_can.get_station_ui_interact_component().station_interacted.connect(station_interacted)
-	blender.get_station_ui_interact_component().station_interacted.connect(station_interacted)
-	stove.get_station_ui_interact_component().station_interacted.connect(station_interacted)
-	chopping_board.get_station_ui_interact_component().station_interacted.connect(station_interacted)
-	oven.get_station_ui_interact_component().station_interacted.connect(station_interacted)
-	deep_fryer.get_station_ui_interact_component().station_interacted.connect(station_interacted)
-	mixing_bowl.get_station_ui_interact_component().station_interacted.connect(station_interacted)
-
-func set_current_item_held(new_item):
-	current_item_held = new_item
-
-func get_current_item_held():
-	return current_item_held
+	for station in get_tree().get_nodes_in_group("station"):
+		station.station_ui_interact_component.station_interacted.connect(station_interacted)
 
 func register_interact_component(interact_component):
 	if !nearby_interact_components.has(interact_component):
@@ -78,7 +55,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 		# Checks for nearby stations first and interacts with them
 		for component in nearby_interact_components:
-			if component.get_is_stationary_station():
+			if component.is_stationary_station:
 				component.interact(self)
 				if in_station_interface:
 					last_interacted_station_ui = component
@@ -88,7 +65,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			recent_interact_components.clear()
 		
 		if current_item_held:
-			current_item_held.get_holdable_component().drop()
+			current_item_held.holdable_component.drop()
 			current_item_held = null
 		else:
 			# Checks if the player has recently picked up a nearby interact component

@@ -21,15 +21,3 @@ func _init(station_name: String, food_name: String, result_food_scene: PackedSce
 			food_processing_method = "boil"
 		Constants.DEEP_FRYER:
 			food_processing_method = "fry"
-
-func get_station_name():
-	return station_name
-
-func get_food_name():
-	return food_name
-	
-func get_food_processing_method():
-	return food_processing_method
-
-func get_result_food_scene():
-	return result_food_scene

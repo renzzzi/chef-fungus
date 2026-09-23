@@ -5,13 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://fpr7hhmsdiym" path="res://Scenes/Components/interact_component.tscn" id="2_sb4sa"]
 [ext_resource type="PackedScene" uid="uid://ckn20srkumagh" path="res://Scenes/Components/station_ui_interact_component.tscn" id="3_o5ipr"]
 [ext_resource type="PackedScene" uid="uid://bd0orr7e6l105" path="res://Scenes/Components/holdable_component.tscn" id="4_tu10o"]
-[ext_resource type="PackedScene" uid="uid://ddm32vb8tumoh" path="res://Scenes/UI/deep_fryer_ui.tscn" id="6_o5ipr"]
 
-[node name="DeepFryer" type="Node2D" unique_id=1105919655]
+[node name="DeepFryer" type="Node2D" unique_id=1105919655 groups=["station"]]
 modulate = Color(0.3882353, 0, 1, 1)
 z_index = 10
 script = ExtResource("1_sb4sa")
-station_name = "Deep Fryer"
+entity_name = "Deep Fryer"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2137927647]
 texture = ExtResource("1_rf7cc")
@@ -23,7 +22,3 @@ scale = Vector2(0.55, 0.55)
 [node name="StationUIInteractComponent" parent="." unique_id=1805268843 instance=ExtResource("3_o5ipr")]
 
 [node name="HoldableComponent" parent="." unique_id=1180060163 instance=ExtResource("4_tu10o")]
-
-[node name="DeepFryerUI" parent="." unique_id=153671428 instance=ExtResource("6_o5ipr")]
-offset_right = -72.0
-offset_bottom = -56.0
