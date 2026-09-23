@@ -10,6 +10,7 @@
 bg_color = Color(0.5529412, 0.6039216, 0.69411767, 0.9019608)
 
 [node name="TabletUI" type="Control" unique_id=557103639]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 144.0

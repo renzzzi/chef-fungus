@@ -42,15 +42,14 @@ var load_entity_texture = {
 	Constants.BLENDED_APPLE: preload("res://Sprites/Food/Blended/blended_apple.png")
 }
 
-var load_entity_scene = {
-	Constants.SLUDGE: preload("res://Scenes/Food/sludge.tscn"),
-	
-	# BASIC TIER
-	Constants.ORANGE: preload("res://Scenes/Food/orange.tscn"),
-	
-	# PREPARED TIER
-	Constants.DOUGH: preload("res://Scenes/Food/dough.tscn"),
-	Constants.BREAD: preload("res://Scenes/Food/bread.tscn")
-	
-	# FINAL TIER
+var entity_scene_paths = {
+	Constants.SLUDGE: "res://Scenes/Food/sludge.tscn",
+	Constants.ORANGE: "res://Scenes/Food/orange.tscn",
+	Constants.DOUGH: "res://Scenes/Food/dough.tscn",
+	Constants.BREAD: "res://Scenes/Food/bread.tscn",
 }
+
+# Needed because of a cyclical error where food.gd needs load.gd even before
+# preloading the scenes. So use load instead during runtime
+func get_entity_scene(entity_name: String) -> PackedScene:
+	return load(entity_scene_paths[entity_name])

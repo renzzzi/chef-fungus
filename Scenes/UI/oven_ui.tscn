@@ -10,6 +10,7 @@
 bg_color = Color(0.5529412, 0.6039216, 0.69411767, 0.9019608)
 
 [node name="OvenUI" type="Control" unique_id=690813215]
+visible = false
 top_level = true
 z_index = 100
 layout_mode = 3

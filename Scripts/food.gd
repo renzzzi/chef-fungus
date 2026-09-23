@@ -118,7 +118,7 @@ func blend():
 			lowercase = true
 			
 	# Only accepts .png sprites
-	var blended_texture: Texture2D = load("res://Sprites/Food/Blended/blended_" + formatted_entity_name + ".png")
+	var blended_texture: Texture2D = Load.load_entity_texture["Blended " + entity_name]
 	sprite_2d.texture = blended_texture
 	shape_state = Shape.BLENDED
 	tier = Tier.PREPARED
@@ -144,7 +144,7 @@ func chop():
 			lowercase = true
 			
 	# Only accepts .png sprites
-	var chopped_texture: Texture2D = load("res://Sprites/Food/Chopped/chopped_" + formatted_entity_name + ".png")
+	var chopped_texture: Texture2D = Load.load_entity_texture["Chopped " + entity_name]
 	sprite_2d.texture = chopped_texture
 	shape_state = Shape.CHOPPED
 	tier = Tier.PREPARED

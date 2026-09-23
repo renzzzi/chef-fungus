@@ -1,13 +1,12 @@
 extends Node2D
 
 @onready var interact_component = $"../InteractComponent"
-@onready var station = self.get_parent()
+@onready var station: Station = self.get_parent()
 
 signal station_interacted(station: Station, ui_active: bool)
 var ui_active = false
 
 func _ready() -> void:
-	
 	interact_component.interacted.connect(interacted)
 	
 func interacted(_player):
@@ -16,15 +15,15 @@ func interacted(_player):
 			return
 		
 	ui_active = !ui_active
-	station_interacted.emit(self, ui_active)
+	station_interacted.emit(station, ui_active)
 	
 # For holdable stations
 func open_ui():
 	if !ui_active:
 		ui_active = true
-	station_interacted.emit(self, ui_active)
+	station_interacted.emit(station, ui_active)
 
 func close_ui():
 	if ui_active:
 		ui_active = false
-	station_interacted.emit(self, ui_active)
+	station_interacted.emit(station, ui_active)

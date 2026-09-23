@@ -25,7 +25,7 @@ func unregister_interact_component(interact_component):
 		# Removed the interact component in this array if player went out of range
 		recent_interact_components.erase(interact_component)
 		
-func station_interacted(ui_active):
+func station_interacted(_station, ui_active):
 	# If ui_active is true then disable player physics and vice-versa
 	set_physics_process(!ui_active)
 	in_station_interface = ui_active

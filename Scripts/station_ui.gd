@@ -13,20 +13,36 @@ var execute_station_button: Button
 var opened_station: Station
 
 func _ready():
-	for child in self.find_children("*", "StationSlot"):
-		child.station_slot_interacted.connect(opened_station.interact_stored_items)
-	
 	# If the station UI is for a holdable station, get pick_up_button reference
 	match station_name:
-		Constants.FRIDGE, Constants.SINK, Constants.TRASH_CAN:
+		Constants.FRIDGE, Constants.TRASH_CAN:
 			pass
+		Constants.SINK:
+			execute_station_button = get_specific_control_node(self, "execute_station_button")[0]
+			execute_station_button.pressed.connect(execute_station)
+		Constants.TABLET:
+			pick_up_button = get_specific_control_node(self, "pick_up_button")[0]
+			pick_up_button.pressed.connect(pick_up_button_pressed)
 		_:
-			pick_up_button = get_specific_control_node(self, "pick_up_button")
+			execute_station_button = get_specific_control_node(self, "execute_station_button")[0]
+			execute_station_button.pressed.connect(execute_station)
+			pick_up_button = get_specific_control_node(self, "pick_up_button")[0]
 			pick_up_button.pressed.connect(pick_up_button_pressed)
 	
-	ui_item_image = get_specific_control_node(self, "ui_item_image")
-	execute_station_button = get_specific_control_node(self, "execute_station_button")
-	execute_station_button.pressed.connect(execute_station)
+	ui_item_image = get_specific_control_node(self, "ui_item_image")[0]
+	
+	
+# Searches the whole UI tree to find a specific node that is under a particular group
+func get_specific_control_node(node: Node, group_name: String):
+	var result: Array[Node] = []
+	
+	for child in node.get_children():
+		if child.is_in_group(group_name):
+			result.append(child)
+		
+		result.append_array(get_specific_control_node(child, group_name))
+	
+	return result
 
 func execute_station():
 	var slots: Array[StationSlot] = []
@@ -50,31 +66,23 @@ func execute_station():
 					slots[1] = (child)
 	
 			opened_station.execute_process_food(slots)
-				
 
-# Searches the whole UI tree to find a specific node that is under a particular group
-func get_specific_control_node(node: Node, group_name: String):
-	var result: Array[Node] = []
-	
-	for child in node.get_children():
-		if child.is_in_group(group_name):
-			result.append(child)
-		
-		result.append_array(get_specific_control_node(child, group_name))
-	
-	return result
-	
 func bind_station(station: Station):
 	opened_station = station
 	opened_station.update_ui_item_image.connect(update_ui_item_image)
+	
+	for child in self.find_children("*", "StationSlot"):
+		child.station_slot_interacted.connect(opened_station.interact_stored_items)
 
 func unbind_station(station: Station):
 	if opened_station == null:
 		return
 		
 	if station_name == opened_station.entity_name:
+		for child in self.find_children("*", "StationSlot"):
+			child.station_slot_interacted.disconnect(opened_station.interact_stored_items)
 		opened_station = null
-
+		
 func update_ui_item_image(station_slot: StationSlot, player_current_item_held: String, new_slot_item: String):
 	if opened_station == null:
 		return
@@ -86,8 +94,14 @@ func update_ui_item_image(station_slot: StationSlot, player_current_item_held: S
 func station_interacted(ui_active):
 	self.visible = ui_active
 	
+	if opened_station == null:
+		return
+	
 	# Change ui_item_image's texture to the item the player is currently holding
-	ui_item_image.texture = Load.load_food_texture[opened_station.player.current_item_held.entity_name]
+	if opened_station.player.current_item_held == null:
+		ui_item_image.texture = Load.load_entity_texture[null]
+	else:
+		ui_item_image.texture = Load.load_entity_texture[opened_station.player.current_item_held.entity_name]
 	
 	# Changes the slot image for each slot according to the opened station's stored_items dictionary
 	if ui_active:

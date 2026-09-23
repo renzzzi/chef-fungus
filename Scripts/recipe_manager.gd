@@ -40,11 +40,11 @@ static func check_combine_recipe(food_in_slots: Array[Food]) -> PackedScene:
 
 # ALL THE RECIPES
 func _ready():
-	sludge_scene = Load.load_entity_scene[Constants.SLUDGE]
+	sludge_scene = Load.get_entity_scene(Constants.SLUDGE)
 	
 	# Process Recipes
 	recipes.append(ProcessRecipe.new(Constants.BLENDER, Constants.APPLE))
-	recipes.append(ProcessRecipe.new(Constants.OVEN, Constants.DOUGH, Load.load_entity_scene[Constants.BREAD]))
+	recipes.append(ProcessRecipe.new(Constants.OVEN, Constants.DOUGH, Load.get_entity_scene(Constants.BREAD)))
 	
 	# Combine Recipes
-	recipes.append(CombineRecipe.new([Constants.WATER, Constants.FLOUR], Load.load_entity_scene[Constants.DOUGH]))
+	recipes.append(CombineRecipe.new([Constants.WATER, Constants.FLOUR], Load.get_entity_scene(Constants.DOUGH)))

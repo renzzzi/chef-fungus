@@ -7,7 +7,7 @@ static var player: CharacterBody2D
 
 func _ready() -> void:
 	interact_component.interacted.connect(interacted)
-	player = get_tree().current_scene.get_node("Player")
+	player = get_tree().get_first_node_in_group("player")
 
 func _process(delta: float) -> void:
 	if is_held:
