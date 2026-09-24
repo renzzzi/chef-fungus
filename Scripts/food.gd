@@ -12,6 +12,8 @@ var expiry_counter: float = 0.0
 @export var STALETIME: int
 @export var SPOILEDTIME: int
 
+signal freshness_changed(new_freshness: Freshness)
+
 # --- ENUMS ---
 enum Shape { WHOLE, BLENDED, CHOPPED }
 enum Cook { RAW, BOILED, BAKED, FRIED }
@@ -169,8 +171,10 @@ func _on_timer_timeout() -> void:
 		if freshness != Freshness.STALE:
 			freshness = Freshness.STALE
 			modulate = Load.load_color[freshness]
+			freshness_changed.emit(Freshness.STALE)
 	elif expiry_counter >= SPOILEDTIME:
 		if freshness != Freshness.SPOILED:
 			freshness = Freshness.SPOILED
 			modulate = Load.load_color[freshness]
+			freshness_changed.emit(Freshness.SPOILED)
 	

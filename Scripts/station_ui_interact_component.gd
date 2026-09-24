@@ -11,9 +11,9 @@ func _ready() -> void:
 	
 func interacted(_player):
 	if station is HoldableStation:
-		if station.get_counter_top() == null:
+		if station.counter_top == null:
 			return
-		
+			
 	ui_active = !ui_active
 	station_interacted.emit(station, ui_active)
 	

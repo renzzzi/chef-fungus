@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 		)
 
 func interacted(_player):
-	player.set_current_item_held(parent_item)
+	player.current_item_held = parent_item
 	is_held = true
 	parent_item.z_index = 20
 	

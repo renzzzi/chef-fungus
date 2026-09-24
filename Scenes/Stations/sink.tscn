@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qddp6"]
 size = Vector2(16, 3)
 
-[node name="Sink" type="StaticBody2D" unique_id=689468705]
+[node name="Sink" type="StaticBody2D" unique_id=689468705 groups=["station"]]
 modulate = Color(1, 0.5176471, 0, 1)
 z_index = 10
 script = ExtResource("1_pha6k")

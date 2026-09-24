@@ -77,19 +77,20 @@ func bind_station(station: Station):
 func unbind_station(station: Station):
 	if opened_station == null:
 		return
-		
+
+	opened_station.update_ui_item_image.disconnect(update_ui_item_image)
 	if station_name == opened_station.entity_name:
 		for child in self.find_children("*", "StationSlot"):
 			child.station_slot_interacted.disconnect(opened_station.interact_stored_items)
 		opened_station = null
 		
-func update_ui_item_image(station_slot: StationSlot, player_current_item_held: String, new_slot_item: String):
+func update_ui_item_image(station_slot: StationSlot, player_current_item_held, new_slot_item):
 	if opened_station == null:
 		return
 	
-	if station_name == opened_station.entity_name:
+	if self.station_name == opened_station.entity_name:
 		ui_item_image.texture = Load.load_entity_texture[player_current_item_held]
-		station_slot.slot_image.texture = Load.load_entity_texture[new_slot_item]
+		station_slot.change_slot_image_texture(new_slot_item)
 
 func station_interacted(ui_active):
 	self.visible = ui_active

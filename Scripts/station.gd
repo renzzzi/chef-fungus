@@ -9,13 +9,19 @@ var stored_items: Dictionary[StationSlot, Variant] = {null: null}
 signal create_toast(message: String)
 
 signal update_ui_item_image(station_slot: StationSlot, player_current_item_held: String, new_slot_item: String)
+signal update_slot_food_freshness(station_slot)
 
 func interact_stored_items(station_slot: StationSlot):
+	if player.current_item_held == null and stored_items.get(station_slot) == null:
+		return
+	
+	# Player <- Slot
 	if player.current_item_held == null:
-		player.current_item_held = stored_items[station_slot]
-		if stored_items.has(station_slot):
-			stored_items.erase(station_slot)
-			update_ui_item_image.emit(station_slot, player.current_item_held.entity_name, stored_items[station_slot].entity_name)
+		player.current_item_held = stored_items.get(station_slot)
+		player.current_item_held.holdable_component.unstore_from_station(self)
+		stored_items.erase(station_slot)
+		
+		update_ui_item_image.emit(station_slot, name_of(player.current_item_held), name_of(stored_items.get(station_slot)))
 	else:
 		# Checks if the slot is allowed to store what the player is holding
 		var allowed = false
@@ -24,16 +30,32 @@ func interact_stored_items(station_slot: StationSlot):
 		(station_slot.allowed_item_types.has("HoldableStation") and player.current_item_held is HoldableStation)):
 			allowed = true
 		
+		if station_slot.specific_item != "":
+			if not station_slot.specific_item == player.current_item_held.entity_name:
+				allowed = false
+		
 		# Swaps the player held item to the slot and vice versa
+		# Player -> Slot
 		if allowed:
-			var temp = player.current_item_held
-			player.current_item_held = stored_items[station_slot]
-			if temp == null:
-				stored_items.erase(station_slot)
+			if stored_items.get(station_slot) == null:
+				stored_items[station_slot] = player.current_item_held
+				player.current_item_held = null
+				stored_items[station_slot].holdable_component.store_in_station(self.entity_name)
+				update_ui_item_image.emit(station_slot, name_of(player.current_item_held), name_of(stored_items[station_slot]))
+			# Player <-> Slot
 			else:
-				stored_items[station_slot] = temp
-			update_ui_item_image.emit(station_slot, player.current_item_held.entity_name, stored_items[station_slot].entity_name)
-	
+				var temp = stored_items[station_slot]
+				stored_items[station_slot] = player.current_item_held
+				player.current_item_held = temp
+				stored_items[station_slot].holdable_component.store_in_station(self.entity_name)
+				player.current_item_held.holdable_component.unstore_from_station(self)
+				update_ui_item_image.emit(station_slot, name_of(player.current_item_held), name_of(stored_items[station_slot]))
+		else:
+			create_toast.emit("You can't store that here.")
+
+# Helper function
+func name_of(item):
+	return item.entity_name if item != null else null
 
 func execute_process_food(slots: Array[StationSlot] = []):
 	# Resize if slots argument has less elements than total amount of station slots
@@ -61,8 +83,8 @@ func execute_process_food(slots: Array[StationSlot] = []):
 		create_toast.emit("The tool is dirty, get it cleaned")
 		return
 	
-	var result = RecipeManager.check_process_recipe(self.entity_name, stored_items[slots[0]].entity_name)
-	
+	var result = RecipeManager.check_process_recipe(self.entity_name, stored_items.get(slots[0]).entity_name)
+
 	if slots[2] != null:
 		if stored_items.has(slots[2]):
 			stored_items[slots[2]].queue_free()

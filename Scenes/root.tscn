@@ -128,7 +128,7 @@ position = Vector2(-40, 48)
 position = Vector2(64, 40)
 
 [node name="Oven" parent="Kitchen" unique_id=454536546 instance=ExtResource("10_5u2bx")]
-position = Vector2(-32, 0)
+position = Vector2(-24, 8)
 
 [node name="MixingBowl" parent="Kitchen" unique_id=830555162 instance=ExtResource("11_ckrds")]
 position = Vector2(16, 24)
@@ -221,7 +221,6 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 144.0
 offset_bottom = 112.0
-station_name = ""
 
 [node name="ChoppingBoardUI" parent="UI/StationUIController" unique_id=1622576349 instance=ExtResource("30_meti5")]
 layout_mode = 0

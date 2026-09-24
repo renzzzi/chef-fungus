@@ -21,3 +21,11 @@ func _gui_input(event: InputEvent) -> void:
 		get_global_rect().has_point(get_global_mouse_position())
 	):
 		station_slot_interacted.emit(self)
+
+func change_slot_image_texture(new_slot_item):
+	slot_image.texture = Load.load_entity_texture[new_slot_item]
+	
+	if new_slot_item == null:
+		slot_image.visible = false
+	else:
+		slot_image.visible = true
