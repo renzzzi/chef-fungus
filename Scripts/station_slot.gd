@@ -29,3 +29,6 @@ func change_slot_image_texture(new_slot_item):
 		slot_image.visible = false
 	else:
 		slot_image.visible = true
+
+func change_slot_image_freshness(freshness: Food.Freshness) -> void:
+	slot_image.modulate = Load.load_color[freshness]

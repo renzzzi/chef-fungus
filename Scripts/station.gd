@@ -4,12 +4,35 @@ extends Node2D
 ## Station name must be in PascalCase with a space after each word (e.g. "Deep Fryer")
 @export var entity_name: String
 @onready var station_ui_interact_component = $StationUIInteractComponent
-var stored_items: Dictionary[StationSlot, Variant] = {null: null}
+var stored_items: Dictionary[StationSlot, Variant] = {}
 @onready var player = get_tree().get_first_node_in_group("player")
 signal create_toast(message: String)
 
 signal update_ui_item_image(station_slot: StationSlot, player_current_item_held: String, new_slot_item: String)
-signal update_slot_food_freshness(station_slot)
+signal update_ui_freshness(station_slot: StationSlot, new_freshness: Food.Freshness)
+
+func on_food_freshness_changed(food: Food, new_freshness: Food.Freshness):
+	# Food doesn't know its slot, but the station does
+	var slot = stored_items.find_key(food)
+	if slot != null:
+		update_ui_freshness.emit(slot, new_freshness)
+
+func store(slot: StationSlot, item) -> void:
+	stored_items[slot] = item
+	item.holdable_component.store_in_station(entity_name)
+	if item is Food:
+		item.freshness_changed.connect(on_food_freshness_changed)
+		update_ui_freshness.emit(slot, item.freshness)
+	else:
+		update_ui_freshness.emit(slot, Food.Freshness.FRESH)
+
+func take(slot: StationSlot):
+	var item = stored_items.get(slot)
+	stored_items.erase(slot)
+	if item is Food and item.freshness_changed.is_connected(on_food_freshness_changed):
+		item.freshness_changed.disconnect(on_food_freshness_changed)
+	item.holdable_component.unstore_from_station(self)
+	return item
 
 func interact_stored_items(station_slot: StationSlot):
 	if player.current_item_held == null and stored_items.get(station_slot) == null:
@@ -17,10 +40,7 @@ func interact_stored_items(station_slot: StationSlot):
 	
 	# Player <- Slot
 	if player.current_item_held == null:
-		player.current_item_held = stored_items.get(station_slot)
-		player.current_item_held.holdable_component.unstore_from_station(self)
-		stored_items.erase(station_slot)
-		
+		player.current_item_held = take(station_slot)
 		update_ui_item_image.emit(station_slot, name_of(player.current_item_held), name_of(stored_items.get(station_slot)))
 	else:
 		# Checks if the slot is allowed to store what the player is holding
@@ -37,19 +57,16 @@ func interact_stored_items(station_slot: StationSlot):
 		# Swaps the player held item to the slot and vice versa
 		# Player -> Slot
 		if allowed:
+			# Player -> Slot
 			if stored_items.get(station_slot) == null:
-				stored_items[station_slot] = player.current_item_held
+				store(station_slot, player.current_item_held)
 				player.current_item_held = null
-				stored_items[station_slot].holdable_component.store_in_station(self.entity_name)
-				update_ui_item_image.emit(station_slot, name_of(player.current_item_held), name_of(stored_items[station_slot]))
 			# Player <-> Slot
 			else:
-				var temp = stored_items[station_slot]
-				stored_items[station_slot] = player.current_item_held
-				player.current_item_held = temp
-				stored_items[station_slot].holdable_component.store_in_station(self.entity_name)
-				player.current_item_held.holdable_component.unstore_from_station(self)
-				update_ui_item_image.emit(station_slot, name_of(player.current_item_held), name_of(stored_items[station_slot]))
+				var incoming = player.current_item_held
+				player.current_item_held = take(station_slot)
+				store(station_slot, incoming)
+			update_ui_item_image.emit(station_slot, name_of(player.current_item_held), name_of(stored_items.get(station_slot)))
 		else:
 			create_toast.emit("You can't store that here.")
 

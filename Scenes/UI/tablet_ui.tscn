@@ -12,16 +12,19 @@ bg_color = Color(0.5529412, 0.6039216, 0.69411767, 0.9019608)
 [node name="TabletUI" type="Control" unique_id=557103639]
 visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 144.0
-offset_bottom = 112.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_scn8b")
 station_name = "Tablet"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=792838580]
-layout_mode = 0
+layout_mode = 1
 offset_right = 144.0
 offset_bottom = 112.0
+scale = Vector2(5, 5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_7d05b")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1039478660]

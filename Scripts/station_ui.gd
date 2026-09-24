@@ -45,31 +45,67 @@ func get_specific_control_node(node: Node, group_name: String):
 	return result
 
 func execute_station():
-	var slots: Array[StationSlot] = []
-	match station_name:
+	match self.station_name:
 		Constants.MIXING_BOWL:
-			pass
+			var max_amount_of_slots = 4
+			var slots: Array[StationSlot] = []
+			slots.resize(max_amount_of_slots)
+			
+			var index = 0
+			for child in self.find_children("*", "StationSlot"):
+				if child.allowed_item_types.has("Food"):
+					slots[index] = child
+					index += 1
+				elif child.allowed_item_types.has("Tool"):
+					# If the slot is a tool_slot
+					slots[3] = child
+					
+			opened_station.execute_combine_food(slots)
+			
 		Constants.SINK:
-			pass
+			var max_amount_of_slots = 7
+			var slots: Array[StationSlot] = []
+			slots.resize(max_amount_of_slots)
+			
+			var index = 0
+			for child in self.find_children("*", "StationSlot"):
+				if child.allowed_item_types.has("Tool"):
+					# If the slot is the cleaning tool slot
+					if child.specific_item != "":
+						slots[6] = child
+						continue
+					# If the slot is a tool_slot
+					slots[index] = child
+					index += 1
+
+			opened_station.execute_sink(slots)
+	
 		# For stations that processes food
 		_:
+			var max_amount_of_slots = 3
+			var slots: Array[StationSlot] = []
+			slots.resize(max_amount_of_slots)
+			
 			for child in self.find_children("*", "StationSlot"):
 				if child.allowed_item_types.has("Food"):
 					# If the slot is a cooking_medium_slot
 					if child.specific_item != "":
-						slots[2] = (child)
+						slots[2] = child
 						continue
 					# If the slot is a food_slot
-					slots[0] = (child)
+					slots[0] = child
 				elif child.allowed_item_types.has("Tool"):
 					# If the slot is a tool_slot
-					slots[1] = (child)
+					slots[1] = child
 	
 			opened_station.execute_process_food(slots)
 
 func bind_station(station: Station):
 	opened_station = station
 	opened_station.update_ui_item_image.connect(update_ui_item_image)
+	opened_station.update_ui_freshness.connect(update_ui_freshness)
+	opened_station.player.held_item_updated.connect(refresh_held_item_tint)
+	refresh_held_item_tint()
 	
 	for child in self.find_children("*", "StationSlot"):
 		child.station_slot_interacted.connect(opened_station.interact_stored_items)
@@ -79,10 +115,27 @@ func unbind_station(station: Station):
 		return
 
 	opened_station.update_ui_item_image.disconnect(update_ui_item_image)
+	opened_station.update_ui_freshness.disconnect(update_ui_freshness)
+	opened_station.player.held_item_updated.disconnect(refresh_held_item_tint)
 	if station_name == opened_station.entity_name:
 		for child in self.find_children("*", "StationSlot"):
 			child.station_slot_interacted.disconnect(opened_station.interact_stored_items)
 		opened_station = null
+
+func refresh_held_item_tint() -> void:
+	if opened_station == null:
+		return
+	var held = opened_station.player.current_item_held
+	if held is Food:
+		ui_item_image.modulate = Load.load_color[held.freshness]
+	else:
+		ui_item_image.modulate = Color.WHITE
+
+func update_ui_freshness(station_slot: StationSlot, new_freshness: Food.Freshness):
+	if opened_station == null:
+		return
+	station_slot.change_slot_image_freshness(new_freshness)
+
 		
 func update_ui_item_image(station_slot: StationSlot, player_current_item_held, new_slot_item):
 	if opened_station == null:
@@ -107,10 +160,13 @@ func station_interacted(ui_active):
 	# Changes the slot image for each slot according to the opened station's stored_items dictionary
 	if ui_active:
 		for child in self.find_children("*", "StationSlot"):
-			# Need to cast child as StationSlot because find_children returns Node
 			var station_slot := child as StationSlot
-			if opened_station.stored_items.has(child):
-				child.slot_image.texture = Load.load_entity_texture[opened_station.stored_items[station_slot].entity_name]
+			if opened_station.stored_items.has(station_slot):
+				var item = opened_station.stored_items[station_slot]
+				station_slot.slot_image.texture = Load.load_entity_texture[item.entity_name]
+				station_slot.change_slot_image_freshness(
+					item.freshness if item is Food else Food.Freshness.FRESH
+				)
 
 # For HoldableStation only
 func pick_up_button_pressed():

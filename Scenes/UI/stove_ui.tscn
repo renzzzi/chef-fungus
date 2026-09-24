@@ -11,21 +11,20 @@ bg_color = Color(0.5529412, 0.6039216, 0.69411767, 0.9019608)
 
 [node name="StoveUI" type="Control" unique_id=725442411]
 visible = false
-top_level = true
-z_index = 100
 layout_mode = 3
-anchors_preset = 0
-offset_left = -72.0
-offset_top = -56.0
-offset_right = 72.0
-offset_bottom = 56.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_yi8kn")
 station_name = "Stove"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=2139421568]
-layout_mode = 0
+layout_mode = 1
 offset_right = 144.0
 offset_bottom = 112.0
+scale = Vector2(5, 5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_savb5")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1474847406]

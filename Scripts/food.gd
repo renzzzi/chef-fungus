@@ -12,7 +12,8 @@ var expiry_counter: float = 0.0
 @export var STALETIME: int
 @export var SPOILEDTIME: int
 
-signal freshness_changed(new_freshness: Freshness)
+# For UI
+signal freshness_changed(food: Food, new_freshness: Freshness)
 
 # --- ENUMS ---
 enum Shape { WHOLE, BLENDED, CHOPPED }
@@ -49,6 +50,22 @@ enum Classification {
 # Classification as an Array so an item can be Meat AND Dairy if needed
 @export var classifications: Array[Classification]
 
+# Helper function
+func roll_back_freshness(current_freshness: Freshness):
+	match current_freshness:
+		Freshness.FRESH: 
+			freshness = Freshness.FRESH
+			expiry_counter = 0.0
+		Freshness.STALE: 
+			freshness = Freshness.FRESH
+			expiry_counter = STALETIME + 1.0
+		Freshness.SPOILED: 
+			freshness = Freshness.STALE
+			expiry_counter = SPOILEDTIME + 1.0
+	
+	freshness_changed.emit(self, freshness)
+	modulate = Load.load_color[freshness]
+
 func boil():
 	if cook_state != Cook.RAW:
 		push_error("Cannot boil " + entity_name + " since it has already been cooked before.")
@@ -58,13 +75,7 @@ func boil():
 	tier = Tier.PREPARED
 	entity_name = "Boiled " + entity_name
 	
-	# Rolls back freshness by one state
-	if freshness == Freshness.STALE:
-		freshness = Freshness.FRESH
-		expiry_counter = 0.0
-	elif freshness == Freshness.SPOILED:
-		freshness = Freshness.STALE
-		expiry_counter = STALETIME
+	roll_back_freshness(freshness)
 	
 func bake():
 	if cook_state != Cook.RAW:
@@ -75,13 +86,7 @@ func bake():
 	tier = Tier.PREPARED
 	entity_name = "Baked " + entity_name
 	
-	# Rolls back freshness by one state
-	if freshness == Freshness.STALE:
-		freshness = Freshness.FRESH
-		expiry_counter = 0.0
-	elif freshness == Freshness.SPOILED:
-		freshness = Freshness.STALE
-		expiry_counter = STALETIME
+	roll_back_freshness(freshness)
 	
 func fry():
 	if cook_state != Cook.RAW:
@@ -92,13 +97,7 @@ func fry():
 	tier = Tier.PREPARED
 	entity_name = "Fried " + entity_name
 	
-	# Rolls back freshness by one state
-	if freshness == Freshness.STALE:
-		freshness = Freshness.FRESH
-		expiry_counter = 0.0
-	elif freshness == Freshness.SPOILED:
-		freshness = Freshness.STALE
-		expiry_counter = STALETIME
+	roll_back_freshness(freshness)
 	
 func blend():
 	if shape_state != Shape.WHOLE:
@@ -171,10 +170,10 @@ func _on_timer_timeout() -> void:
 		if freshness != Freshness.STALE:
 			freshness = Freshness.STALE
 			modulate = Load.load_color[freshness]
-			freshness_changed.emit(Freshness.STALE)
+			freshness_changed.emit(self, Freshness.STALE)
 	elif expiry_counter >= SPOILEDTIME:
 		if freshness != Freshness.SPOILED:
 			freshness = Freshness.SPOILED
 			modulate = Load.load_color[freshness]
-			freshness_changed.emit(Freshness.SPOILED)
+			freshness_changed.emit(self, Freshness.SPOILED)
 	

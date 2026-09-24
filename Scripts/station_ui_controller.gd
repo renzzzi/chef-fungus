@@ -11,5 +11,5 @@ func toggle_ui(station: Station, ui_active: bool):
 				child.bind_station(station)
 			else:
 				child.unbind_station(station)
-
+	
 			child.station_interacted(ui_active)

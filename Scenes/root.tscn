@@ -137,24 +137,38 @@ position = Vector2(16, 24)
 
 [node name="Apple" parent="Kitchen" unique_id=259264233 instance=ExtResource("13_2pdeb")]
 position = Vector2(31.999998, 0)
+STALETIME = 50
+SPOILEDTIME = 100
 
 [node name="Orange" parent="Kitchen" unique_id=1840905024 instance=ExtResource("14_nb5x6")]
 position = Vector2(31.999998, 40.000004)
+STALETIME = 50
+SPOILEDTIME = 100
 
 [node name="Apple2" parent="Kitchen" unique_id=1506695002 instance=ExtResource("13_2pdeb")]
 position = Vector2(-48, 8)
+STALETIME = 50
+SPOILEDTIME = 100
 
 [node name="Bread" parent="Kitchen" unique_id=857542937 instance=ExtResource("15_36yhb")]
 position = Vector2(-31.999998, 23.999998)
+STALETIME = 50
+SPOILEDTIME = 100
 
 [node name="Water" parent="Kitchen" unique_id=1236442539 instance=ExtResource("16_46wli")]
 position = Vector2(31.999998, 15.999996)
+STALETIME = 50
+SPOILEDTIME = 100
 
 [node name="Flour" parent="Kitchen" unique_id=1228925315 instance=ExtResource("17_ffuv7")]
 position = Vector2(48, -24)
+STALETIME = 50
+SPOILEDTIME = 100
 
 [node name="Dough" parent="Kitchen" unique_id=1830045551 instance=ExtResource("18_5q4hy")]
 position = Vector2(48, -7.9999995)
+STALETIME = 50
+SPOILEDTIME = 100
 
 [node name="Tamper" parent="Kitchen" unique_id=117532560 instance=ExtResource("19_xmg1p")]
 position = Vector2(0, 40)
@@ -217,69 +231,83 @@ script = ExtResource("28_lb85r")
 
 [node name="BlenderUI" parent="UI/StationUIController" unique_id=690813215 instance=ExtResource("29_mb0cg")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 144.0
-offset_bottom = 112.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="ChoppingBoardUI" parent="UI/StationUIController" unique_id=1622576349 instance=ExtResource("30_meti5")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 144.0
-offset_bottom = 112.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="DeepFryerUI" parent="UI/StationUIController" unique_id=153671428 instance=ExtResource("31_x5sxw")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 144.0
-offset_bottom = 112.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="FridgeUI" parent="UI/StationUIController" unique_id=136372375 instance=ExtResource("32_nmynh")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 144.0
-offset_bottom = 112.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="MixingBowlUI" parent="UI/StationUIController" unique_id=1947888438 instance=ExtResource("33_b8i6p")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 144.0
-offset_bottom = 112.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="OvenUI" parent="UI/StationUIController" unique_id=1436753710 instance=ExtResource("34_3lwf7")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 144.0
-offset_bottom = 112.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="SinkUI" parent="UI/StationUIController" unique_id=660707807 instance=ExtResource("35_vha2l")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 144.0
-offset_bottom = 112.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="StoveUI" parent="UI/StationUIController" unique_id=725442411 instance=ExtResource("36_r321b")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 144.0
-offset_bottom = 112.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="TabletUI" parent="UI/StationUIController" unique_id=557103639 instance=ExtResource("37_1x7dr")]
 layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="TrashCanUI" parent="UI/StationUIController" unique_id=1542182569 instance=ExtResource("38_s0y6o")]
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 144.0
-offset_bottom = 112.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [editable path="Kitchen/Fridge"]
 [editable path="Kitchen/Sink"]

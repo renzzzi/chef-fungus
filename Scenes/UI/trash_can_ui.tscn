@@ -10,22 +10,21 @@ bg_color = Color(0.5137255, 0.23137255, 0, 0.9019608)
 
 [node name="TrashCanUI" type="Control" unique_id=1542182569]
 visible = false
-top_level = true
-z_index = 100
 layout_mode = 3
-anchors_preset = 0
-offset_left = -72.0
-offset_top = -56.0
-offset_right = 72.0
-offset_bottom = 56.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_s6s18")
 station_name = "Trash Can"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=23147172]
 custom_minimum_size = Vector2(144, 112)
-layout_mode = 0
+layout_mode = 1
 offset_right = 144.0
 offset_bottom = 112.0
+scale = Vector2(5, 5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_xwix5")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=667781998]

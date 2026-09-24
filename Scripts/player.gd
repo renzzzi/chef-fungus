@@ -3,12 +3,30 @@ extends CharacterBody2D
 
 const SPEED: float = 80.0
 @onready var sprite_2d = $Sprite2D
-var current_item_held = null
 var nearby_interact_components: Array[InteractComponent] = []
 # Stores the interact components that were recently interacted with by the player
 var recent_interact_components: Array[InteractComponent] = []
 var last_interacted_station_ui: InteractComponent
 var in_station_interface = false
+
+signal held_item_updated
+
+var current_item_held = null:
+	set(value):
+		# Stop listening to the old item
+		if current_item_held is Food and current_item_held.freshness_changed.is_connected(_on_held_food_freshness_changed):
+			current_item_held.freshness_changed.disconnect(_on_held_food_freshness_changed)
+		
+		current_item_held = value
+		
+		# Start listening to the new one
+		if current_item_held is Food:
+			current_item_held.freshness_changed.connect(_on_held_food_freshness_changed)
+		
+		held_item_updated.emit()
+
+func _on_held_food_freshness_changed(_food: Food, _new_freshness: Food.Freshness) -> void:
+	held_item_updated.emit()
 
 func _ready() -> void:
 	for station in get_tree().get_nodes_in_group("station"):

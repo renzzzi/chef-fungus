@@ -24,7 +24,7 @@ static func check_combine_recipe(food_in_slots: Array[Food]) -> PackedScene:
 	# Store the names of the food in an array
 	for food in food_in_slots:
 		if food != null:
-			input_names.append(food.food_name)
+			input_names.append(food.entity_name)
 	
 	input_names.sort()
 	
