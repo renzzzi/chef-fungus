@@ -29,15 +29,16 @@ func drop():
 		Vector2(player.global_position.x, player.global_position.y + 2.5), 0.16
 	)
 
-func store_in_station(station_type: String):
+func store_in_station(station_name: String):
 	interact_component.monitoring = false
 	interact_component.monitorable = false
 	is_held = false
 	parent_item.visible = false
 	parent_item.global_position = Vector2.ZERO
+	parent_item.z_index = 20
 	
 	if parent_item is Food:
-		parent_item.stored_in = station_type
+		parent_item.stored_in = station_name
 	
 func unstore_from_station(station_from: Node2D):
 	interact_component.monitoring = true

@@ -102,8 +102,10 @@ func execute_station():
 
 func bind_station(station: Station):
 	opened_station = station
-	opened_station.update_ui_item_image.connect(update_ui_item_image)
+	opened_station.update_ui_player_item_image.connect(update_ui_player_item_image)
+	opened_station.update_ui_slot_image.connect(update_ui_slot_image)
 	opened_station.update_ui_freshness.connect(update_ui_freshness)
+	opened_station.update_ui_is_dirty.connect(update_ui_is_dirty)
 	opened_station.player.held_item_updated.connect(refresh_held_item_tint)
 	refresh_held_item_tint()
 	
@@ -114,8 +116,10 @@ func unbind_station(station: Station):
 	if opened_station == null:
 		return
 
-	opened_station.update_ui_item_image.disconnect(update_ui_item_image)
+	opened_station.update_ui_player_item_image.disconnect(update_ui_player_item_image)
+	opened_station.update_ui_slot_image.disconnect(update_ui_slot_image)
 	opened_station.update_ui_freshness.disconnect(update_ui_freshness)
+	opened_station.update_ui_is_dirty.disconnect(update_ui_is_dirty)
 	opened_station.player.held_item_updated.disconnect(refresh_held_item_tint)
 	if station_name == opened_station.entity_name:
 		for child in self.find_children("*", "StationSlot"):
@@ -125,25 +129,45 @@ func unbind_station(station: Station):
 func refresh_held_item_tint() -> void:
 	if opened_station == null:
 		return
-	var held = opened_station.player.current_item_held
-	if held is Food:
-		ui_item_image.modulate = Load.load_color[held.freshness]
+	var item = opened_station.player.current_item_held
+	if item is Food:
+		ui_item_image.modulate = Load.load_color[item.freshness]
+	if item is Tool:
+		ui_item_image.modulate = Load.load_color[item.is_dirty]
 	else:
 		ui_item_image.modulate = Color.WHITE
 
+# For Food
 func update_ui_freshness(station_slot: StationSlot, new_freshness: Food.Freshness):
 	if opened_station == null:
 		return
 	station_slot.change_slot_image_freshness(new_freshness)
 
-		
-func update_ui_item_image(station_slot: StationSlot, player_current_item_held, new_slot_item):
+# For Tool
+func update_ui_is_dirty(station_slot: StationSlot, is_dirty: bool):
+	if opened_station == null:
+		return
+	station_slot.change_slot_image_is_dirty(is_dirty)
+
+func update_ui_slot_image(station_slot: StationSlot, new_slot_item):
 	if opened_station == null:
 		return
 	
 	if self.station_name == opened_station.entity_name:
-		ui_item_image.texture = Load.load_entity_texture[player_current_item_held]
 		station_slot.change_slot_image_texture(new_slot_item)
+
+func update_ui_player_item_image():
+	var item = opened_station.player.current_item_held
+	if opened_station == null:
+		return
+	
+	if self.station_name == opened_station.entity_name:
+		ui_item_image.texture = Load.load_entity_texture[item.entity_name if item != null else null]
+		
+		if item is Food:
+			ui_item_image.modulate = Load.load_color[item.freshness]
+		elif item is Tool:
+			ui_item_image.modulate = Load.load_color[item.is_dirty]
 
 func station_interacted(ui_active):
 	self.visible = ui_active
@@ -156,6 +180,11 @@ func station_interacted(ui_active):
 		ui_item_image.texture = Load.load_entity_texture[null]
 	else:
 		ui_item_image.texture = Load.load_entity_texture[opened_station.player.current_item_held.entity_name]
+		var item = opened_station.player.current_item_held
+		if item is Food:
+			ui_item_image.modulate = Load.load_color[item.freshness]
+		elif item is Tool:
+			ui_item_image.modulate = Load.load_color[item.is_dirty]
 	
 	# Changes the slot image for each slot according to the opened station's stored_items dictionary
 	if ui_active:
@@ -163,10 +192,13 @@ func station_interacted(ui_active):
 			var station_slot := child as StationSlot
 			if opened_station.stored_items.has(station_slot):
 				var item = opened_station.stored_items[station_slot]
-				station_slot.slot_image.texture = Load.load_entity_texture[item.entity_name]
-				station_slot.change_slot_image_freshness(
-					item.freshness if item is Food else Food.Freshness.FRESH
-				)
+				station_slot.change_slot_image_texture(item.entity_name)
+				if item is Food:
+					station_slot.change_slot_image_freshness(item.freshness)
+				elif item is Tool:
+					station_slot.change_slot_image_is_dirty(item.is_dirty)
+			else:
+				station_slot.change_slot_image_texture(null)
 
 # For HoldableStation only
 func pick_up_button_pressed():

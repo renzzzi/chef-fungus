@@ -8,8 +8,12 @@ var stored_items: Dictionary[StationSlot, Variant] = {}
 @onready var player = get_tree().get_first_node_in_group("player")
 signal create_toast(message: String)
 
-signal update_ui_item_image(station_slot: StationSlot, player_current_item_held: String, new_slot_item: String)
+signal update_ui_slot_image(station_slot: StationSlot, new_slot_item)
+signal update_ui_player_item_image()
+# For Food
 signal update_ui_freshness(station_slot: StationSlot, new_freshness: Food.Freshness)
+# For Tools
+signal update_ui_is_dirty(station_slot: StationSlot, is_dirty: bool)
 
 func on_food_freshness_changed(food: Food, new_freshness: Food.Freshness):
 	# Food doesn't know its slot, but the station does
@@ -23,6 +27,8 @@ func store(slot: StationSlot, item) -> void:
 	if item is Food:
 		item.freshness_changed.connect(on_food_freshness_changed)
 		update_ui_freshness.emit(slot, item.freshness)
+	elif item is Tool:
+		update_ui_is_dirty.emit(slot, item.is_dirty)
 	else:
 		update_ui_freshness.emit(slot, Food.Freshness.FRESH)
 
@@ -41,7 +47,8 @@ func interact_stored_items(station_slot: StationSlot):
 	# Player <- Slot
 	if player.current_item_held == null:
 		player.current_item_held = take(station_slot)
-		update_ui_item_image.emit(station_slot, name_of(player.current_item_held), name_of(stored_items.get(station_slot)))
+		update_ui_player_item_image.emit()
+		update_ui_slot_image.emit(station_slot, name_of(stored_items.get(station_slot)))
 	else:
 		# Checks if the slot is allowed to store what the player is holding
 		var allowed = false
@@ -54,8 +61,7 @@ func interact_stored_items(station_slot: StationSlot):
 			if not station_slot.specific_item == player.current_item_held.entity_name:
 				allowed = false
 		
-		# Swaps the player held item to the slot and vice versa
-		# Player -> Slot
+		# Swaps the item between the player and the slot
 		if allowed:
 			# Player -> Slot
 			if stored_items.get(station_slot) == null:
@@ -66,7 +72,8 @@ func interact_stored_items(station_slot: StationSlot):
 				var incoming = player.current_item_held
 				player.current_item_held = take(station_slot)
 				store(station_slot, incoming)
-			update_ui_item_image.emit(station_slot, name_of(player.current_item_held), name_of(stored_items.get(station_slot)))
+			update_ui_player_item_image.emit()
+			update_ui_slot_image.emit(station_slot, name_of(stored_items.get(station_slot)))
 		else:
 			create_toast.emit("You can't store that here.")
 
@@ -100,27 +107,31 @@ func execute_process_food(slots: Array[StationSlot] = []):
 		create_toast.emit("The tool is dirty, get it cleaned")
 		return
 	
-	var result = RecipeManager.check_process_recipe(self.entity_name, stored_items.get(slots[0]).entity_name)
+	var result = RecipeManager.check_process_recipe(self.entity_name, name_of(stored_items.get(slots[0])))
 
 	if slots[2] != null:
 		if stored_items.has(slots[2]):
 			stored_items[slots[2]].queue_free()
 			stored_items.erase(slots[2])
+			update_ui_slot_image.emit(slots[2], name_of(stored_items.get(slots[2])))
 	
 	# If result is a new food scene
 	if result is PackedScene:
 		# instantiate() -> add to tree -> delete food in slot -> add sludge to slot -> initiate store station for sludge
 		var result_food = result.instantiate()
-		get_tree().get_node("Kitchen").add_child(result_food)
+		get_tree().current_scene.get_node("Kitchen").add_child(result_food)
 		stored_items[slots[0]].queue_free()
 		stored_items[slots[0]] = result_food
 		stored_items[slots[0]].holdable_component.store_in_station(self.entity_name)
+		update_ui_freshness.emit(slots[0], stored_items[slots[0]].freshness)
+		update_ui_slot_image.emit(slots[0], name_of(stored_items.get(slots[0])))
 	# If result is a string method
 	else:
 		stored_items[slots[0]].call(result)
 		
 	stored_items[slots[1]].set_is_dirty(true)
 	stored_items[slots[1]].uses_left -= 1
+	update_ui_is_dirty.emit(slots[1], stored_items[slots[1]].is_dirty)
 		
 func execute_combine_food(slots: Array[StationSlot] = []):
 	# Resize if slots argument has less elements than total amount of station slots
@@ -164,25 +175,32 @@ func execute_combine_food(slots: Array[StationSlot] = []):
 	
 	var result = RecipeManager.check_combine_recipe(food_in_slots)
 	var result_food = result.instantiate()
-	get_tree().current_scene.add_child(result_food)
+	get_tree().current_scene.get_node("Kitchen").add_child(result_food)
 	
 	# These blocks are to clear each slots and put the result food in food_slots[0]
 	if stored_items.has(slots[0]): 
 		stored_items[slots[0]].queue_free()
 		stored_items[slots[0]] = result_food
+		update_ui_slot_image.emit(slots[0], name_of(stored_items.get(slots[0])))
+		update_ui_freshness.emit(slots[0], stored_items[slots[0]].freshness)
 		
 	if stored_items.has(slots[1]): 
 		stored_items[slots[1]].queue_free()
-		stored_items[slots[1]] = null
+		stored_items.erase(slots[1])
+		update_ui_slot_image.emit(slots[1], name_of(stored_items.get(slots[1])))
 	
 	if stored_items.has(slots[2]): 
 		stored_items[slots[2]].queue_free()
-		stored_items[slots[2]] = null
+		stored_items.erase(slots[2])
+		update_ui_slot_image.emit(slots[2], name_of(stored_items.get(slots[2])))
 	
 	# Then trigger the store_in_station of the result food
 	stored_items[slots[0]].holdable_component.store_in_station(self.entity_name)
 	stored_items[slots[3]].set_is_dirty(true)
 	stored_items[slots[3]].uses_left -= 1
+	update_ui_is_dirty.emit(slots[3], stored_items[slots[3]].is_dirty)
+	
+	
 	
 func execute_sink(slots: Array[StationSlot] = []):
 	# Resize if slots argument has less elements than total amount of station slots
@@ -220,5 +238,6 @@ func execute_sink(slots: Array[StationSlot] = []):
 	for i in range(0, total_station_slots - 1):
 		if stored_items.has(slots[i]):
 			stored_items[slots[i]].set_is_dirty(false)
+			update_ui_is_dirty.emit(slots[i], stored_items[slots[i]].is_dirty)
 	
 	stored_items[slots[6]].uses_left -= 1

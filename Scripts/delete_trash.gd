@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 		if time_left < 0:
 			trash_can_station.stored_items[trash_slot].queue_free()
 			trash_can_station.stored_items.erase(trash_slot)
+			trash_can_station.update_ui_slot_image.emit(trash_slot, trash_can_station.stored_items.get(trash_slot))
 			timer_text.text = str(TRASH_DURATION)
 			time_left = TRASH_DURATION
 	else:
