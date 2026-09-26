@@ -3,20 +3,14 @@
 [ext_resource type="Script" uid="uid://70d6ayu48wmn" path="res://Scripts/station_ui.gd" id="1_scn8b"]
 [ext_resource type="Texture2D" uid="uid://bcowatgfg23jv" path="res://Sprites/player_head.png" id="1_wl5cs"]
 [ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown.png" id="2_scn8b"]
-[ext_resource type="Texture2D" uid="uid://crcwg0yfn12aq" path="res://Sprites/Stations/oven.png" id="4_mfwis"]
-[ext_resource type="Script" uid="uid://b1d8iv2pw8gsn" path="res://Scripts/station_slot.gd" id="5_3of0a"]
+[ext_resource type="PackedScene" uid="uid://xuqx5265t8vg" path="res://Scenes/UI/shop_slot.tscn" id="4_ptbx1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7d05b"]
 bg_color = Color(0.5529412, 0.6039216, 0.69411767, 0.9019608)
 
 [node name="TabletUI" type="Control" unique_id=557103639]
-visible = false
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_scn8b")
 station_name = "Tablet"
 
@@ -71,7 +65,7 @@ theme_override_constants/margin_right = 22
 layout_mode = 2
 size_flags_horizontal = 6
 offset_transform_enabled = true
-text = "Oven"
+text = "Tablet"
 horizontal_alignment = 1
 
 [node name="PickUpButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1205296270 groups=["pick_up_button"]]
@@ -82,101 +76,34 @@ theme_override_font_sizes/font_size = 5
 text = "Pick
 Up"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2052297152]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=301287271]
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=2106405509]
-layout_mode = 2
-size_flags_horizontal = 3
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1366467415]
-custom_maximum_size = Vector2(60, -1)
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=73461424]
 layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("4_mfwis")
-
-[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=50015252]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control" unique_id=783800786]
-layout_mode = 0
-offset_left = -64.0
-offset_top = -2.0
-offset_bottom = 71.0
 size_flags_horizontal = 3
-alignment = 1
+theme_override_font_sizes/font_size = 6
+text = "Online Shopping"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer" unique_id=1616842514]
+[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1039997064]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 6
+text = "Almanac"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer" unique_id=75802056]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1500375926]
-layout_mode = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(1, 0)
-theme_override_font_sizes/font_size = 7
-text = "Food"
-horizontal_alignment = 1
-
-[node name="FoodSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1535016191]
-texture_filter = 2
-custom_minimum_size = Vector2(30, 30)
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1566621090]
 layout_mode = 2
 size_flags_vertical = 3
-mouse_default_cursor_shape = 2
-script = ExtResource("5_3of0a")
-allowed_item_types = Array[String](["Food"])
 
-[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer/FoodSlot" unique_id=774043193]
-visible = false
-texture_filter = 1
-layout_mode = 0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 27.0
-offset_bottom = 27.0
-texture = ExtResource("2_scn8b")
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer" unique_id=1770071803]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" unique_id=108972168]
 layout_mode = 2
-theme_override_constants/separation = 0
+size_flags_horizontal = 3
+vertical_scroll_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=61119257]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/ScrollContainer" unique_id=1886518987]
 layout_mode = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(1, 0)
-theme_override_font_sizes/font_size = 7
-text = "Tool"
-horizontal_alignment = 1
+columns = 6
 
-[node name="ToolSlot" type="Panel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=2106226132]
-texture_filter = 2
-custom_minimum_size = Vector2(30, 30)
+[node name="ShopSlot" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3/ScrollContainer/GridContainer" unique_id=558437346 instance=ExtResource("4_ptbx1")]
 layout_mode = 2
-size_flags_vertical = 3
-mouse_default_cursor_shape = 2
-script = ExtResource("5_3of0a")
-allowed_item_types = Array[String](["Tool"])
-specific_item = "Sheet Pan"
-
-[node name="SlotImage" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer/HBoxContainer/VBoxContainer2/ToolSlot" unique_id=149844630]
-visible = false
-texture_filter = 1
-layout_mode = 0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 27.0
-offset_bottom = 27.0
-texture = ExtResource("2_scn8b")
-
-[node name="ExecuteStationButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Control/VBoxContainer" unique_id=472938119 groups=["execute_station_button"]]
-texture_filter = 2
-layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 8
-text = "Bake"

@@ -23,6 +23,9 @@ func _ready():
 		Constants.TABLET:
 			pick_up_button = get_specific_control_node(self, "pick_up_button")[0]
 			pick_up_button.pressed.connect(pick_up_button_pressed)
+			#var grid_container = find_child("GridContainer", true, false)
+			#var shop_slot_scene = load("res://Scenes/UI/shop_slot.tscn")
+			#grid_container.add_child
 		_:
 			execute_station_button = get_specific_control_node(self, "execute_station_button")[0]
 			execute_station_button.pressed.connect(execute_station)
@@ -141,20 +144,20 @@ func refresh_held_item_tint() -> void:
 func update_ui_freshness(station_slot: StationSlot, new_freshness: Food.Freshness):
 	if opened_station == null:
 		return
-	station_slot.change_slot_image_freshness(new_freshness)
+	station_slot.set_slot_image_freshness(new_freshness)
 
 # For Tool
 func update_ui_is_dirty(station_slot: StationSlot, is_dirty: bool):
 	if opened_station == null:
 		return
-	station_slot.change_slot_image_is_dirty(is_dirty)
+	station_slot.set_slot_image_is_dirty(is_dirty)
 
 func update_ui_slot_image(station_slot: StationSlot, new_slot_item):
 	if opened_station == null:
 		return
 	
 	if self.station_name == opened_station.entity_name:
-		station_slot.change_slot_image_texture(new_slot_item)
+		station_slot.set_slot_image_texture(new_slot_item)
 
 func update_ui_player_item_image():
 	var item = opened_station.player.current_item_held
@@ -192,13 +195,13 @@ func station_interacted(ui_active):
 			var station_slot := child as StationSlot
 			if opened_station.stored_items.has(station_slot):
 				var item = opened_station.stored_items[station_slot]
-				station_slot.change_slot_image_texture(item.entity_name)
+				station_slot.set_slot_image_texture(item.entity_name)
 				if item is Food:
-					station_slot.change_slot_image_freshness(item.freshness)
+					station_slot.set_slot_image_freshness(item.freshness)
 				elif item is Tool:
-					station_slot.change_slot_image_is_dirty(item.is_dirty)
+					station_slot.set_slot_image_is_dirty(item.is_dirty)
 			else:
-				station_slot.change_slot_image_texture(null)
+				station_slot.set_slot_image_texture(null)
 
 # For HoldableStation only
 func pick_up_button_pressed():

@@ -22,18 +22,15 @@ func _gui_input(event: InputEvent) -> void:
 	):
 		station_slot_interacted.emit(self)
 
-func change_slot_image_texture(new_slot_item):
+func set_slot_image_texture(new_slot_item):
 	slot_image.texture = Load.load_entity_texture[new_slot_item]
 	
-	if new_slot_item == null:
-		slot_image.visible = false
-	else:
-		slot_image.visible = true
+	slot_image.visible = new_slot_item != null
 
 # For Food
-func change_slot_image_freshness(freshness: Food.Freshness):
+func set_slot_image_freshness(freshness: Food.Freshness):
 	slot_image.modulate = Load.load_color[freshness]
 
 # For Tool
-func change_slot_image_is_dirty(is_dirty: bool):
+func set_slot_image_is_dirty(is_dirty: bool):
 	slot_image.modulate = Load.load_color[is_dirty]

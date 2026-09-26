@@ -44,38 +44,45 @@ func interact_stored_items(station_slot: StationSlot):
 	if player.current_item_held == null and stored_items.get(station_slot) == null:
 		return
 	
-	# Player <- Slot
-	if player.current_item_held == null:
-		player.current_item_held = take(station_slot)
-		update_ui_player_item_image.emit()
-		update_ui_slot_image.emit(station_slot, name_of(stored_items.get(station_slot)))
+	if station_slot is ShopSlot:
+		if player.current_item_held != null:
+			create_toast.emit("Player must not be carrying something.")
+			return
+			
+		player.current_item_held = stored_items[station_slot]
 	else:
-		# Checks if the slot is allowed to store what the player is holding
-		var allowed = false
-		if ((station_slot.allowed_item_types.has("Food") and player.current_item_held is Food) or
-		(station_slot.allowed_item_types.has("Tool") and player.current_item_held is Tool) or
-		(station_slot.allowed_item_types.has("HoldableStation") and player.current_item_held is HoldableStation)):
-			allowed = true
-		
-		if station_slot.specific_item != "":
-			if not station_slot.specific_item == player.current_item_held.entity_name:
-				allowed = false
-		
-		# Swaps the item between the player and the slot
-		if allowed:
-			# Player -> Slot
-			if stored_items.get(station_slot) == null:
-				store(station_slot, player.current_item_held)
-				player.current_item_held = null
-			# Player <-> Slot
-			else:
-				var incoming = player.current_item_held
-				player.current_item_held = take(station_slot)
-				store(station_slot, incoming)
+		# Player <- Slot
+		if player.current_item_held == null:
+			player.current_item_held = take(station_slot)
 			update_ui_player_item_image.emit()
 			update_ui_slot_image.emit(station_slot, name_of(stored_items.get(station_slot)))
 		else:
-			create_toast.emit("You can't store that here.")
+			# Checks if the slot is allowed to store what the player is holding
+			var allowed = false
+			if ((station_slot.allowed_item_types.has("Food") and player.current_item_held is Food) or
+			(station_slot.allowed_item_types.has("Tool") and player.current_item_held is Tool) or
+			(station_slot.allowed_item_types.has("HoldableStation") and player.current_item_held is HoldableStation)):
+				allowed = true
+			
+			if station_slot.specific_item != "":
+				if not station_slot.specific_item == player.current_item_held.entity_name:
+					allowed = false
+			
+			# Swaps the item between the player and the slot
+			if allowed:
+				# Player -> Slot
+				if stored_items.get(station_slot) == null:
+					store(station_slot, player.current_item_held)
+					player.current_item_held = null
+				# Player <-> Slot
+				else:
+					var incoming = player.current_item_held
+					player.current_item_held = take(station_slot)
+					store(station_slot, incoming)
+				update_ui_player_item_image.emit()
+				update_ui_slot_image.emit(station_slot, name_of(stored_items.get(station_slot)))
+			else:
+				create_toast.emit("You can't store that here.")
 
 # Helper function
 func name_of(item):

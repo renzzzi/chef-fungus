@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://xuqx5265t8vg"]
+
+[ext_resource type="Script" uid="uid://dtk58epr2edn7" path="res://Scripts/shop_slot.gd" id="1_cgkhn"]
+[ext_resource type="Texture2D" uid="uid://bt55xga4jwg73" path="res://Sprites/unknown.png" id="2_3u7u5"]
+
+[node name="ShopSlot" type="Panel" unique_id=558437346]
+texture_filter = 2
+custom_minimum_size = Vector2(16, 16)
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+script = ExtResource("1_cgkhn")
+
+[node name="SlotImage" type="TextureRect" parent="." unique_id=1667752348]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1.6000004
+offset_top = 2.2000005
+offset_right = 18.151726
+offset_bottom = 18.75172
+scale = Vector2(0.725, 0.725)
+texture = ExtResource("2_3u7u5")
